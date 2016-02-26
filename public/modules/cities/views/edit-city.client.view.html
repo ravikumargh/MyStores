@@ -1,0 +1,36 @@
+
+<section data-ng-controller="CitiesController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1>Edit City</h1>
+	</div>
+	<div class="col-md-12">
+		<form name="cityForm" class="form-horizontal" data-ng-submit="update(cityForm.$valid)" novalidate>
+			<fieldset>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && cityForm.name.$invalid}">
+					<label class="control-label" for="name">Name</label>
+					<div class="controls">
+						<input name="name" type="text" data-ng-model="city.name" id="name" class="form-control" placeholder="Name" required>
+					</div>
+					<div ng-show="submitted && cityForm.name.$invalid" class="help-block">
+						<p ng-show="cityForm.name.$error.required" class="text-danger">Name is required</p>
+					</div>
+				</div>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && cityForm.state.$invalid}">
+					<label class="control-label" for="state">State</label>
+					<div class="controls">
+						<textarea name="state" data-ng-model="city.state" id="state" class="form-control" cols="30" rows="10" placeholder="State" required></textarea>
+					</div>
+					<div ng-show="submitted && cityForm.state.$invalid" class="help-block">
+						<p ng-show="cityForm.state.$error.required" class="text-danger">State is required</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Update" class="btn btn-default">
+				</div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>

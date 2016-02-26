@@ -1,0 +1,29 @@
+<section data-ng-controller="CitiesController">
+	<div class="page-header">
+		<h1>New City</h1>
+	</div>
+	<div class="col-md-12">
+		<form name="cityForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+			<fieldset>
+				<div class="form-group" ng-class="{ 'has-error': cityForm.name.$dirty && cityForm.name.$invalid }">
+					<label class="control-label" for="name">Name</label>
+					<div class="controls">
+						<input name="name" type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="state">State</label>
+					<div class="controls">
+						<textarea name="state" data-ng-model="state" id="state" class="form-control" cols="30" rows="10" placeholder="State"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-default">
+				</div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>
