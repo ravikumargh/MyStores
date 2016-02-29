@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('outlets').controller('OutletsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Outlets',
-	function($scope, $stateParams, $location, Authentication, Outlets) {
+angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Outlets', 'Storeoutlets',
+	function($scope, $http, $stateParams, $location, Authentication, Outlets, Storeoutlets) {
 		$scope.authentication = Authentication;
 		$scope.storeId=$stateParams.storeId;
+		$scope.outletId=$stateParams.outletId;
 		$scope.create = function() {
 			var outlet = new Outlets({
 				name: this.name,
@@ -20,6 +21,33 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$statePara
 			});
 		};
 
+		$scope.createAdmin = function() {
+			$scope.credentials.outlets=[];
+			$scope.credentials.roles=[];
+			$scope.credentials.outlets.push($scope.outletId);
+			$scope.credentials.roles.push('outletadmin');
+			
+			$http.post('/users/create', $scope.credentials).success(function(response) {
+				// If successful we assign the response to the global user model
+				//$scope.authentication.user = response;
+
+				// And redirect to the index page
+				$location.path('/');
+			}).error(function(response) {
+				$scope.error = response.message;
+			});
+		};
+		$scope.getAdmins = function() {			
+			$http.get('/users/outlet/'+$scope.outletId).success(function(response) {
+				// If successful we assign the response to the global user model
+				$scope.users = response;
+
+				 
+			}).error(function(response) {
+				$scope.error = response.message;
+			});
+		};
+		$scope.getAdmins();
 		$scope.remove = function(outlet) {
 			if (outlet) {
 				outlet.$remove();
@@ -47,7 +75,12 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$statePara
 		};
 
 		$scope.find = function() {
-			$scope.outlets = Outlets.query();
+			Storeoutlets.getStoreOutlets($scope.storeId).success(function (response) {
+            $scope.outlets = response;
+           })
+           .error(function (errorResponse) {
+               //$scope.error = errorResponse.data.message;
+           });
 		};
 
 		$scope.findOne = function() {

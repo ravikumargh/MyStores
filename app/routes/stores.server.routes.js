@@ -4,10 +4,13 @@
  * Module dependencies.
  */
 var users = require('../../app/controllers/users.server.controller'),
-	stores = require('../../app/controllers/stores.server.controller');
-
+	stores = require('../../app/controllers/stores.server.controller'),
+	outlets = require('../../app/controllers/outlets.server.controller');
+	
 module.exports = function(app) {
 	// Store Routes
+	app.route('/stores/:storeId/outlets')
+		.get(outlets.list);
 	app.route('/stores')
 		.get(stores.list)
 		.post(users.requiresLogin, stores.create);

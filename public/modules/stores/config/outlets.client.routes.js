@@ -20,6 +20,10 @@ angular.module('outlets').config(['$stateProvider',
 		state('editOutlet', {
 			url: '/outlets/:outletId/edit',
 			templateUrl: 'modules/stores/views/edit-outlet.client.view.html'
+		}).
+		state('createOutletUser', {
+			url: '/outlets/:outletId/createuser',
+			templateUrl: 'modules/stores/views/create-user.client.view.html'
 		});
 	}
 ]);

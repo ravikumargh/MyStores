@@ -54,3 +54,18 @@ exports.update = function(req, res) {
 exports.me = function(req, res) {
 	res.json(req.user || null);
 };
+
+
+
+/**
+ * User middleware
+ */
+exports.outletusers = function(req, res) {
+	User.where('outlets').in([req.params.outletId]).exec(function(err, user) {
+		if (err) return next(err);
+		if (!user) return next(new Error('Failed to load User ' + id));
+	 	user.password = undefined;
+		user.salt = undefined;
+		return res.status(200).json(user);
+	});
+};

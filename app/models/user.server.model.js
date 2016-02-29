@@ -71,9 +71,21 @@ var UserSchema = new Schema({
 	roles: {
 		type: [{
 			type: String,
-			enum: ['user', 'admin']
+			enum: ['user', 'admin','storeadmin','outletadmin']
 		}],
 		default: ['user']
+	},
+	stores: {
+		type: [{
+			type: Schema.ObjectId,
+			ref: 'Store'
+		}]
+	},
+	outlets: {
+		type: [{
+			type: Schema.ObjectId,
+			ref: 'Outlet'
+		}]
 	},
 	updated: {
 		type: Date

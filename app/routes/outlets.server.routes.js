@@ -8,8 +8,7 @@ var users = require('../../app/controllers/users.server.controller'),
 
 module.exports = function(app) {
 	// Outlet Routes
-	app.route('/stores/:storeId/outlets')
-		.get(outlets.list);
+	//app.route('/stores/:storeId/outlets').get(outlets.list);
 	app.route('/outlets')
 		.post(users.requiresLogin, outlets.create);
 

@@ -3,6 +3,9 @@
 		<h1 data-ng-bind="outlet.name"></h1>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == outlet.user._id">
+		<a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/createuser">
+			<i class="glyphicon glyphicon-plus"></i>Add admin
+		</a>
 		<a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
@@ -19,4 +22,10 @@
 		</em>
 	</small>
 	<p class="lead" data-ng-bind="outlet.address"></p>
+
+	<div data-ng-repeat="user in users"   class="list-group-item">
+			 
+			<div class="list-group-item-heading" data-ng-bind="user.firstName"></div>
+			<div class="list-group-item-text" data-ng-bind="user.lastName"></div>
+	</div>
 </section>

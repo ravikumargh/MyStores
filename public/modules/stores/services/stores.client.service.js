@@ -12,3 +12,15 @@ angular.module('stores').factory('Stores', ['$resource',
 		});
 	}
 ]);
+//Storeoutlets service used for communicating with the stores REST endpoints
+angular.module('storeoutlets').factory('Storeoutlets', ['$http',
+	function($http) {
+		var urlBase = '/stores/';
+        var dataFactory = {};
+        dataFactory.getStoreOutlets = function (store_id) {
+            return $http.get(urlBase + store_id + '/outlets');
+        };        
+
+        return dataFactory;
+	}
+]);
