@@ -22,6 +22,10 @@ var OutletSchema = new Schema({
 		trim: true,
 		required: 'Address cannot be blank'
 	},
+	city: {
+		type: Schema.ObjectId,
+		ref: 'City'
+	},
 	store: {
 		type: Schema.ObjectId,
 		ref: 'Store'

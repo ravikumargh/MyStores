@@ -26,6 +26,10 @@ var StoreSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
+	category: {
+		type: Schema.ObjectId,
+		ref: 'Category'
+	},
 	created: {
 		type: Date,
 		default: Date.now
@@ -33,6 +37,10 @@ var StoreSchema = new Schema({
 	updated: {
 		type: Date,
 		default: Date.now
+	},
+	isdeleted: {
+		type: Boolean,
+		default: 0
 	}
 });
 
