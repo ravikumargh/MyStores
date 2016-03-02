@@ -8,12 +8,12 @@ var users = require('../../app/controllers/users.server.controller'),
 
 module.exports = function(app) {
 	// Image Routes
+	//app.route('/stores/:storeId/images').get(images.list);
 	app.route('/images')
-		.get(images.list)
 		.post(users.requiresLogin, images.create);
 
 	app.route('/images/:imageId')
-		.get(images.reimage)
+		.get(images.read)
 		.put(users.requiresLogin, images.hasAuthorization, images.update)
 		.delete(users.requiresLogin, images.hasAuthorization, images.delete);
 

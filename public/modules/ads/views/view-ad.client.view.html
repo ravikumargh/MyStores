@@ -3,6 +3,11 @@
 		<h1 data-ng-bind="ad.title"></h1>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == ad.user._id">
+		<button type="button" class="btn btn-primary" ng-click="openOfferModal()">
+			<i class="glyphicon glyphicon-plus"></i>Add offers
+		</button>
+
+		 
 		<a class="btn btn-primary" href="/#!/ads/{{ad._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
@@ -16,7 +21,34 @@
 			<span data-ng-bind="ad.created | date:'mediumDate'"></span>
 			by
 			<span data-ng-bind="ad.user.displayName"></span>
-		</em>
+		</em>		
 	</small>
 	<p class="lead" data-ng-bind="ad.content"></p>
-</section>
+
+	  
+
+    <div class="col-md-12 card " >
+	  <table class="table table-responsive">
+	    <thead class="card action poll-card">
+	      <th class="c-td">Title </th>
+	      <th class="c-td">Content</th>
+	    </thead>
+	    <tbody>
+	      <tr id="card action poll-card custom_tr" ng-repeat="item in offers">
+	       <td class="c-td">{{item.title}}</td>
+	       <td class="c-td">{{item.content}}</td>
+	       <td class="c-td">
+		       	<button type="button" class="btn btn-primary" ng-click="openOfferModal(item)">
+					<i class="glyphicon glyphicon-edit"></i>
+				</button>
+		       	<button type="button" class="btn btn-primary" ng-click="deleteOffer()">
+					<i class="glyphicon glyphicon-trash"></i>
+				</button>
+ 
+	       </td>
+	     </tr>
+	   </tbody>
+	 </table>
+	</div>
+
+ 

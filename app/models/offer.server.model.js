@@ -33,17 +33,17 @@ var OfferSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'Category'
 	},
-	stores: {
-		type: [{
-			type: Schema.ObjectId,
-			ref: 'Store'
-		}]
+	store: {		
+		type: Schema.ObjectId,
+		ref: 'Store'		
 	},
-	outlets: {
-		type: [{
-			type: Schema.ObjectId,
-			ref: 'Outlet'
-		}]
+	outlet: {		
+		type: Schema.ObjectId,
+		ref: 'Outlet'		
+	},
+	ad: {		
+		type: Schema.ObjectId,
+		ref: 'Ad'		
 	},
 	user: {
 		type: Schema.ObjectId,

@@ -5,102 +5,102 @@
  */
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
-	Ad = mongoose.model('Ad'),
+	Image = mongoose.model('Image'),
 	_ = require('lodash');
 
 /**
- * Create a ad
+ * Create a image
  */
 exports.create = function(req, res) {
-	var ad = new Ad(req.body);
-	ad.user = req.user;
+	var image = new Image(req.body);
+	image.user = req.user;
 
-	ad.save(function(err) {
+	image.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(ad);
+			res.json(image);
 		}
 	});
 };
 
 /**
- * Show the current ad
+ * Show the current image
  */
 exports.read = function(req, res) {
-	res.json(req.ad);
+	res.json(req.image);
 };
 
 /**
- * Update a ad
+ * Update a image
  */
 exports.update = function(req, res) {
-	var ad = req.ad;
+	var image = req.image;
 
-	ad = _.extend(ad, req.body);
+	image = _.extend(image, req.body);
 
-	ad.save(function(err) {
+	image.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(ad);
+			res.json(image);
 		}
 	});
 };
 
 /**
- * Delete an ad
+ * Delete an image
  */
 exports.delete = function(req, res) {
-	var ad = req.ad;
+	var image = req.image;
 
-	ad.remove(function(err) {
+	image.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(ad);
+			res.json(image);
 		}
 	});
 };
 
 /**
- * List of Ads
+ * List of Images
  */
 exports.list = function(req, res) {
-	Ad.find().sort('-created').populate('user', 'displayName').exec(function(err, ads) {
+	Image.find().sort('-created').populate('user', 'displayName').exec(function(err, images) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(ads);
+			res.json(images);
 		}
 	});
 };
 
 /**
- * Ad middleware
+ * Image middleware
  */
-exports.adByID = function(req, res, next, id) {
-	Ad.findById(id).populate('user', 'displayName').exec(function(err, ad) {
+exports.imageByID = function(req, res, next, id) {
+	Image.findById(id).populate('user', 'displayName').exec(function(err, image) {
 		if (err) return next(err);
-		if (!ad) return next(new Error('Failed to load ad ' + id));
-		req.ad = ad;
+		if (!image) return next(new Error('Failed to load image ' + id));
+		req.image = image;
 		next();
 	});
 };
 
 /**
- * Ad authorization middleware
+ * Image authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.ad.user.id !== req.user.id) {
+	if (req.image.user.id !== req.user.id) {
 		return res.status(403).send({
 			message: 'User is not authorized'
 		});

@@ -4,8 +4,8 @@
 angular.module('ads').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'Ads', 'ads', 'dropdown', '/ads(/create)?');
-		Menus.addSubMenuItem('topbar', 'ads', 'List Ads', 'ads');
-		Menus.addSubMenuItem('topbar', 'ads', 'New Ad', 'ads/create');
+		Menus.addMenuItem('topbar', 'Ads', 'ads', '', '/ads');
+		//Menus.addSubMenuItem('topbar', 'ads', 'List Ads', 'ads');
+		//Menus.addSubMenuItem('topbar', 'ads', 'New Ad', 'ads/create');
 	}
 ]);

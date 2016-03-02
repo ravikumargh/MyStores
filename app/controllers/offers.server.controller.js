@@ -9,62 +9,62 @@ var mongoose = require('mongoose'),
 	_ = require('lodash');
 
 /**
- * Create a article
+ * Create a offer
  */
 exports.create = function(req, res) {
-	var article = new Offer(req.body);
-	article.user = req.user;
+	var offer = new Offer(req.body);
+	offer.user = req.user;
 
-	article.save(function(err) {
+	offer.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(article);
+			res.json(offer);
 		}
 	});
 };
 
 /**
- * Show the current article
+ * Show the current offer
  */
 exports.read = function(req, res) {
-	res.json(req.article);
+	res.json(req.offer);
 };
 
 /**
- * Update a article
+ * Update a offer
  */
 exports.update = function(req, res) {
-	var article = req.article;
+	var offer = req.offer;
 
-	article = _.extend(article, req.body);
+	offer = _.extend(offer, req.body);
 
-	article.save(function(err) {
+	offer.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(article);
+			res.json(offer);
 		}
 	});
 };
 
 /**
- * Delete an article
+ * Delete an offer
  */
 exports.delete = function(req, res) {
-	var article = req.article;
+	var offer = req.offer;
 
-	article.remove(function(err) {
+	offer.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(article);
+			res.json(offer);
 		}
 	});
 };
@@ -73,13 +73,28 @@ exports.delete = function(req, res) {
  * List of Offers
  */
 exports.list = function(req, res) {
-	Offer.find().sort('-created').populate('user', 'displayName').exec(function(err, articles) {
+	Offer.find().sort('-created').populate('user', 'displayName').exec(function(err, offers) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(articles);
+			res.json(offers);
+		}
+	});
+};
+
+/**
+ * List of Offers By outletId
+ */
+exports.listByAdId = function(req, res) {
+	Offer.find({'ad':req.params.adId}).sort('-created').populate('user', 'displayName').exec(function(err, offers) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.json(offers);
 		}
 	});
 };
@@ -87,11 +102,11 @@ exports.list = function(req, res) {
 /**
  * Offer middleware
  */
-exports.articleByID = function(req, res, next, id) {
-	Offer.findById(id).populate('user', 'displayName').exec(function(err, article) {
+exports.offerByID = function(req, res, next, id) {
+	Offer.findById(id).populate('user', 'displayName').exec(function(err, offer) {
 		if (err) return next(err);
-		if (!article) return next(new Error('Failed to load article ' + id));
-		req.article = article;
+		if (!offer) return next(new Error('Failed to load offer ' + id));
+		req.offer = offer;
 		next();
 	});
 };
@@ -100,7 +115,7 @@ exports.articleByID = function(req, res, next, id) {
  * Offer authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.article.user.id !== req.user.id) {
+	if (req.offer.user.id !== req.user.id) {
 		return res.status(403).send({
 			message: 'User is not authorized'
 		});
