@@ -195,8 +195,8 @@ angular.module('adsModal').controller('AdsModalController',
  
 
 angular.module('offersModal').controller('OffersModalController', 
-			['$scope', '$stateParams', '$location', 'Authentication', 'Offers','$modalInstance', 'ParentScope',
-	function($scope, $stateParams, $location, Authentication, Offers, $modalInstance, ParentScope) {
+			['$scope', '$stateParams', '$location', 'Authentication', 'Offers', 'File','$modalInstance', 'ParentScope',
+	function($scope, $stateParams, $location, Authentication, Offers, File, $modalInstance, ParentScope) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
@@ -207,6 +207,12 @@ angular.module('offersModal').controller('OffersModalController',
 			});
 			offer.$save(function(response) {
 				//$location.path('offers/' + response._id);
+				if ($scope.picFile) {
+                    //for (var i = 0; i < $scope.picFile.length; i++) {
+                        File.addNewFile($scope.picFile, response._id);
+                        //$scope.refreshDevelopmentList();
+                    //}
+        		} 
 				ParentScope.offers.push(response);
 				$scope.title = '';
 				$scope.content = '';

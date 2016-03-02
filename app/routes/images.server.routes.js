@@ -6,11 +6,15 @@
 var users = require('../../app/controllers/users.server.controller'),
 	images = require('../../app/controllers/images.server.controller');
 
+var express = require('express');
+var router = express.Router();
+var multipart = require('connect-multiparty');
+
 module.exports = function(app) {
 	// Image Routes
 	//app.route('/stores/:storeId/images').get(images.list);
-	app.route('/images')
-		.post(users.requiresLogin, images.create);
+	app.route('/images').post(users.requiresLogin,  multipart(), images.create);
+	//router.post('/images', multipart(), images.create);
 
 	app.route('/images/:imageId')
 		.get(images.read)

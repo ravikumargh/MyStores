@@ -18,6 +18,13 @@
 						<textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="4" placeholder="Content"></textarea>
 					</div>
 				</div>
+				<div class="form-group">
+	                <label class="control-label" for="name">Offer image</label>
+	                <div class="controls">
+	                	<input type="file" ngf-select="" ng-model="picFile" name="file" ngf-accept="'image/*'" />
+	                    <!-- <input type="file" filelist-bind name="file" ng-model="file" /> -->
+	                </div>
+            	</div>
 				<!-- <div class="form-group">
 					<input type="submit" class="btn btn-default">
 				</div> -->

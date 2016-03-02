@@ -30,7 +30,9 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',				
 				'public/lib/moment/moment.js',
 				'public/lib/bootstrap-daterangepicker/daterangepicker.js',
-				'public/lib/angular-daterangepicker/js/angular-daterangepicker.js'
+				'public/lib/angular-daterangepicker/js/angular-daterangepicker.js',
+				'public/lib/ng-file-upload/ng-file-upload.js',
+				'public/lib/ng-file-upload-shim/ng-file-upload-shim.js'
 			]
 		},
 		css: [
