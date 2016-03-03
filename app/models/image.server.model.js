@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
  * Image Schema
  */
 var ImageSchema = new Schema({	
-	fileid: Schema.ObjectId,	
+	imageid: Schema.ObjectId,	
 	contentid: Schema.ObjectId,	 
 	store: {
 		type: Schema.ObjectId,

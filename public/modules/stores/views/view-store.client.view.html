@@ -1,7 +1,7 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="store.name"></h1>
-	</div>
+	</div>{{authentication.user}}
 	<div class="pull-right" data-ng-show="authentication.user._id == store.user._id">
 		<a class="btn btn-primary" href="/#!/stores/{{store._id}}/outlets">
 			Outlets
@@ -22,4 +22,20 @@
 		</em>
 	</small>
 	<p class="lead" data-ng-bind="store.address"></p>
+	
+<img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{store._id}}"  />
+
+	<button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+      Select File</button>
+  <br><br>
+  File:
+  <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+      <span class="progress" ng-show="f.progress >= 0">
+          <div style="width:{{f.progress}}%"  
+               ng-bind="f.progress + '%'"></div>
+      </span>
+  </div>     
+  {{errorMsg}}
+
 </section>

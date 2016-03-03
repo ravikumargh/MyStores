@@ -15,7 +15,8 @@ module.exports = function(app) {
 	//app.route('/stores/:storeId/images').get(images.list);
 	app.route('/images').post(users.requiresLogin,  multipart(), images.create);
 	//router.post('/images', multipart(), images.create);
-
+	app.route('/images/content/:contentId')
+		.get(images.show)
 	app.route('/images/:imageId')
 		.get(images.read)
 		.put(users.requiresLogin, images.hasAuthorization, images.update)

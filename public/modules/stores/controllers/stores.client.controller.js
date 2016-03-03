@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('stores').controller('StoresController', ['$scope', '$stateParams', '$location', 'Authentication', 'Stores',
-	function($scope, $stateParams, $location, Authentication, Stores) {
+angular.module('stores').controller('StoresController', ['$scope', '$stateParams', '$location', 'Authentication', 'Stores', 'File',
+	function($scope, $stateParams, $location, Authentication, Stores, File) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
@@ -54,5 +54,19 @@ angular.module('stores').controller('StoresController', ['$scope', '$stateParams
 				storeId: $stateParams.storeId
 			});
 		};
+
+
+		$scope.uploadFiles = function(file, errFiles) {
+        $scope.f = file;
+        $scope.errFile = errFiles && errFiles[0];
+        if (file) {
+          	File.addNewFile(file, $stateParams.storeId).then(function(res){
+				 
+          	});
+            }
+         };
+
+         
+         
 	}
 ]);

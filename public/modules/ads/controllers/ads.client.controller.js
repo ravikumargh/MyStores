@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ads').controller('AdsController', 
-		['$scope', '$stateParams', '$location','$modal', '$log','$http','Authentication', 'Ads', 'Offers',
-		function($scope, $stateParams, $location, $modal, $log, $http, Authentication, Ads, Offers) {
+		['$scope', '$stateParams', '$location','$modal', '$log','$http','Authentication', 'Ads', 'Offers', 'File',
+		function($scope, $stateParams, $location, $modal, $log, $http, Authentication, Ads, Offers, File) {
 			$scope.authentication = Authentication;
 			$scope.date = {startDate: null, endDate: null};
 			$scope.create = function(ad) {
@@ -48,7 +48,10 @@ angular.module('ads').controller('AdsController',
 			$scope.update = function() {
 				var ad = $scope.ad;
 
-				ad.$update(function() {
+				ad.$update(function(response) {
+					if ($scope.picFile) {
+                    File.addNewFile($scope.picFile, response._id);
+        		} 
 					$location.path('ads/' + ad._id);
 				}, function(errorResponse) {
 					$scope.error = errorResponse.data.message;
@@ -148,6 +151,12 @@ angular.module('adsModal').controller('AdsModalController',
 					fromdate: $scope.date.startDate,
 					todate: $scope.date.endDate
 				});
+			for (var i = 0; i < $scope.authentication.user.outlets.length; i++) {
+				if (!ad.outlets) {	
+					ad.outlets=[];	
+				};
+				ad.outlets.push($scope.authentication.user.outlets[i]);
+			};
 			ParentScope.create(ad);	
 		    $modalInstance.dismiss('cancel');					
 		};

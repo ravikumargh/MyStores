@@ -31,7 +31,7 @@ exports.create = function(req, res) {
           var fileId = writestream.id;
           var call = {
               'contentid': req.body.contentid,
-              'fileid': fileId
+              'imageid': fileId
           };
           Image.create(call, function (err, file) {
               if (err) { return handleError(res, err); }
@@ -46,10 +46,45 @@ exports.create = function(req, res) {
 };
 
 /**
+ * Get a single File by contentid
+ *
+ * @param req
+ * @param res
+ */
+ var Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
+exports.show = function (req, res) {
+    try {
+    	Image.find({ "contentid": req.params.contentId}).exec(function(err, image) {
+			 if (err) { return handleError(res, err); }
+        if (!image.length) { return res.status(404).end(); }
+        //return res.status(200).json(image);
+				if (image.length) {					
+			        var Grid = require('gridfs-stream');
+			        Grid.mongo = mongoose.mongo;
+			        var conn = mongoose.connection;
+			        var gfs = Grid(conn.db);
+			        var options = { _id: image[0].imageid };
+			        gfs.createReadStream(options).pipe(res);  
+				};
+	        }    
+		);
+    } catch (err) {
+        return handleError(res, err);
+    }
+};
+
+/**
  * Show the current image
  */
 exports.read = function(req, res) {
 	res.json(req.image);
+	// var Grid = require('gridfs-stream');
+ //    Grid.mongo = mongoose.mongo;
+ //    var conn = mongoose.connection;
+ //    var gfs = Grid(conn.db);
+ //    var options = { _id: req.params.imageId };
+ //    gfs.createReadStream(options).pipe(res);  
 };
 
 /**
