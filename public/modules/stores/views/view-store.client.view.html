@@ -1,7 +1,7 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="store.name"></h1>
-	</div>{{authentication.user}}
+	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == store.user._id">
 		<a class="btn btn-primary" href="/#!/stores/{{store._id}}/outlets">
 			Outlets

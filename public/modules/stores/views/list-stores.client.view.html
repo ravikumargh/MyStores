@@ -1,7 +1,10 @@
 <section data-ng-controller="StoresController" data-ng-init="find()">
 	<div class="page-header">
 		<h1>Stores</h1>
-	<a class="btn btn-primary" href="/#!/stores/stores">
+	<!-- <a class="btn btn-primary" href="/#!/stores/create">
+			<i class="glyphicon glyphicon-plus"></i>Add Store
+	</a> -->
+	<a class="btn btn-primary" ng-click="openCreateModal()">
 			<i class="glyphicon glyphicon-plus"></i>Add Store
 	</a>
 	</div>
@@ -27,7 +30,7 @@
                     <img class="img-responsive" src="http://localhost:3000/images/content/{{store._id}}" alt="profile picture">
                 </div>
             </div>
-            <div class="col-lg-10 col-md-10 col-sm-12">
+            <div class="col-lg-9 col-md-9 col-sm-12">
                 <div class="user-name">
                    <a   data-ng-href="#!/stores/{{store._id}}"> {{store.name}}</a>
                 </div>
@@ -39,6 +42,15 @@
                     <a href="#" title="Comments"> <i class="glyphicon glyphicon-comment">   </i> <strong>120</strong></a>
                     <a href="#" title="Likes">    <i class="glyphicon glyphicon-thumbs-up"> </i> <strong>60</strong></a> <span class="label label-success">Active</span>
                 </div>
+                
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12">
+                	<a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
+						<i class="glyphicon glyphicon-edit"></i>
+					</a>
+					<a class="btn btn-primary" data-ng-click="remove();">
+						<i class="glyphicon glyphicon-trash"></i>
+					</a>
             </div>
         </div>
  
