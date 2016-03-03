@@ -1,6 +1,36 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="store.name"></h1>
+	<div class="page-header row">
+		<div class="col-md-1">
+		<img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{store._id}}"  />
+		</div>
+		<div class="col-md-11">
+			<h1 data-ng-bind="store.name"  ></h1>
+		</div>
+		<small>
+			<em class="text-muted">
+				Created on
+				<span data-ng-bind="store.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="store.user.displayName"></span>
+			</em>
+		</small>
+		<p class="lead" data-ng-bind="store.address"></p>
+		
+	<div>
+		<button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+	          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+	      Update Logo
+	  	</button>
+	  
+	   
+	  <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+	      <span class="progress" ng-show="f.progress >= 0">
+	          <div style="width:{{f.progress}}%"  
+	               ng-bind="f.progress + '%'"></div>
+	      </span>
+	  </div>     
+	  {{errorMsg}}
+	</div>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == store.user._id">
 		<a class="btn btn-primary" href="/#!/stores/{{store._id}}/outlets">
@@ -13,29 +43,4 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="store.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="store.user.displayName"></span>
-		</em>
-	</small>
-	<p class="lead" data-ng-bind="store.address"></p>
-	
-<img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{store._id}}"  />
-
-	<button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
-          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
-      Select File</button>
-  <br><br>
-  File:
-  <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
-      <span class="progress" ng-show="f.progress >= 0">
-          <div style="width:{{f.progress}}%"  
-               ng-bind="f.progress + '%'"></div>
-      </span>
-  </div>     
-  {{errorMsg}}
-
 </section>
