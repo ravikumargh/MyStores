@@ -27,8 +27,89 @@
 	</div>
 	  
 	<h1 >Offers</h1>
+	  <!-- <div class="row">
+        
+        <div class="col-xs-18 col-sm-6 col-md-3" ng-repeat="item in offers">
+          <div class="thumbnail">
+            <img  ng-src="http://localhost:3000/images/content/{{item._id}} " hide-until-good  alt="">
+              <div class="caption">
+                <h4>{{item.title}}</h4>
+                <p>{{item.content}}</p>
+                  <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p>  
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				 </button>
+				 <button type="button" class="close edit" data-dismiss="modal" aria-label="Close">
+						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+				 </button>
+            </div>
+          </div>
+        </div>
 
-    <div class="col-md-12 card " >
+    </div>   -->
+ 
+
+ 
+<div class="row-masonry">
+    <div class="item " ng-repeat="item in offers">
+      <div class="well"> 
+          <div class="thumbnail">
+            <img  ng-src="http://localhost:3000/images/content/{{item._id}} " hide-until-good  alt="">
+              <div class="caption">
+                <h4>{{item.title}}</h4>
+                <p>{{item.content}}</p>
+                 <!-- <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p> -->
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				 </button>
+				 <button type="button" class="close edit" data-dismiss="modal" aria-label="Close">
+						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+				 </button>
+            </div>
+          </div>
+      </div>
+    </div>
+ 	 
+</div>
+ 
+
+   <style type="text/css">
+	.thumbnail button.close{
+		position: absolute;	    
+	    right: 20px;
+	    top: 1px;
+	}
+	.thumbnail button.edit{
+	    right: 45px;
+	}
+
+	 
+
+.row-masonry {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap:1em; 
+  
+}
+
+.item {
+ display: inline-block;
+ padding:  .25rem;
+ width:  100%; 
+}
+
+.well {
+ position:relative;
+ display: block; 
+ padding: 0px;
+}
+.thumbnail {
+    margin: 0;
+}
+
+   </style>
+    <!-- <div class="col-md-12 card " >
 	  <table class="table table-responsive">
 	    <thead class="card action poll-card">
 	      <th class="c-td">Photo </th>
@@ -54,6 +135,6 @@
 	     </tr>
 	   </tbody>
 	 </table>
-	</div>
+	</div> -->
 
  

@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('ads').controller('AdsController', 
-		['$scope', '$stateParams', '$location','$modal', '$log','$http','Authentication', 'Ads', 'Offers', 'File',
-		function($scope, $stateParams, $location, $modal, $log, $http, Authentication, Ads, Offers, File) {
+		['$scope', '$stateParams', '$location','$modal', '$log','$http', '$timeout', 'Authentication', 'Ads', 'Offers', 'File',
+		function($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, Offers, File) {
 			$scope.authentication = Authentication;
 			$scope.date = {startDate: null, endDate: null};
-			$scope.create = function(ad) {
+			$scope.create = function(ad, file) {
 				// var ad = new Ads({
 				// 	title: this.title,
 				// 	content: this.content,
@@ -13,20 +13,17 @@ angular.module('ads').controller('AdsController',
 				// 	todate: $scope.date.endDate
 				// });
 				ad.$save(function(response) {
-					if ($scope.file) {
-	                            for (var i = 0; i < $scope.file.length; i++) {
-	                                File.addNewFile($scope.file[i], response.data._id);
-	                                //$scope.refreshDevelopmentList();
-	                            }
-	                } 
-						//$location.path('ads/' + response._id);
-						$scope.title = '';
-						$scope.content = '';
+					$timeout(function () {                    
 						$scope.ads.unshift(response);	                 
+                	},1000);
 
 				}, function(errorResponse) {
 					$scope.error = errorResponse.data.message;
-				});
+				}).then(function(res){
+					File.addNewFile(file, res._id).then(function(res){
+				 
+          		});
+			});
 			};
 
 			$scope.remove = function(ad) {
@@ -157,7 +154,7 @@ angular.module('adsModal').controller('AdsModalController',
 				};
 				ad.outlets.push($scope.authentication.user.outlets[i]);
 			};
-			ParentScope.create(ad);	
+			ParentScope.create(ad, $scope.file);	
 		    $modalInstance.dismiss('cancel');					
 		};
 
@@ -204,8 +201,8 @@ angular.module('adsModal').controller('AdsModalController',
  
 
 angular.module('offersModal').controller('OffersModalController', 
-			['$scope', '$stateParams', '$location', 'Authentication', 'Offers', 'File','$modalInstance', 'ParentScope',
-	function($scope, $stateParams, $location, Authentication, Offers, File, $modalInstance, ParentScope) {
+			['$scope', '$stateParams', '$location', '$timeout', 'Authentication', 'Offers', 'File','$modalInstance', 'ParentScope',
+	function($scope, $stateParams, $location, $timeout, Authentication, Offers, File, $modalInstance, ParentScope) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
@@ -215,20 +212,22 @@ angular.module('offersModal').controller('OffersModalController',
 				ad: $stateParams.adId
 			});
 			offer.$save(function(response) {
-				//$location.path('offers/' + response._id);
-				if ($scope.picFile) {
-                    //for (var i = 0; i < $scope.picFile.length; i++) {
-                        File.addNewFile($scope.picFile, response._id);
-                        //$scope.refreshDevelopmentList();
-                    //}
-        		} 
-				ParentScope.offers.push(response);
+				  
+        		$timeout(function () {                    
+						ParentScope.offers.unshift(response);	                 
+            	},1000);
+				
 				$scope.title = '';
 				$scope.content = '';
 				$modalInstance.dismiss('cancel');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
-			});
+			}).then(function(res){
+					File.addNewFile($scope.picFile, res._id).then(function(res){
+
+					});
+				 
+      		});
 		};
 
 		$scope.remove = function(offer) {
@@ -280,3 +279,21 @@ angular.module('offersModal').controller('OffersModalController',
 	}
 ]);
  
+ angular.module('ads').directive('hideUntilGood', function() {
+  return {
+    restrict: 'A',
+    multiElement: true,
+    link: function(scope, element, attrs) {
+      attrs.$observe('ngSrc', function (value) {
+        // fix where ngSrc doesn't update when blank
+        if (!value || value.length == 0) {
+          element.attr('src', value);
+        }
+        element.css("display", "none");
+      });
+      element.bind('load', function() {
+        element.css("display", "");
+      });
+    }
+  };
+})

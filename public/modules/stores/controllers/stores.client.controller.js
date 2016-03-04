@@ -14,10 +14,7 @@ angular.module('stores').controller('StoresController',
 				$timeout(function () {                    
 					$scope.stores.unshift(response);
                 },1000);
-				// $location.path('stores/' + response._id);
-
-				// $scope.name = '';
-				// $scope.address = '';
+				
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			}).then(function(res){
