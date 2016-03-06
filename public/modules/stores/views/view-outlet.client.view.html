@@ -1,6 +1,15 @@
 <section data-ng-controller="OutletsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="outlet.name"></h1>
+		<small>
+			<em class="text-muted">
+				Posted on
+				<span data-ng-bind="outlet.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="outlet.user.displayName"></span>
+			</em>
+		</small>
+		<p class="lead" data-ng-bind="outlet.address"></p>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == outlet.user._id">
 		<a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/createuser">
@@ -13,15 +22,6 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="outlet.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="outlet.user.displayName"></span>
-		</em>
-	</small>
-	<p class="lead" data-ng-bind="outlet.address"></p>
 
 	<div data-ng-repeat="user in users"   class="list-group-item">
 			 

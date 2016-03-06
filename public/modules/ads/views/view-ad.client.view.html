@@ -1,8 +1,6 @@
 <section data-ng-controller="AdsController" data-ng-init="findOne()">
 	<div class="pull-right" data-ng-show="authentication.user._id == ad.user._id">
-		<button type="button" class="btn btn-primary" ng-click="openOfferModal()">
-			<i class="glyphicon glyphicon-plus"></i>Add offers
-		</button>
+		
 
 		 
 		<a class="btn btn-primary" href="/#!/ads/{{ad._id}}/edit">
@@ -23,9 +21,23 @@
 		</small>
 		<h1 data-ng-bind="ad.title"></h1>
 		<p class="lead" data-ng-bind="ad.content"></p>
+		<small class="list-group-item-text">
+				Offer valid from
+				<b>
+					<span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
+				</b>
+				to
+				<b>
+					<span data-ng-bind="ad.todate | date:'mediumDate'"></span>
+				</b>
+			</small>
 		<img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{ad._id}}"  />
 	</div>
-	  
+	<div class="pull-right" data-ng-show="authentication.user._id == ad.user._id">
+	  <button type="button" class="btn btn-primary" ng-click="openOfferModal()">
+			<i class="glyphicon glyphicon-plus"></i>Add offers
+		</button>
+	</div>
 	<h1 >Offers</h1>
 	  <!-- <div class="row">
         

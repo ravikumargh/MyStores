@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('stores').controller('StoresController', 
-		['$scope', '$stateParams', '$location', '$modal', '$log', '$timeout', 'Authentication', 'Stores', 'File',
-	function($scope, $stateParams, $location, $modal, $log, $timeout, Authentication, Stores, File) {
+		['$scope', '$stateParams', '$location', '$modal', '$log', '$timeout', 'Authentication', 'Stores', 'File', 'Storeoutlets',
+	function($scope, $stateParams, $location, $modal, $log, $timeout, Authentication, Stores, File, Storeoutlets) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function(store, file) {
@@ -52,12 +52,20 @@ angular.module('stores').controller('StoresController',
 
 		$scope.find = function() {
 			$scope.stores = Stores.query();
+
+           
 		};
 
 		$scope.findOne = function() {
 			$scope.store = Stores.get({
 				storeId: $stateParams.storeId
 			});
+			Storeoutlets.getStoreOutlets($stateParams.storeId).success(function (response) {
+	            $scope.outlets = response;
+            })
+            .error(function (errorResponse) {
+               //$scope.error = errorResponse.data.message;
+            });
 		};
 
 
@@ -92,6 +100,26 @@ angular.module('stores').controller('StoresController',
 		    });
 	    }; 
          
+         $scope.openOutletCreateModal = function (item) {
+			$scope.selectedOffer=item;
+		    var modalInstance = $modal.open({
+		      animation: $scope.animationsEnabled,
+		      templateUrl: 'modules/stores/views/create-outlet.client.view.html',
+		      controller: 'OutletsModalController',
+		       
+		      resolve: {
+		        ParentScope: function () {
+		          return $scope;
+		        }
+		      }
+		    });
+
+		    modalInstance.result.then(function (selectedItem) {
+		      $scope.selected = selectedItem;
+		    }, function () {
+		      $log.info('Modal dismissed at: ' + new Date());
+		    });
+	    }; 
 	}
 ]);
 
@@ -108,6 +136,55 @@ angular.module('stores').controller('StoresModalController',
 				address: this.address
 			});
 			ParentScope.create(store, $scope.file);
+			$modalInstance.dismiss('cancel');
+		};
+
+  
+		$scope.update = function() {
+			var offer = $scope.offer;
+
+			offer.$update(function() {
+				$location.path('offers/' + offer._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		$scope.cancel = function () {
+		    $modalInstance.dismiss('cancel');
+		};
+	}
+]);
+
+
+angular.module('outlets').controller('OutletsModalController',
+['$scope', '$stateParams', '$location', 'Authentication', 'Outlets', 'File', 'Cities', '$modalInstance', 'ParentScope',
+	function($scope, $stateParams, $location, Authentication, Outlets, File, Cities, $modalInstance, ParentScope) {
+ 
+		$scope.authentication = Authentication;
+		$scope.cities = Cities.query();
+		$scope.selectedCity = null;
+
+		$scope.create = function() {
+			var outlet = new Outlets({
+				name: this.name,
+				address: this.address,
+				store: $stateParams.storeId,
+				city: $scope.selectedCity
+			});
+
+			outlet.$save(function(response) {
+				                    
+					ParentScope.outlets.unshift(response);
+                
+				
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			}).then(function(res){
+				 $modalInstance.dismiss('cancel');
+			});
+
+			ParentScope.create(outlet);
 			$modalInstance.dismiss('cancel');
 		};
 

@@ -73,7 +73,9 @@ exports.delete = function(req, res) {
  * List of Outlets
  */
 exports.list = function(req, res) {
-	Outlet.find({'store':req.params.storeId}).sort('-created').populate('user', 'displayName').exec(function(err, outlets) {
+	Outlet.find({'store':req.params.storeId}).sort('-created')
+	.populate('user', 'displayName')
+	.populate('city', 'name').exec(function(err, outlets) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)

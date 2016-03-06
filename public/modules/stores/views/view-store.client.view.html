@@ -32,6 +32,9 @@
 	  {{errorMsg}}
 	</div>
 	</div>
+	<a class="btn btn-primary" ng-click="openOutletCreateModal()">
+			<i class="glyphicon glyphicon-plus"></i>Add Outlet
+	</a>
 	<div class="pull-right" data-ng-show="authentication.user._id == store.user._id">
 		<a class="btn btn-primary" href="/#!/stores/{{store._id}}/outlets">
 			Outlets
@@ -42,5 +45,37 @@
 		<a class="btn btn-primary" data-ng-click="remove();">
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
+	</div>
+
+	<div class="panel panel-default plain profile-panel">
+			<div class="panel-body" data-ng-repeat="outlet in outlets">
+            
+            <div class="col-lg-10 col-md-10 col-sm-12">
+                <div class="user-name">
+                   <a   data-ng-href="#!/outlets/{{outlet._id}}"> {{outlet.name}}</a>
+                </div>
+                <div class="user-information">
+                    <p>{{outlet.address}}</p>
+                </div>
+                <div class="user-information">
+                    <p>{{outlet.city.name}}</p>
+                </div>
+                <div class="profile-stats-info">
+                    <a href="#" title="Views">    <i class="glyphicon glyphicon-eye-open">  </i> <strong>2000</strong></a>
+                    <a href="#" title="Comments"> <i class="glyphicon glyphicon-comment">   </i> <strong>120</strong></a>
+                    <a href="#" title="Likes">    <i class="glyphicon glyphicon-thumbs-up"> </i> <strong>60</strong></a> <span class="label label-success">Active</span>
+                </div>
+                
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12">
+                	<a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/edit">
+						<i class="glyphicon glyphicon-edit"></i>
+					</a>
+					<a class="btn btn-primary" data-ng-click="remove();">
+						<i class="glyphicon glyphicon-trash"></i>
+					</a>
+            </div>
+        </div>
+ 
 	</div>
 </section>
