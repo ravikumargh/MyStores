@@ -1,0 +1,30 @@
+<div class="modal-header">
+	<h1>New User</h1>
+</div>
+<div class="modal-body">
+	 
+		<fieldset>
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name">
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name">
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
+				</div>
+
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+	 
+</div>
+	<div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="create()">Create</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+ 

@@ -12,6 +12,10 @@
 		<p class="lead" data-ng-bind="outlet.address"></p>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == outlet.user._id">
+		<a class="btn btn-primary" data-ng-click="openCreateAdminModal();">
+			<i class="glyphicon glyphicon-plus"></i>Add admin
+		</a>
+
 		<a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/createuser">
 			<i class="glyphicon glyphicon-plus"></i>Add admin
 		</a>

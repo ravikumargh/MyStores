@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Outlets', 'Storeoutlets',
-	function($scope, $http, $stateParams, $location, Authentication, Outlets, Storeoutlets) {
+angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$stateParams', '$location', '$modal', 'Authentication', 'Outlets', 'Storeoutlets',
+	function($scope, $http, $stateParams, $location, $modal, Authentication, Outlets, Storeoutlets) {
 		$scope.authentication = Authentication;
 		$scope.storeId=$stateParams.storeId;
 		$scope.outletId=$stateParams.outletId;
@@ -20,6 +20,27 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 				$scope.error = errorResponse.data.message;
 			});
 		};
+
+		$scope.openCreateAdminModal = function (item) {
+			$scope.selectedUser=item;
+		    var modalInstance = $modal.open({
+		      animation: $scope.animationsEnabled,
+		      templateUrl: 'modules/stores/views/create-user-modal.client.view.html',
+		      controller: 'UsersModalController',
+		       
+		      resolve: {
+		        ParentScope: function () {
+		          return $scope;
+		        }
+		      }
+		    });
+
+		    modalInstance.result.then(function (selectedItem) {
+		      $scope.selected = selectedItem;
+		    }, function () {
+		      $log.info('Modal dismissed at: ' + new Date());
+		    });
+	    }; 
 
 		$scope.createAdmin = function() {
 			$scope.credentials.outlets=[];
@@ -87,6 +108,52 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 			$scope.outlet = Outlets.get({
 				outletId: $stateParams.outletId
 			});
+		};
+	}
+]);
+
+
+angular.module('users').controller('UsersModalController',
+['$scope', '$stateParams', '$location', '$http', 'Authentication', 'Users', '$modalInstance', 'ParentScope',
+	function($scope, $stateParams, $location, $http, Authentication, Users, $modalInstance, ParentScope) {
+ 
+		$scope.authentication = Authentication;
+		
+		$scope.selectedUsers = null;
+
+		$scope.user = new Users({
+			firstName: this.firstName,
+			lastName: this.lastName,
+			email: this.email,
+			username: this.email,
+			password: 'Password1',
+			outlets: [$stateParams.outletId],
+			roles: ["storeadmin"]
+		});
+		$scope.create = function() {
+			$scope.user.username = $scope.user.email;
+			$http.post('/users/create', $scope.user).success(function(response) {
+				ParentScope.users.unshift(response);
+				 $modalInstance.dismiss('cancel');
+
+			}).error(function(response) {
+				$scope.error = response.message;
+			});
+		};
+
+  
+		$scope.update = function() {
+			var offer = $scope.offer;
+
+			offer.$update(function() {
+				$location.path('offers/' + offer._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		$scope.cancel = function () {
+		    $modalInstance.dismiss('cancel');
 		};
 	}
 ]);
