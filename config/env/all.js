@@ -18,6 +18,7 @@ module.exports = {
 				'public/lib/bootstrap-daterangepicker/daterangepicker.css',
 			],
 			js: [
+				'http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places',
 				'public/lib/jquery/dist/jquery.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
@@ -32,7 +33,9 @@ module.exports = {
 				'public/lib/bootstrap-daterangepicker/daterangepicker.js',
 				'public/lib/angular-daterangepicker/js/angular-daterangepicker.js',
 				'public/lib/ng-file-upload/ng-file-upload.js',
-				'public/lib/ng-file-upload-shim/ng-file-upload-shim.js'
+				'public/lib/ngmap/build/scripts/ng-map.js',
+				'public/lib/vsGoogleAutocomplete/dist/vs-google-autocomplete.js',
+				'public/lib/vsGoogleAutocomplete/dist/vs-autocomplete-validator.js'
 			]
 		},
 		css: [

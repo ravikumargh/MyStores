@@ -48,7 +48,11 @@ var AdSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	},		
+	},
+	ispublished: {
+		type: Boolean,
+		default: 0
+	},
 	created: {
 		type: Date,
 		default: Date.now
