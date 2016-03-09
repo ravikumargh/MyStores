@@ -111,16 +111,24 @@ exports.update = function(req, res) {
  */
 exports.delete = function(req, res) {
 	var image = req.image;
+		var Grid = require('gridfs-stream');
+        Grid.mongo = mongoose.mongo;
+        var conn = mongoose.connection;
+        var gfs = Grid(conn.db);
+         
+        gfs.remove(req.image[0].imageid.toString())
 
-	image.remove(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(image);
-		}
-	});
+		//res.json(req);
+
+	// image.remove(function(err) {
+	// 	if (err) {
+	// 		return res.status(400).send({
+	// 			message: errorHandler.getErrorMessage(err)
+	// 		});
+	// 	} else {
+	// 		res.json(image);
+	// 	}
+	// });
 };
 
 /**
@@ -142,7 +150,7 @@ exports.list = function(req, res) {
  * Image middleware
  */
 exports.imageByID = function(req, res, next, id) {
-	Image.findById(id).populate('user', 'displayName').exec(function(err, image) {
+	Image.find({'contentid':id}).exec(function(err, image) {
 		if (err) return next(err);
 		if (!image) return next(new Error('Failed to load image ' + id));
 		req.image = image;

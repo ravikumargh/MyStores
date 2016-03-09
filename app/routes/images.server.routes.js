@@ -20,7 +20,7 @@ module.exports = function(app) {
 	app.route('/images/:imageId')
 		.get(images.read)
 		.put(users.requiresLogin, images.hasAuthorization, images.update)
-		.delete(users.requiresLogin, images.hasAuthorization, images.delete);
+		.delete(  images.delete);
 
 	// Finish by binding the image middleware
 	app.param('imageId', images.imageByID);

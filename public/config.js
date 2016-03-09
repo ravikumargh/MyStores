@@ -7,7 +7,8 @@ var ApplicationConfiguration = (function() {
 	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  
 												'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 
 												'daterangepicker', 'ngFileUpload', 
-												'ngMap', 'vsGoogleAutocomplete'
+												'ngMap', 'vsGoogleAutocomplete',
+												'cgNotify'
 												];
 
 	// Add a new vertical module

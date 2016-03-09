@@ -100,7 +100,7 @@ exports.storeByID = function(req, res, next, id) {
  * Store authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.store.user.id !== req.user.id) {
+	if (_.findIndex(req.user.roles, function(o) { return o == 'admin'; }) === -1) {
 		return res.status(403).send({
 			message: 'User is not authorized'
 		});

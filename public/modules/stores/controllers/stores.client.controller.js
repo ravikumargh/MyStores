@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('stores').controller('StoresController', 
-		['$scope', '$stateParams', '$location', '$modal', '$log', '$timeout', 'Authentication', 'Stores', 'File', 'Storeoutlets',
-	function($scope, $stateParams, $location, $modal, $log, $timeout, Authentication, Stores, File, Storeoutlets) {
+		['$scope', '$stateParams', '$location', '$modal', '$log', '$timeout', 'Authentication', 'Stores', 'File', 'Storeoutlets', 'notify',
+	function($scope, $stateParams, $location, $modal, $log, $timeout, Authentication, Stores, File, Storeoutlets, notify) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function(store, file) {
@@ -26,6 +26,9 @@ angular.module('stores').controller('StoresController',
 
 		$scope.remove = function(store) {
 			if (store) {
+				File.deleteFile(store._id).then(function(res){
+				 
+          		});
 				store.$remove();
 
 				for (var i in $scope.stores) {
@@ -33,6 +36,10 @@ angular.module('stores').controller('StoresController',
 						$scope.stores.splice(i, 1);
 					}
 				}
+				notify({
+				        message: 'Store deleted successfully.',
+				        duration: 2000
+				    });
 			} else {
 				$scope.store.$remove(function() {
 					$location.path('stores');
@@ -99,7 +106,28 @@ angular.module('stores').controller('StoresController',
 		      $log.info('Modal dismissed at: ' + new Date());
 		    });
 	    }; 
-         
+         $scope.openDeleteConfirmationModal = function (item) {
+			$scope.message="Are you sure want to delete this item?";
+			$scope.selectedItem=item;
+		    var modalInstance = $modal.open({
+		      animation: $scope.animationsEnabled,
+		      templateUrl: 'modules/cammon/views/confirmation-modal.client.view.html',
+		      controller: 'ConfirmationModalController',
+		       
+		      resolve: {
+		        ParentScope: function () {
+		          return $scope;
+		        }
+		      }
+		    });
+
+		    modalInstance.result.then(function (selectedItem) {
+		      $scope.remove(selectedItem);
+		    }, function () {
+		      $log.info('Modal dismissed at: ' + new Date());
+		    });
+	    }; 
+
          $scope.openOutletCreateModal = function (item) {
 			$scope.selectedOffer=item;
 		    var modalInstance = $modal.open({

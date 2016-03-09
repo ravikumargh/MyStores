@@ -18,6 +18,7 @@
     "ng-file-upload": "~6.2.1",
     "ng-file-upload-shim": "~6.2.1",
     "ngmap": "~1.13.4",
-    "vsGoogleAutocomplete": "vs-google-autocomplete#~0.3.2"
+    "vsGoogleAutocomplete": "vs-google-autocomplete#~0.3.2",
+    "angular-notify": "~2.5.0"
   }
 }
