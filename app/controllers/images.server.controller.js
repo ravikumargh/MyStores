@@ -110,25 +110,35 @@ exports.update = function(req, res) {
  * Delete an image
  */
 exports.delete = function(req, res) {
-	var image = req.image;
+	if (req.image[0]) {
+		var image = req.image[0];
 		var Grid = require('gridfs-stream');
-        Grid.mongo = mongoose.mongo;
-        var conn = mongoose.connection;
-        var gfs = Grid(conn.db);
-         
-        gfs.remove(req.image[0].imageid.toString())
+	    Grid.mongo = mongoose.mongo;
+	    var conn = mongoose.connection;
+	    var gfs = Grid(conn.db);
+	    gfs.exist({'_id':image.imageid}, function (err, found) {
+		  	if (err) return handleError(err);
+		 	if (found) {
+				gfs.remove({'_id':image.imageid}, function (err) {
+					if (err) return handleError(err);
 
-		//res.json(req);
+					image.remove();
 
-	// image.remove(function(err) {
-	// 	if (err) {
-	// 		return res.status(400).send({
-	// 			message: errorHandler.getErrorMessage(err)
-	// 		});
-	// 	} else {
-	// 		res.json(image);
-	// 	}
-	// });
+					return res.status(200).send({
+						message: 'File deleted successfully'
+					});
+				});		  		
+		 	}else{ 
+		 		return res.status(400).send({
+					message: 'File does not exist'
+				});
+		 	};
+		}); 
+	}else{
+		return res.status(400).send({
+			message: 'Image does not exist'
+		});
+	};
 };
 
 /**

@@ -1,12 +1,12 @@
 <section data-ng-controller="AdsController" data-ng-init="findOne()">
-	<div class="pull-right" data-ng-show="authentication.user._id == ad.user._id">
+	<div class="pull-right" data-ng-show="authentication.user._id == ad.user._id || authentication.user.roles.indexOf('admin') !== -1">
 		
 
 		 
 		<a class="btn btn-primary" href="/#!/ads/{{ad._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
+		<a class="btn btn-primary" data-ng-click="openAdDeleteModal(ad);">
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
@@ -71,10 +71,10 @@
                 <h4>{{item.title}}</h4>
                 <p>{{item.content}}</p>
                  <!-- <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p> -->
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Delete" ng-click="openOfferDeleteModal(item)">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 				 </button>
-				 <button type="button" class="close edit" data-dismiss="modal" aria-label="Close">
+				 <button type="button" class="close edit" data-dismiss="modal" aria-label="Edit">
 						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 				 </button>
             </div>

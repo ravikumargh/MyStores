@@ -12,3 +12,15 @@ angular.module('ads').factory('Ads', ['$resource',
 		});
 	}
 ]);
+
+angular.module('ads').factory('AdOffers', ['$resource',
+	function($resource) {
+		return $resource('ads/:adId/offers', {
+			adId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);

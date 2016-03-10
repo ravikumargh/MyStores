@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ads').controller('AdsController', 
-		['$scope', '$stateParams', '$location','$modal', '$log','$http', '$timeout', 'Authentication', 'Ads', 'Offers', 'File',
-		function($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, Offers, File) {
+		['$scope', '$stateParams', '$location','$modal', '$log','$http', '$timeout', 'Authentication', 'Ads', 'AdOffers', 'Offers', 'File', 'notify',
+		function($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify) {
 			$scope.authentication = Authentication;
 			$scope.date = {startDate: null, endDate: null};
 			$scope.create = function(ad, file) {
@@ -29,12 +29,13 @@ angular.module('ads').controller('AdsController',
 			$scope.remove = function(ad) {
 				if (ad) {
 					ad.$remove();
-
-					for (var i in $scope.ads) {
-						if ($scope.ads[i] === ad) {
-							$scope.ads.splice(i, 1);
-						}
-					}
+					File.deleteFile(ad._id);
+					notify({
+				        message: 'Ad deleted successfully.',
+				        classes: 'alert-success',
+				        duration: 2000
+			    	});
+			    	$location.path('ads');					 
 				} else {
 					$scope.ad.$remove(function() {
 						$location.path('ads');
@@ -65,6 +66,10 @@ angular.module('ads').controller('AdsController',
 				},function(responce){
 					$scope.date = {startDate: responce.fromdate, endDate: responce.todate};
 				});
+
+				$scope.offers = AdOffers.query({
+					adId: $stateParams.adId
+				});
 			};
 
 			 
@@ -77,9 +82,37 @@ angular.module('ads').controller('AdsController',
 					$scope.error = response.message;
 				});
 			};
-			$scope.getOffers();
+			//$scope.getOffers();
+			$scope.openAdDeleteModal = function (item) {
+				if ($scope.offers.length) {
+					notify({
+				        message: 'This Ad contains '+$scope.offers.length+' offers, please delete all the offers and delete.',
+				        classes: 'alert-success',
+				        duration: 3000
+			    	});
+			    	return;
+				};
+				$scope.message="Are you sure want to delete this item?";
+				$scope.selectedItem=item;
+			    var modalInstance = $modal.open({
+			      animation: $scope.animationsEnabled,
+			      templateUrl: 'modules/cammon/views/confirmation-modal.client.view.html',
+			      controller: 'ConfirmationModalController',
+			       
+			      resolve: {
+			        ParentScope: function () {
+			          return $scope;
+			        }
+			      }
+			    });
 
-			//********************************************************************
+			    modalInstance.result.then(function (selectedItem) {
+			      $scope.remove(selectedItem);
+			    }, function () {
+			      $log.info('Modal dismissed at: ' + new Date());
+			    });
+	    	};
+//********************************************************************
 
 			 
 
@@ -129,6 +162,59 @@ angular.module('ads').controller('AdsController',
 		  $scope.toggleAnimation = function () {
 		    $scope.animationsEnabled = !$scope.animationsEnabled;
 		  };
+
+//Offer ******************************************************************
+		$scope.openOfferDeleteModal = function (item) {
+			$scope.message="Are you sure want to delete this item?";
+			$scope.selectedItem=item;
+		    var modalInstance = $modal.open({
+		      animation: $scope.animationsEnabled,
+		      templateUrl: 'modules/cammon/views/confirmation-modal.client.view.html',
+		      controller: 'ConfirmationModalController',
+		       
+		      resolve: {
+		        ParentScope: function () {
+		          return $scope;
+		        }
+		      }
+		    });
+
+		    modalInstance.result.then(function (selectedItem) {
+		      $scope.removeOffer(selectedItem);
+		    }, function () {
+		      $log.info('Modal dismissed at: ' + new Date());
+		    });
+	    };
+	    $scope.removeOffer = function(offer) {
+			if (offer) {
+
+				$http.delete('/Offers/'+ offer._id).success(function(response) {
+					 File.deleteFile(offer._id);
+						notify({
+					        message: 'Offer deleted successfully.',
+					        classes: 'alert-success',
+					        duration: 2000
+				    	});	
+				    	for (var i in $scope.offers) {
+							if ($scope.offers[i] === offer) {
+								$scope.offers.splice(i, 1);
+							}
+						}
+				}).error(function(response) {
+					notify({
+					        message: 'Error: Offer not deleted.',
+					        classes: 'alert-danger',
+					        duration: 2000
+				    	});	
+				}); 
+			} else {
+				$scope.offer.$remove(function() {
+					$location.path('offers');
+				});
+			}
+		};
+//Offer ******************************************************************
+
 	}
 ]);
  

@@ -115,7 +115,7 @@ exports.offerByID = function(req, res, next, id) {
  * Offer authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.offer.user.id !== req.user.id) {
+	if (req.user.roles[0] !=="admin") {
 		return res.status(403).send({
 			message: 'User is not authorized'
 		});

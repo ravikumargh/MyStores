@@ -26,20 +26,21 @@ angular.module('stores').controller('StoresController',
 
 		$scope.remove = function(store) {
 			if (store) {
-				File.deleteFile(store._id).then(function(res){
-				 
-          		});
-				store.$remove();
+				File.deleteFile(store._id);
+				store.$remove().then(function(){
+					notify({
+					        message: 'Store deleted successfully.',
+					        classes: 'alert-success',
+					        duration: 2000
+				    });					
+				});
 
 				for (var i in $scope.stores) {
 					if ($scope.stores[i] === store) {
 						$scope.stores.splice(i, 1);
 					}
 				}
-				notify({
-				        message: 'Store deleted successfully.',
-				        duration: 2000
-				    });
+
 			} else {
 				$scope.store.$remove(function() {
 					$location.path('stores');
@@ -106,7 +107,7 @@ angular.module('stores').controller('StoresController',
 		      $log.info('Modal dismissed at: ' + new Date());
 		    });
 	    }; 
-         $scope.openDeleteConfirmationModal = function (item) {
+        $scope.openDeleteConfirmationModal = function (item) {
 			$scope.message="Are you sure want to delete this item?";
 			$scope.selectedItem=item;
 		    var modalInstance = $modal.open({
@@ -148,6 +149,61 @@ angular.module('stores').controller('StoresController',
 		      $log.info('Modal dismissed at: ' + new Date());
 		    });
 	    }; 
+//Outlet ******************************************************************************
+        $scope.openOuletDeleteConfirmationModal = function (item) {
+			$scope.message="Are you sure want to delete this item?";
+			$scope.selectedItem=item;
+		    var modalInstance = $modal.open({
+		      animation: $scope.animationsEnabled,
+		      templateUrl: 'modules/cammon/views/confirmation-modal.client.view.html',
+		      controller: 'ConfirmationModalController',
+		       
+		      resolve: {
+		        ParentScope: function () {
+		          return $scope;
+		        }
+		      }
+		    });
+
+		    modalInstance.result.then(function (selectedItem) {
+		      $scope.removeOutlet(selectedItem);
+		    }, function () {
+		      $log.info('Modal dismissed at: ' + new Date());
+		    });
+	    };
+ 
+	    $scope.removeOutlet = function(outlet) {
+			if (outlet) {
+				 
+				// outlet.$remove();
+				Storeoutlets.deleteOutlet(outlet._id).success(function (response) {
+					for (var i in $scope.outlets) {
+						if ($scope.outlets[i] === outlet) {
+							$scope.outlets.splice(i, 1);
+						}
+					}	            	 
+					notify({
+					        message: 'outlet deleted successfully.',
+					        classes: 'alert-success',
+					        duration: 2000
+					});
+            	}).error(function (errorResponse) {
+            		notify({
+					        message: 'error: outlet not deleted.',
+					        classes: 'alert-danger',
+					        duration: 2000
+					});
+               		//$scope.error = errorResponse.data.message;
+            	});
+
+			} else {
+				$scope.outlet.$remove(function() {
+					$location.path('outlets');
+				});
+			}
+		};
+//Outlet ******************************************************************************
+
 	}
 ]);
 

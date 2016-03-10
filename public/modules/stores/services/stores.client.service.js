@@ -19,6 +19,9 @@ angular.module('storeoutlets').factory('Storeoutlets', ['$http',
         var dataFactory = {};
         dataFactory.getStoreOutlets = function (store_id) {
             return $http.get(urlBase + store_id + '/outlets');
+        }; 
+        dataFactory.deleteOutlet = function (outletid) {
+            return $http.delete('/outlets/' + outletid);
         };        
 
         return dataFactory;
