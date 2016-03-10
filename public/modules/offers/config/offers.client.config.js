@@ -1,4 +1,5 @@
-'use strict';
+
+/*'use strict';
 
 // Configuring the Offers module
 angular.module('offers').run(['Menus',
@@ -9,3 +10,4 @@ angular.module('offers').run(['Menus',
 		Menus.addSubMenuItem('topbar', 'offers', 'New Offer', 'offers/create');
 	}
 ]);
+*/
