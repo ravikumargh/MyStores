@@ -16,7 +16,9 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/bootstrap-daterangepicker/daterangepicker.css',
-				'public/lib/angular-notify/dist/angular-notify.css'				
+				'public/lib/angular-notify/dist/angular-notify.css',
+				'public/lib/ngWYSIWYG/dist/editor.min.css'				
+								
 			],
 			js: [
 				'http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places',
@@ -37,7 +39,9 @@ module.exports = {
 				'public/lib/ngmap/build/scripts/ng-map.js',
 				'public/lib/vsGoogleAutocomplete/dist/vs-google-autocomplete.js',
 				'public/lib/vsGoogleAutocomplete/dist/vs-autocomplete-validator.js',
-				'public/lib/angular-notify/dist/angular-notify.js'
+				'public/lib/angular-notify/dist/angular-notify.js',
+				'public/lib/ngWYSIWYG/dist/wysiwyg.min.js'
+
 			]
 		},
 		css: [

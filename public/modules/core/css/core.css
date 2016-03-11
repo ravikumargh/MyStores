@@ -1,5 +1,5 @@
 .content {
-	margin-top: 50px;
+	margin-top: 100px;
 }
 .undecorated-link:hover {
 	text-decoration: none;
@@ -16,3 +16,46 @@
 .cg-notify-message {   
     border: none;
 }
+
+/* masonry item display*/
+.thumbnail button.close{
+    position: absolute;     
+    right: 20px;
+    top: 1px;
+}
+.thumbnail:hover{
+	border-color: #FF8E01; 
+}
+.thumbnail button.edit{
+    right: 45px;
+}   
+
+.row-masonry {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap:1em;   
+}
+.homepage .row-masonry {
+	margin-top: -3px;
+}
+.row-masonry a:hover{
+    text-decoration: none;
+}
+
+.item {
+ display: inline-block;
+ padding:  .25rem;
+ width:  100%; 
+}
+
+.well {
+ position:relative;
+ display: block; 
+ padding: 0px;
+}
+.thumbnail {
+    margin: 0;
+}
+
+/* masonry item display*/

@@ -24,6 +24,11 @@ var CategorySchema = new Schema({
 		type: Number,
 		default: 0		
 	},
+	cssclass: {
+		type: String,
+		default: '',
+		trim: true
+	},
 	roles: {
 		type: [{
 			type: String,

@@ -100,7 +100,7 @@ exports.categoryByID = function(req, res, next, id) {
  * Category authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.category.user.id !== req.user.id) {
+	if (req.user.roles.indexOf("admin") === -1) {
 		return res.status(403).send({
 			message: 'User is not authorized'
 		});

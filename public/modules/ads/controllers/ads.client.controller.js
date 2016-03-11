@@ -1,10 +1,15 @@
 'use strict';
 
 angular.module('ads').controller('AdsController', 
-		['$scope', '$stateParams', '$location','$modal', '$log','$http', '$timeout', 'Authentication', 'Ads', 'AdOffers', 'Offers', 'File', 'notify',
-		function($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify) {
+		['$scope', '$stateParams', '$location','$modal', '$log','$http', '$timeout', 'Authentication', 'Ads', 'AdOffers', 'Offers', 'File', 'notify', '$sce',
+		function($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify, $sce) {
 			$scope.authentication = Authentication;
 			$scope.date = {startDate: null, endDate: null};
+			
+
+		    $scope.getHtml = function(html){     
+		        return $sce.trustAsHtml(html);
+		    }
 			$scope.create = function(ad, file) {
 				// var ad = new Ads({
 				// 	title: this.title,
@@ -124,7 +129,7 @@ angular.module('ads').controller('AdsController',
 		      animation: $scope.animationsEnabled,
 		      templateUrl: 'modules/ads/views/create-ad.client.view.html',
 		      controller: 'AdsModalController',
-		       
+		      size:'lg',		       
 		      resolve: {
 		        ParentScope: function () {
 		          return $scope;
@@ -383,3 +388,10 @@ angular.module('offersModal').controller('OffersModalController',
     }
   };
 })
+
+
+ angular.module('ads').filter('html', function($sce) {
+    return function(val) {
+        return $sce.trustAsHtml(val);
+    };
+});

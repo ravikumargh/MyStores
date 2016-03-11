@@ -1,17 +1,17 @@
 <section data-ng-controller="HomeController">
-
-        <div class="row">
+        <h4>Catalogues and stores in your city</h4>
+        <div class="row homepage">
 
             <div class="col-md-3">
-                <p class="lead">Categories</p>
+                <!-- <p class="lead">Categories</p> -->
                 <div class="list-group">
-                    <a href="#" data-ng-repeat="category in categories" class="list-group-item">{{category.name}}</a>
+                    <a href="#" data-ng-repeat="category in categories" class="list-group-item"><i class="{{category.cssclass}}"></i>{{category.name}}</a>
                 </div>
             </div>
 
             <div class="col-md-9">
 
-                <div class="row carousel-holder">
+               <!--  <div class="row carousel-holder">
 
                     <div class="col-md-12">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -40,19 +40,22 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
 
-                <div class="row">
+               <!--  <div class="row">
 
                     <div class="col-sm-4 col-lg-4 col-md-4" data-ng-repeat="ad in ads">
+                        <a data-ng-href="#!/ads/{{ad._id}}" >
                         <div class="thumbnail">
                         	<img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{ad._id}}"  />
-                            <!-- <img src="http://placehold.it/320x150" alt=""> -->
+                            <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
-                                <!-- <h4 class="pull-right">$24.99</h4> -->
-                                <h4><a data-ng-href="#!/ads/{{ad._id}}">{{ad.title}}</a>
+                                <h4 class="pull-right">$24.99</h4>
+                                <h4>
+                                    <p ng-bind-html="getHtml(ad.title)"></p>        
+                                    <p ng-bind-html="getHtml(ad.content)"></p>        
                                 </h4>
-                                <p>{{ad.content}}.</p>
+                                 
                             </div>
                             <div class="ratings">
                                 <p class="pull-right">15 reviews</p>
@@ -65,19 +68,38 @@
                                 </p>
                             </div>
                         </div>
+                        </a>
+                    </div> 
+                </div> -->
+                <div class="row-masonry">
+                    <div class="item " data-ng-repeat="ad in ads">
+                      <div class="well"> 
+                          <div class="thumbnail">
+                            <a data-ng-href="#!/ads/{{ad._id}}" >
+                            <img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{ad._id}}"  />
+                            <div class="caption">
+                                <!-- <h4 class="pull-right">$24.99</h4> -->
+                                <h4>
+                                    <p ng-bind-html="getHtml(ad.title)"></p>        
+                                    <p ng-bind-html="getHtml(ad.content)"></p>        
+                                </h4>
+                                 
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                            </a>
+                          </div>
+                      </div>
                     </div>
-
-         
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <h4><a href="#">Like this template?</a>
-                        </h4>
-                        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-                        <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-                    </div>
-
                 </div>
-
             </div>
 
         </div>

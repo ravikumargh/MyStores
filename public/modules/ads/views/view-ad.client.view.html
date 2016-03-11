@@ -19,8 +19,8 @@
 				<span data-ng-bind="ad.user.displayName"></span>
 			</em>		
 		</small>
-		<h1 data-ng-bind="ad.title"></h1>
-		<p class="lead" data-ng-bind="ad.content"></p>
+		<p ng-bind-html="getHtml(ad.title)"></p>		
+		<p class="lead" ng-bind-html="getHtml(ad.content)"></p>
 		<small class="list-group-item-text">
 				Offer valid from
 				<b>
@@ -82,45 +82,7 @@
       </div>
     </div>
  	 
-</div>
- 
-
-   <style type="text/css">
-	.thumbnail button.close{
-		position: absolute;	    
-	    right: 20px;
-	    top: 1px;
-	}
-	.thumbnail button.edit{
-	    right: 45px;
-	}
-
-	 
-
-.row-masonry {
- -moz-column-width: 18em;
- -webkit-column-width: 18em;
- -moz-column-gap: 1em;
- -webkit-column-gap:1em; 
-  
-}
-
-.item {
- display: inline-block;
- padding:  .25rem;
- width:  100%; 
-}
-
-.well {
- position:relative;
- display: block; 
- padding: 0px;
-}
-.thumbnail {
-    margin: 0;
-}
-
-   </style>
+</div> 
     <!-- <div class="col-md-12 card " >
 	  <table class="table table-responsive">
 	    <thead class="card action poll-card">

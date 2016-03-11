@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 // Configuring the Articles module
@@ -9,3 +10,4 @@ angular.module('articles').run(['Menus',
 		Menus.addSubMenuItem('topbar', 'articles', 'New Article', 'articles/create');
 	}
 ]);
+*/

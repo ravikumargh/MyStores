@@ -2,27 +2,29 @@
 <section data-ng-controller="CitiesController" data-ng-init="find()">
 	<div class="page-header">
 		<h1>Cities</h1>
+		<button type="button" class="btn btn-primary" ng-click="openCityModal()">
+			<i class="glyphicon glyphicon-plus"></i>New City
+		</button>
 	</div>
 	 
 
-	<div   data-ng-repeat="city in cities">             
+	<div data-ng-repeat="city in cities">             
             <div class="col-lg-10 col-md-10 col-sm-12">
                 <div class="user-name">
                      {{city.name}} 
                 </div>
                 <div class="user-information">
                     <p>{{city.state}}</p>
-                </div>
-                 
+                </div>               
                 
             </div>
             <div class="col-lg-2 col-md-2 col-sm-12">
-                	<a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
-						<i class="glyphicon glyphicon-edit"></i>
-					</a>
-					<a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal(store);">
-						<i class="glyphicon glyphicon-trash"></i>
-					</a>
+            	<a class="btn btn-primary" href="/#!/cities/{{city._id}}/edit">
+					<i class="glyphicon glyphicon-edit"></i>
+				</a>
+				<a class="btn btn-primary" data-ng-click="openCityDeleteModal(city);">
+					<i class="glyphicon glyphicon-trash"></i>
+				</a>
             </div>
         </div>
 

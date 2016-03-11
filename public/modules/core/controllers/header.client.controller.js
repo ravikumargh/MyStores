@@ -28,5 +28,9 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 			localStorage.setItem("MyCity", $scope.selectedCity);	
 		};
 
+		
+
+
+
 	}
 ]);
