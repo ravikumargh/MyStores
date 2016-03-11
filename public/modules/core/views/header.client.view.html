@@ -28,16 +28,15 @@
 	        <button class="btn btn-default" type="button">Go!</button>
 	      </span>
 	    </div> 
-        <div class="input-group">
-
-	    <div class="dropdown dropdown-append-to-body">
-            in <span class="dropdown-toggle" data-toggle = "dropdown">{{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
-            </span>
-            <ul class="dropdown-menu" role="menu">
-                <li data-ng-repeat="city in cities"><a  ng-click="updateLocation(city)">{{city.name}}</a></li>     
-            </ul>
-        </div>
-</div>
+        <div class="input-group hidden-xs">
+		    <div class="dropdown dropdown-append-to-body">
+	            in <span class="dropdown-toggle" data-toggle = "dropdown">{{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+	            </span>
+	            <ul class="dropdown-menu" role="menu">
+	                <li data-ng-repeat="city in cities"><a  ng-click="updateLocation(city)">{{city.name}}</a></li>     
+	            </ul>
+	        </div>
+		</div>
 
       </div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
