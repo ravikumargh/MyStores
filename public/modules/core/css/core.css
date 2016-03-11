@@ -17,7 +17,7 @@
     border: none;
 }
 
-/* masonry item display*/
+/* Starts :; masonry item display*/
 .thumbnail button.close{
     position: absolute;     
     right: 20px;
@@ -58,4 +58,11 @@
     margin: 0;
 }
 
-/* masonry item display*/
+/* Ends : masonry item display */
+
+.dropdown-toggle .glyphicon-chevron-down{
+	top: 4px;
+	left: 4px;
+}
+
+.header .dropdown {color: #fff;}

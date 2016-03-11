@@ -1,4 +1,4 @@
-<div class="container" data-ng-controller="HeaderController" data-ng-init="init()">
+<div class="container header" data-ng-controller="HeaderController" data-ng-init="init()">
 	<div class="navbar-header">
 		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
 			<span class="sr-only">Toggle navigation</span>
@@ -8,26 +8,43 @@
 		</button>
 		<a href="/#!/" class="navbar-brand">MyStore</a>
 		 
-	<div class=" navbar-brand">
+		<div class="navbar-toggle">	 
+			<div class="dropdown dropdown-append-to-body">
+	            in <span class="dropdown-toggle" data-toggle = "dropdown">{{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+	            </span>
+	            <ul class="dropdown-menu" role="menu">
+	                <li data-ng-repeat="city in cities"><a  ng-click="updateLocation(city)">{{city.name}}</a></li>     
+	            </ul>
+	        </div>
+	    </div>  
 
-        <select ng-model="selectedCity" ng-options="city._id as city.name for city in cities" ng-change="updateLocation()" >
-            <option value="">Select A City</option>
-        </select>
-        </div>
-
-       <!--  <span uib-dropdown on-toggle="toggled(open)">
-      <a href id="simple-dropdown" uib-dropdown-toggle>
-        Click me for a dropdown, yo!
-      </a>
-      <ul uib-dropdown-menu aria-labelledby="simple-dropdown">
-        <li ng-repeat="choice in items">
-          <a href>{{choice}}</a>
-        </li>
-      </ul>
-    </span> -->
-    
 	</div>
+	<div class="navbar-form navbar-left" role="search">
+        
+
+        <div class="input-group">
+	      <input type="text" class="form-control" placeholder="Search for...">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" type="button">Go!</button>
+	      </span>
+	    </div> 
+        <div class="input-group">
+
+	    <div class="dropdown dropdown-append-to-body">
+            in <span class="dropdown-toggle" data-toggle = "dropdown">{{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+            </span>
+            <ul class="dropdown-menu" role="menu">
+                <li data-ng-repeat="city in cities"><a  ng-click="updateLocation(city)">{{city.name}}</a></li>     
+            </ul>
+        </div>
+</div>
+
+      </div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+		 
+	    
+	  
+
 		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
 			<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
 				<a ng-switch-when="dropdown" class="dropdown-toggle">

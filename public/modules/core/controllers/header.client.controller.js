@@ -18,19 +18,15 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		$scope.find = function() {
 			$scope.cities = Cities.query();
 			if (localStorage.MyCity) {
-				$scope.selectedCity=localStorage.MyCity;			    
+				$scope.selectedCity=JSON.parse(localStorage.MyCity);
 			}
 		};
 		$scope.init = function() {
 			$scope.find();		
 		};
-		$scope.updateLocation = function() {				
-			localStorage.setItem("MyCity", $scope.selectedCity);	
+		$scope.updateLocation = function(city) {
+			$scope.selectedCity=city;
+			localStorage.setItem("MyCity",JSON.stringify($scope.selectedCity));	
 		};
-
-		
-
-
-
 	}
 ]);
