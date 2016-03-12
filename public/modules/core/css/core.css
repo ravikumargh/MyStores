@@ -1,5 +1,5 @@
 .content {
-	margin-top: 100px;
+	margin-top: 20px;
 }
 .undecorated-link:hover {
 	text-decoration: none;
@@ -35,6 +35,9 @@
  -webkit-column-width: 18em;
  -moz-column-gap: 1em;
  -webkit-column-gap:1em;   
+}
+.homepage{
+	margin-top: 50px;
 }
 .homepage .row-masonry {
 	margin-top: -3px;
