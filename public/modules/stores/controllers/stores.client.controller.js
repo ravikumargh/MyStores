@@ -209,15 +209,18 @@ angular.module('stores').controller('StoresController',
 
 
 angular.module('stores').controller('StoresModalController',
-['$scope', '$stateParams', '$location', 'Authentication', 'Stores', 'File', '$modalInstance', 'ParentScope',
-	function($scope, $stateParams, $location, Authentication, Stores, File, $modalInstance, ParentScope) {
+['$scope', '$stateParams', '$location', 'Authentication', 'Stores', 'File', '$modalInstance', 'ParentScope', 'Categories',
+	function($scope, $stateParams, $location, Authentication, Stores, File, $modalInstance, ParentScope, Categories) {
  
 		$scope.authentication = Authentication;
+		$scope.categories = Categories.query();
 		
 		$scope.create = function() {
 			var store = new Stores({
 				name: this.name,
-				address: this.address
+				address: this.address,
+					category: this.category
+
 			});
 			ParentScope.create(store, $scope.file);
 			$modalInstance.dismiss('cancel');
