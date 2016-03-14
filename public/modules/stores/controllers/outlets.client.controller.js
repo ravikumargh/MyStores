@@ -3,6 +3,16 @@
 angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$stateParams', '$location', '$modal', 'Authentication', 'Outlets', 'Storeoutlets',
 	function($scope, $http, $stateParams, $location, $modal, Authentication, Outlets, Storeoutlets) {
 		$scope.authentication = Authentication;
+		var authorised=false;
+		if ($scope.authentication.user && ($scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.Admin) === -1 || 
+			$scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.OutletAdmin) === -1 ||
+			$scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.StoreAdmin) === -1)) {
+			authorised=true;
+		};
+		if (!authorised) {
+			$location.path('/'); 
+		};
+
 		$scope.storeId=$stateParams.storeId;
 		$scope.outletId=$stateParams.outletId;
 		$scope.create = function() {
