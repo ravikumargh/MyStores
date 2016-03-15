@@ -45,6 +45,12 @@ var AdSchema = new Schema({
 			ref: 'Outlet'
 		}]
 	},
+	cities: {
+		type: [{
+			type: Schema.ObjectId,
+			ref: 'City'
+		}]
+	},
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'

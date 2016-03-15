@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ads').controller('AdsController', 
-		['$scope', '$stateParams', '$location','$modal', '$log','$http', '$timeout', 'Authentication', 'Ads', 'AdOffers', 'Offers', 'File', 'notify', '$sce',
-		function($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify, $sce) {
+		['$scope', '$stateParams', '$location','$modal', '$log','$http', '$timeout', 'Authentication', 'Ads', 'AdOffers', 'Offers', 'File', 'notify', '$sce', 'Storeoutlets', 'Outlets',
+		function($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify, $sce, Storeoutlets, Outlets) {
 			$scope.authentication = Authentication;
 			$scope.date = {startDate: null, endDate: null};
 			
@@ -117,6 +117,22 @@ angular.module('ads').controller('AdsController',
 			      $log.info('Modal dismissed at: ' + new Date());
 			    });
 	    	};
+	    	$scope.getStoreOutlets = function() {
+				Storeoutlets.getStoreOutlets($scope.storeId).success(function (response) {
+	            	$scope.storeoutlets = response;
+	            })
+	            .error(function (errorResponse) {
+	               //$scope.error = errorResponse.data.message;
+	            });
+
+	        	$scope.outlet = Outlets.get({
+					outletId: Authentication.user.outlets[0]
+				});
+
+			};
+        	$scope.getStoreOutlets();
+
+
 //********************************************************************
 
 			 
