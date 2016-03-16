@@ -8,8 +8,7 @@ var ApplicationConfiguration = (function() {
 												'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 
 												'daterangepicker', 'ngFileUpload', 
 												'ngMap', 'vsGoogleAutocomplete',
-												'cgNotify',
-												'ngWYSIWYG'
+												'cgNotify', 'ngWYSIWYG', 'ngTable'
 												];
 
 	// Add a new vertical module

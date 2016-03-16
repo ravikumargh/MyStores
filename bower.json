@@ -20,6 +20,7 @@
     "ngmap": "~1.13.4",
     "vsGoogleAutocomplete": "vs-google-autocomplete#~0.3.2",
     "angular-notify": "~2.5.0",
-    "ngWYSIWYG": "~0.6.2"
+    "ngWYSIWYG": "~0.6.2",
+    "ng-table": "~0.8.3"
   }
 }

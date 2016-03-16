@@ -33,7 +33,7 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 
 		$scope.openCreateAdminModal = function (item) {
 			$scope.selectedUser=item;
-			$scope.newUserRole="outletadmin";
+			 
 		    var modalInstance = $modal.open({
 		      animation: $scope.animationsEnabled,
 		      templateUrl: 'modules/stores/views/create-user-modal.client.view.html',
@@ -118,6 +118,18 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 		$scope.findOne = function() {
 			$scope.outlet = Outlets.get({
 				outletId: $stateParams.outletId
+			});
+		};
+		$scope.createUser = function(newUser) {
+			
+			newUser.outlets= [$stateParams.outletId];
+			newUser.roles= ["outletadmin"];
+			newUser.username=  newUser.email;
+			
+			$http.post('/users/create', newUser).success(function(response) {
+				$scope.users.unshift(response);
+			}).error(function(response) {
+				$scope.error = response.message;
 			});
 		};
 	}
