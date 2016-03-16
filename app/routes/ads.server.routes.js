@@ -5,6 +5,7 @@
  */
 var users = require('../../app/controllers/users.server.controller'),
 	ads = require('../../app/controllers/ads.server.controller'),
+	cities = require('../../app/controllers/cities.server.controller'),
 	offers = require('../../app/controllers/offers.server.controller');
 
 module.exports = function(app) {
@@ -15,7 +16,7 @@ module.exports = function(app) {
 	app.route('/ads')
 		.get(ads.list)
 		.post(users.requiresLogin, ads.create);
-app.route('/ads/todays')
+app.route('/ads/todays/:cityId')
 		.get(ads.todayslist)
 
 	app.route('/ads/:adId')
@@ -25,4 +26,5 @@ app.route('/ads/todays')
 
 	// Finish by binding the ad middleware
 	app.param('adId', ads.adByID);
+	app.param('cityId', cities.cityByID);	 
 };

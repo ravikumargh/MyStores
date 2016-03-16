@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('stores').controller('StoresController', 
-		['$scope', '$stateParams', '$location', '$modal', '$log', '$timeout', 'Authentication', 'Stores', 'File', 'Storeoutlets', 'notify',
-	function($scope, $stateParams, $location, $modal, $log, $timeout, Authentication, Stores, File, Storeoutlets, notify) {
+		['$scope', '$stateParams', '$location', '$modal', '$http', '$log', '$timeout', 'Authentication', 'Stores', 'File', 'Storeoutlets', 'notify',
+	function($scope, $stateParams, $location, $modal, $http, $log, $timeout, Authentication, Stores, File, Storeoutlets, notify) {
 		$scope.authentication = Authentication;
 		var authorised=false;
 		if ($scope.authentication.user && ($scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.Admin) === -1 || 
@@ -96,6 +96,17 @@ angular.module('stores').controller('StoresController',
             }
          };
 
+        $scope.getStoreAdmins = function() {			
+			$http.get('/users/store/'+$stateParams.storeId).success(function(response) {
+				// If successful we assign the response to the global user model
+				$scope.users = response;				 
+			}).error(function(response) {
+				$scope.error = response.message;
+			});
+		};
+		$scope.getStoreAdmins();
+
+
         $scope.openCreateModal = function (item) {
 			$scope.selectedOffer=item;
 		    var modalInstance = $modal.open({
@@ -138,6 +149,41 @@ angular.module('stores').controller('StoresController',
 		    });
 	    }; 
 
+	    $scope.openCreateStoreAdminModal = function (item) {
+			$scope.selectedUser=item;
+			$scope.newUserRole="storeadmin";
+
+		    var modalInstance = $modal.open({
+		      animation: $scope.animationsEnabled,
+		      templateUrl: 'modules/stores/views/create-user-modal.client.view.html',
+		      controller: 'UsersModalController',
+		       
+		      resolve: {
+		        ParentScope: function () {
+		          return $scope;
+		        }
+		      }
+		    });
+
+		    modalInstance.result.then(function (selectedItem) {
+		      $scope.selected = selectedItem;
+		    }, function () {
+		      $log.info('Modal dismissed at: ' + new Date());
+		    });
+	    }; 
+	    
+	    $scope.createUser = function(newUser) {
+			
+			newUser.stores= [$stateParams.storeId];
+			newUser.roles= ["storeadmin"];
+			newUser.username=  newUser.email;
+			
+			$http.post('/users/create', newUser).success(function(response) {
+				$scope.users.unshift(response);
+			}).error(function(response) {
+				$scope.error = response.message;
+			});
+		};
          $scope.openOutletCreateModal = function (item) {
 			$scope.selectedOffer=item;
 		    var modalInstance = $modal.open({

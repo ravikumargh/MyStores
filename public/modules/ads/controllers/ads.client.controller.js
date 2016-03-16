@@ -5,18 +5,12 @@ angular.module('ads').controller('AdsController',
 		function($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify, $sce, Storeoutlets, Outlets) {
 			$scope.authentication = Authentication;
 			$scope.date = {startDate: null, endDate: null};
-			
+			$scope.storeoutlets=[];
 
 		    $scope.getHtml = function(html){     
 		        return $sce.trustAsHtml(html);
 		    }
-			$scope.create = function(ad, file) {
-				// var ad = new Ads({
-				// 	title: this.title,
-				// 	content: this.content,
-				// 	fromdate: $scope.date.startDate,
-				// 	todate: $scope.date.endDate
-				// });
+			$scope.create = function(ad, file) {				
 				ad.$save(function(response) {
 					$timeout(function () {                    
 						$scope.ads.unshift(response);	                 
@@ -61,8 +55,23 @@ angular.module('ads').controller('AdsController',
 				});
 			};
 
-			$scope.find = function() {
+			$scope.init = function() {
 				$scope.ads = Ads.query();
+
+				Storeoutlets.getStoreOutlets($scope.storeId).success(function (response) {	            	
+	            	for (var i = response.length - 1; i >= 0; i--) {
+	            		$scope.storeoutlets.push(response[i]);
+	            	};
+	            })
+	            .error(function (errorResponse) {
+	               //$scope.error = errorResponse.data.message;
+	            });
+
+	        	Outlets.get({
+					outletId: Authentication.user.outlets[0]
+				}).$promise.then(function(res){
+					$scope.storeoutlets.push(res);
+				});
 			};
 
 			$scope.findOne = function() {
@@ -117,20 +126,7 @@ angular.module('ads').controller('AdsController',
 			      $log.info('Modal dismissed at: ' + new Date());
 			    });
 	    	};
-	    	$scope.getStoreOutlets = function() {
-				Storeoutlets.getStoreOutlets($scope.storeId).success(function (response) {
-	            	$scope.storeoutlets = response;
-	            })
-	            .error(function (errorResponse) {
-	               //$scope.error = errorResponse.data.message;
-	            });
-
-	        	$scope.outlet = Outlets.get({
-					outletId: Authentication.user.outlets[0]
-				});
-
-			};
-        	$scope.getStoreOutlets();
+	    	 
 
 
 //********************************************************************
@@ -261,6 +257,13 @@ angular.module('adsModal').controller('AdsModalController',
 				};
 				ad.outlets.push($scope.authentication.user.outlets[i]);
 			};
+			for (var i = ParentScope.storeoutlets.length - 1; i >= 0; i--) {
+				if (!ad.cities) {	
+					ad.cities=[];	
+				};				 
+				ad.cities.push(ParentScope.storeoutlets[i].city);
+			};
+
 			ParentScope.create(ad, $scope.file);	
 		    $modalInstance.dismiss('cancel');					
 		};

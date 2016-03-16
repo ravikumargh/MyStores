@@ -58,14 +58,31 @@ exports.me = function(req, res) {
 
 
 /**
- * User middleware
+ * Outlet User
  */
 exports.outletusers = function(req, res) {
-	User.where('outlets').in([req.params.outletId]).exec(function(err, user) {
+	User.where('outlets').in([req.params.outletId]).exec(function(err, users) {
 		if (err) return next(err);
-		if (!user) return next(new Error('Failed to load User ' + id));
-	 	user.password = undefined;
-		user.salt = undefined;
-		return res.status(200).json(user);
+		if (!users) return next(new Error('Failed to load User ' + id));
+		for (var i = users.length - 1; i >= 0; i--) {				
+		 	users[i].password = undefined;
+			users[i].salt = undefined;
+		};
+		return res.status(200).json(users);
+	});
+};
+
+/**
+ * Store User
+ */
+exports.storeusers = function(req, res) {
+	User.where('stores').in([req.params.storeId]).exec(function(err, users) {
+		if (err) return next(err);
+		if (!users) return next(new Error('Failed to load User ' + id));
+		for (var i = users.length - 1; i >= 0; i--) {				
+		 	users[i].password = undefined;
+			users[i].salt = undefined;
+		};
+		return res.status(200).json(users);
 	});
 };

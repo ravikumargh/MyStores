@@ -33,6 +33,7 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 
 		$scope.openCreateAdminModal = function (item) {
 			$scope.selectedUser=item;
+			$scope.newUserRole="outletadmin";
 		    var modalInstance = $modal.open({
 		      animation: $scope.animationsEnabled,
 		      templateUrl: 'modules/stores/views/create-user-modal.client.view.html',
@@ -130,7 +131,18 @@ angular.module('users').controller('UsersModalController',
 		$scope.authentication = Authentication;
 		
 		$scope.selectedUsers = null;
-
+		$scope.user = new Users({
+			firstName: this.firstName,
+			lastName: this.lastName,
+			email: this.email,
+			username: this.email 
+		});
+		$scope.create = function() {
+			 
+			ParentScope.createUser($scope.user);
+			$modalInstance.dismiss('cancel');
+		};
+		/*
 		$scope.user = new Users({
 			firstName: this.firstName,
 			lastName: this.lastName,
@@ -138,7 +150,7 @@ angular.module('users').controller('UsersModalController',
 			username: this.email,
 			password: 'Password1',
 			outlets: [$stateParams.outletId],
-			roles: ["storeadmin"]
+			roles: [ParentScope.newUserRole]
 		});
 		$scope.create = function() {
 			$scope.user.username = $scope.user.email;
@@ -150,7 +162,7 @@ angular.module('users').controller('UsersModalController',
 				$scope.error = response.message;
 			});
 		};
-
+		*/
   
 		$scope.update = function() {
 			var offer = $scope.offer;

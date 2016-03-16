@@ -35,6 +35,7 @@
 	<a class="btn btn-primary" ng-click="openOutletCreateModal()">
 			<i class="glyphicon glyphicon-plus"></i>Add Outlet
 	</a>
+
 	<div class="pull-right" data-ng-show="authentication.user._id == store.user._id">
 		<a class="btn btn-primary" href="/#!/stores/{{store._id}}/outlets">
 			Outlets
@@ -48,7 +49,7 @@
 	</div>
 
 	<div class="panel panel-default plain profile-panel">
-			<div class="panel-body" data-ng-repeat="outlet in outlets">
+		<div class="panel-body" data-ng-repeat="outlet in outlets">
             
             <div class="col-lg-10 col-md-10 col-sm-12">
                 <div class="user-name">
@@ -74,8 +75,18 @@
 					<a class="btn btn-primary" data-ng-click="openOuletDeleteConfirmationModal(outlet);">
 						<i class="glyphicon glyphicon-trash"></i>
 					</a>
-            </div>
+            </div>           
         </div>
  
+	</div>
+	<a class="btn btn-primary" data-ng-click="openCreateStoreAdminModal();">
+		<i class="glyphicon glyphicon-plus"></i>Add Store Admin
+	</a>
+	<div class="panel panel-default plain profile-panel">
+        <div data-ng-repeat="user in users"   class="panel-body">			 
+				<div class="col-lg-2 col-md-2 col-sm-12" data-ng-bind="user.firstName"></div>
+				<div class="col-lg-2 col-md-2 col-sm-12" data-ng-bind="user.lastName"></div>
+				<div class="col-lg-2 col-md-2 col-sm-12" data-ng-bind="user.email"></div>
+		</div>
 	</div>
 </section>

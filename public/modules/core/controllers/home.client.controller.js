@@ -7,8 +7,9 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		$scope.authentication = Authentication;
 
 
-		$scope.getTodaysAds = function() {			
-				$http.get('/ads/todays').success(function(response) {
+		$scope.getTodaysAds = function() {
+				var selectedCity=JSON.parse(localStorage.MyCity);			
+				$http.get('/ads/todays/'+selectedCity._id).success(function(response) {
 					$scope.ads = response;
 				}).error(function(response) {
 					$scope.error = response.message;
