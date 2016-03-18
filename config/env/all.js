@@ -42,7 +42,8 @@ module.exports = {
 				'public/lib/vsGoogleAutocomplete/dist/vs-autocomplete-validator.js',
 				'public/lib/angular-notify/dist/angular-notify.js',
 				'public/lib/ngWYSIWYG/dist/wysiwyg.min.js',
-				'public/lib/ng-table/dist/ng-table.js'
+				'public/lib/ng-table/dist/ng-table.js',
+				'public/lib/lodash/lodash.js'
 
 			]
 		},

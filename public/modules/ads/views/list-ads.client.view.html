@@ -1,31 +1,31 @@
 <section data-ng-controller="AdsController" data-ng-init="init()">
-	<div class="page-header">
-		<h1>Ads</h1> 
-		<!-- <a class="btn btn-primary" data-ng-href="#!/ads/create" class="list-group-item">New Ad</a> -->
+    <div class="page-header">
+        <h1>Ads</h1>
+        <!-- <a class="btn btn-primary" data-ng-href="#!/ads/create" class="list-group-item">New Ad</a> -->
 
-		<button type="button" class="btn btn-primary" ng-click="openAdModal()">
-			<i class="glyphicon glyphicon-plus"></i>New ad
-		</button>
-	</div>
-	<div class="list-group">
-		<a data-ng-repeat="ad in ads" data-ng-href="#!/ads/{{ad._id}}" class="list-group-item">
-			<h4 class="list-group-item-heading" ng-bind-html="getHtml(ad.title)"></h4>
-			<p class="list-group-item-text" ng-bind-html="getHtml(ad.content)"></p>
-			<small class="list-group-item-text">
-				Offer valid from
-				<b>
-					<span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
-				</b>
-				to
-				<b>
-					<span data-ng-bind="ad.todate | date:'mediumDate'"></span>
-				</b>
-				by
-				<span data-ng-bind="ad.user.displayName"></span>
-			</small>
-		</a>
-	</div>
-	<div class="alert alert-warning text-center" data-ng-if="ads.$resolved && !ads.length">
-		No ads yet, why don't you <a href="/#!/ads/create">create one</a>?
-	</div>
+        <button type="button" class="btn btn-primary" ng-click="openAdModal()">
+            <i class="glyphicon glyphicon-plus"></i>New ad
+        </button>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="ad in ads" data-ng-href="#!/ads/{{ad._id}}" class="list-group-item">
+            <h4 class="list-group-item-heading" ng-bind-html="getHtml(ad.title)"></h4>
+            <p class="list-group-item-text" ng-bind-html="getHtml(ad.content)"></p>
+            <small class="list-group-item-text">
+                Offer valid from
+                <b>
+                    <span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
+                </b>
+                to
+                <b>
+                    <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
+                </b>
+                by
+                <span data-ng-bind="ad.user.displayName"></span>
+            </small>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-if="ads.$resolved && !ads.length">
+        No ads yet, why don't you <a href="/#!/ads/create">create one</a>?
+    </div>
 </section>

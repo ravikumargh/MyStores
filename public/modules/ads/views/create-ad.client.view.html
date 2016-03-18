@@ -1,44 +1,67 @@
-	<div class="modal-header">
-		<h1>New Ad</h1>
-	</div>
-	<div class="modal-body">
-		 <fieldset>
-				<div class="form-group" ng-class="{ 'has-error': adForm.title.$dirty && adForm.title.$invalid }">
-					<label class="control-label" for="title">Title</label>
-					<div class="controls">
-						<!-- <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required> -->
-						<wysiwyg-edit content="title"></wysiwyg-edit>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label" for="content">Content</label>
-					<div class="controls">
-						<!-- <textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="4" placeholder="Content"></textarea> -->
+<div class="modal-header">
+    <h1>New Ad</h1>
+</div>
+<div class="modal-body">
+    <fieldset>
+        <div class="form-group" ng-class="{ 'has-error': adForm.title.$dirty && adForm.title.$invalid }">
+            <label class="control-label" for="title">Title</label>
+            <div class="controls">
+                <!-- <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required> -->
+                <wysiwyg-edit content="title"></wysiwyg-edit>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="content">Content</label>
+            <div class="controls">
+                <!-- <textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="4" placeholder="Content"></textarea> -->
+                <wysiwyg-edit content="content"></wysiwyg-edit>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="content">Validity</label>
+            <div class="controls">
+                <input date-range-picker class="form-control date-picker" type="text" ng-model="date" />
+            </div>
+        </div>
 
-						<wysiwyg-edit content="content"></wysiwyg-edit>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label" for="content">Validity</label>
-					<div class="controls">
-					<input date-range-picker class="form-control date-picker" type="text" ng-model="date" />
-					</div>
-				</div>
-				 
-            	<div class="form-group">
-	                <label class="control-label" for="name">Banner image</label>
-	                <div class="controls">
-	                	<input type="file" ngf-select="" ng-model="file" name="file" ngf-accept="'image/*'" />
-	                </div>
-            	</div>
- 
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-			</fieldset>	 
-	</div>
-	<div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="create()">Create</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-    </div>
- 
+        <div class="form-group">
+            <label class="control-label" for="name">Banner image</label>
+            <div class="controls">
+                <input type="file" ngf-select="" ng-model="file" name="file" ngf-accept="'image/*'" />
+            </div>
+        </div>
+
+        <div class="panel panel-default plain profile-panel">
+            <h3>Cities and Outlets</h3>  
+            <table class="table">
+                <tr ng-repeat="cityOutlet in cityOutlets">
+                    <td data-title="'City'">
+                        <input type="checkbox" name="city" value="{{cityOutlet.city._id}}" />
+                        {{cityOutlet.city.name}}
+
+
+                        <table class="table">
+                            <tr ng-repeat="storeoutlet in cityOutlet.storeoutlet">
+                                <td data-title="'#'">
+                                    <input type="checkbox" name="city" value="{{cityOutlet.city._id}}" />
+                                </td>
+                                <td title="'FirstName'">
+                                    {{storeoutlet.name}}
+                                </td>
+
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div data-ng-show="error" class="text-danger">
+            <strong data-ng-bind="error"></strong>
+        </div>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="create()">Create</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

@@ -11,14 +11,16 @@
 		</small> -->
 		<p class="lead" data-ng-bind="outlet.address"></p>
 	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == outlet.user._id">
+	<!-- <div class="pull-right" data-ng-show="authentication.user._id == outlet.user._id"> -->
+
+	<div    >
 		<a class="btn btn-primary" data-ng-click="openCreateAdminModal();">
 			<i class="glyphicon glyphicon-plus"></i>Add admin
 		</a>
 
-		<a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/createuser">
+		<!-- <a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/createuser">
 			<i class="glyphicon glyphicon-plus"></i>Add admin
-		</a>
+		</a> -->
 		<a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
@@ -26,10 +28,24 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
+ 
 
-	<div data-ng-repeat="user in users"   class="list-group-item">
-			 
-			<div class="list-group-item-heading" data-ng-bind="user.firstName"></div>
-			<div class="list-group-item-text" data-ng-bind="user.lastName"></div>
-	</div>
+	<div class="panel panel-default plain profile-panel">
+         
+	
+
+		<table   class="table" >
+		    <tr ng-repeat="user in users">
+		    	<td data-title="'#'">
+	            	{{$index}}
+	          	</td>
+		        <td title="'FirstName'"   >
+		            {{user.firstName}}</td>
+		            <td title="'LastName'"  >
+		            {{user.lastName}}</td>
+		        <td title="'Email'"  >
+		            {{user.email}}</td>
+		    </tr>
+		</table>
+	 </div>
 </section>

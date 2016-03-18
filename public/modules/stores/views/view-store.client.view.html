@@ -1,7 +1,7 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
 	<div class="page-header row">
 		<div class="col-md-1">
-		<img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{store._id}}"  />
+		<img alt="MEAN.JS" class="img-responsive text-center" src="images/content/{{store._id}}"  />
 		</div>
 		<div class="col-md-11">
 			<h1 data-ng-bind="store.name"  ></h1>
@@ -83,10 +83,21 @@
 		<i class="glyphicon glyphicon-plus"></i>Add Store Admin
 	</a>
 	<div class="panel panel-default plain profile-panel">
-        <div data-ng-repeat="user in users"   class="panel-body">			 
-				<div class="col-lg-2 col-md-2 col-sm-12" data-ng-bind="user.firstName"></div>
-				<div class="col-lg-2 col-md-2 col-sm-12" data-ng-bind="user.lastName"></div>
-				<div class="col-lg-2 col-md-2 col-sm-12" data-ng-bind="user.email"></div>
-		</div>
-	</div>
+         
+	
+
+		<table ng-table="vm.tableParams" class="table" >
+		    <tr ng-repeat="user in users">
+		    	<td data-title="'#'">
+	            	{{$index}}
+	          	</td>
+		        <td title="'FirstName'"   >
+		            {{user.firstName}}</td>
+		            <td title="'LastName'"  >
+		            {{user.lastName}}</td>
+		        <td title="'Email'"  >
+		            {{user.email}}</td>
+		    </tr>
+		</table>
+	 </div>
 </section>
