@@ -7,14 +7,14 @@
             <label class="control-label" for="title">Title</label>
             <div class="controls">
                 <!-- <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required> -->
-                <wysiwyg-edit content="title"></wysiwyg-edit>
+                <wysiwyg-edit class="ad-title" content="title"></wysiwyg-edit>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label" for="content">Content</label>
             <div class="controls">
                 <!-- <textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="4" placeholder="Content"></textarea> -->
-                <wysiwyg-edit content="content"></wysiwyg-edit>
+                <wysiwyg-edit class="ad-content" content="content" style="height:200px;"></wysiwyg-edit>
             </div>
         </div>
         <div class="form-group">
@@ -32,18 +32,17 @@
         </div>
 
         <div class="panel panel-default plain profile-panel">
-            <h3>Cities and Outlets</h3>  
+            <h3>Cities and Outlets</h3>
             <table class="table">
                 <tr ng-repeat="cityOutlet in cityOutlets">
                     <td data-title="'City'">
-                        <input type="checkbox" name="city" value="{{cityOutlet.city._id}}" />
-                        {{cityOutlet.city.name}}
-
+                        <input type="checkbox" name="city" ng-model="cityOutlet.selected" ng-click="checkAll(cityOutlet)" />
+                        {{cityOutlet.name}}
 
                         <table class="table">
                             <tr ng-repeat="storeoutlet in cityOutlet.storeoutlet">
                                 <td data-title="'#'">
-                                    <input type="checkbox" name="city" value="{{cityOutlet.city._id}}" />
+                                    <input type="checkbox" name="city" ng-model="storeoutlet.selected" ng-click="storeoutlet.selected = !storeoutlet.selected" />
                                 </td>
                                 <td title="'FirstName'">
                                     {{storeoutlet.name}}
@@ -65,3 +64,9 @@
     <button class="btn btn-primary" type="button" ng-click="create()">Create</button>
     <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div>
+<style type="text/css">
+    wysiwyg-edit.ad-title .tinyeditor .sizer, wysiwyg-edit.ad-content .tinyeditor .sizer {
+        min-height: 75px;
+        height: 75px;
+    }
+</style>

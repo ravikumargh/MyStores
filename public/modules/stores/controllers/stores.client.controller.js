@@ -17,7 +17,12 @@ angular.module('stores').controller('StoresController',
 	    $scope.create = function (outlet, file) {	        
 	        outlet.$save(function (response) {
 	            $timeout(function () {
-	                $scope.outlets.unshift(response);
+	            	if(!$scope.outlets){
+	            		 $scope.outlets=[];
+	                	$scope.outlets.push(response);	            	
+	            	}else{
+		                $scope.outlets.unshift(response);
+	            	}
 	            }, 1000);
 
 	        }, function (errorResponse) {

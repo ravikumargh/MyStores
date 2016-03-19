@@ -90,7 +90,9 @@ exports.list = function (req, res) {
  * Outlet middleware
  */
 exports.outletByID = function (req, res, next, id) {
-    Outlet.findById(id).populate('user', 'displayName').exec(function (err, outlet) {
+    Outlet.findById(id)
+    .populate('user', 'displayName')
+    .populate('city').exec(function (err, outlet) {
         if (err) return next(err);
         if (!outlet) return next(new Error('Failed to load outlet ' + id));
         req.outlet = outlet;

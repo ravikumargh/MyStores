@@ -14,3 +14,4 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		});
 	}
 ]);
+

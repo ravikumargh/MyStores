@@ -65,39 +65,12 @@ angular.module('ads').controller('AdsController',
 		        var storesId = Authentication.user.stores[0];
 
 		        Storeoutlets.getStoreOutlets(storesId).success(function (response) {
-
 		            for (var i = response.length - 1; i >= 0; i--) {
-		                var storeoutlet = response[i];
-		                
-		                $scope.storeoutlets.push(storeoutlet);
-		                if ($scope.cities.indexOf(response[i].city._id) === -1) {
-		                     $scope.cities.push(response[i].city);
-		                }  
+		                response[i].selected = false;
+		                $scope.storeoutlets.push(response[i]);
 		            };
-		            $scope.cityOutlets = _.uniqBy($scope.storeoutlets, function (u) {
-		                return u.city._id;
-		            })
-
-		            $scope.cityStoreOutlets =  _.groupBy($scope.storeoutlets, function (g) {
-		                        return g.city._id;
-		          })
-		          var O;
-		          _.each($scope.cityStoreOutlets, function (e) {
-		                O = e;
-		                var city = _.find($scope.cityOutlets, function (c) {
-		                  if (c.city._id === O[0].city._id) {
-		                      return c;
-		                  }
-		              });
-		              city.storeoutlet = [];
-		              _.each(e, function (so) {
-		                  city.storeoutlet.push(so);
-		              })
-		          })
-		          for (var i = 0; i < $scope.cities.length; i++) {
-		              var c = $scope.cities[i];
-
-		          }
+		            getCityOutlets();
+		            console.log($scope.cityOutlets)
 		        })
 	            .error(function (errorResponse) {
 	                //$scope.error = errorResponse.data.message;
@@ -106,9 +79,37 @@ angular.module('ads').controller('AdsController',
 		        Outlets.get({
 		            outletId: Authentication.user.outlets[0]
 		        }).$promise.then(function (res) {
+		            res.selected = false;
 		            $scope.storeoutlets.push(res);
+		            getCityOutlets();
 		        });
 		    };
+            //bild the city-outlet hierarchy.
+		    var getCityOutlets = function () {
+		        $scope.cities = _.uniqBy($scope.storeoutlets, function (u) {
+		            return u.city._id;
+		        });
+		        $scope.cityOutlets = [];
+		        _.each($scope.cities, function (u) {
+		            $scope.cityOutlets.push(u.city);
+		        });
+		        $scope.cityStoreOutlets = _.groupBy($scope.storeoutlets, function (g) {
+		            return g.city._id;
+		        })
+		        var O;
+		        _.each($scope.cityStoreOutlets, function (e) {
+		            O = e;
+		            var city = _.find($scope.cityOutlets, function (c) {
+		                if (c._id === O[0].city._id) {
+		                    return c;
+		                }
+		            });
+		            city.storeoutlet = [];
+		            _.each(e, function (so) {
+		                city.storeoutlet.push(so);
+		            })
+		        });
+		    }
 
 		    $scope.findOne = function () {
 		        $scope.ad = Ads.get({
@@ -121,8 +122,6 @@ angular.module('ads').controller('AdsController',
 		            adId: $stateParams.adId
 		        });
 		    };
-
-
 
 		    $scope.getOffers = function () {
 		        $http.get('/ads/' + $stateParams.adId + '/offers').success(function (response) {
@@ -162,12 +161,7 @@ angular.module('ads').controller('AdsController',
 		            $log.info('Modal dismissed at: ' + new Date());
 		        });
 		    };
-
-
-
 		    //********************************************************************
-
-
 
 		    $scope.animationsEnabled = true;
 
@@ -267,7 +261,6 @@ angular.module('ads').controller('AdsController',
 		        }
 		    };
 		    //Offer ******************************************************************
-
 		}
 		]);
 
@@ -288,19 +281,26 @@ angular.module('adsModal').controller('AdsModalController',
 	            fromdate: $scope.date.startDate,
 	            todate: $scope.date.endDate
 	        });
-	        for (var i = 0; i < $scope.authentication.user.outlets.length; i++) {
+	        for (var i = 0; i < $scope.cityOutlets.length; i++) {
 	            if (!ad.outlets) {
 	                ad.outlets = [];
 	            };
-	            ad.outlets.push($scope.authentication.user.outlets[i]);
-	        };
-	        for (var i = ParentScope.storeoutlets.length - 1; i >= 0; i--) {
 	            if (!ad.cities) {
 	                ad.cities = [];
 	            };
-	            ad.cities.push(ParentScope.storeoutlets[i].city._id);
+	            
+	            var cities = [];
+	            _.each($scope.cityOutlets[i].storeoutlet, function (co) {
+	                if (co.selected) {
+	                    ad.outlets.push(co._id);
+	                    cities.push(co.city._id);
+	                }
+	            });
+	            var uniqCities = _.uniq(cities);
+	            for (var j = 0; j < uniqCities.length; j++) {
+	                ad.cities.push(uniqCities[j]);
+	            }
 	        };
-
 	        ParentScope.create(ad, $scope.file);
 	        $modalInstance.dismiss('cancel');
 	    };
@@ -342,6 +342,13 @@ angular.module('adsModal').controller('AdsModalController',
 	    };
 	    $scope.cancel = function () {
 	        $modalInstance.dismiss('cancel');
+	    };
+
+	    $scope.checkAll = function (cityOutlet) {
+	        cityOutlet.selected = !cityOutlet.selected;
+	        angular.forEach(cityOutlet.storeoutlet, function (item) {
+	            item.selected = cityOutlet.selected;
+	        });
 	    };
 	}
 			]);
@@ -412,9 +419,6 @@ angular.module('offersModal').controller('OffersModalController',
 	            offerId: $stateParams.offerId
 	        });
 	    };
-
-
-
 
 	    // $scope.ok = function () {
 	    //   $modalInstance.close($scope.selected.item);
