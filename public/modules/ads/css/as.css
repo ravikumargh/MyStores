@@ -1,0 +1,5 @@
+wysiwyg-edit.ad-title .tinyeditor .sizer, wysiwyg-edit.ad-content .tinyeditor .sizer {
+	min-height: 75px;
+	height: 75px;
+}
+    

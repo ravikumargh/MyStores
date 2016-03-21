@@ -31,28 +31,36 @@
             </div>
         </div>
 
-        <div class="panel panel-default plain profile-panel">
-            <h3>Cities and Outlets</h3>
-            <table class="table">
-                <tr ng-repeat="cityOutlet in cityOutlets">
-                    <td data-title="'City'">
-                        <input type="checkbox" name="city" ng-model="cityOutlet.selected" ng-click="checkAll(cityOutlet)" />
-                        {{cityOutlet.name}}
+        <div class="panel panel-default plain profile-panel">{{co}}
+            <div class="wrap">
+                <input id="allouts" type="radio" name="isAllOutlet" ng-model="isAllOutlet" value="allouts">
+                <label for="allouts">All outlet</label>
+                <br />
+                <input id="indivedual" type="radio" name="isAllOutlet" ng-model="isAllOutlet" value="indivedual">
+                <label for="indivedual">Cities and Outlets</label>
+            </div>
+            <div ng-show="isAllOutlet == 'indivedual'">
+                <table class="table">
+                    <tr ng-repeat="cityOutlet in cityOutlets">
+                        <td data-title="'City'">
+                            <input type="checkbox" name="city" ng-model="cityOutlet.selected" ng-click="checkAll(cityOutlet)" />
+                            {{cityOutlet.name}}
 
-                        <table class="table">
-                            <tr ng-repeat="storeoutlet in cityOutlet.storeoutlet">
-                                <td data-title="'#'">
-                                    <input type="checkbox" name="city" ng-model="storeoutlet.selected" ng-click="storeoutlet.selected = !storeoutlet.selected" />
-                                </td>
-                                <td title="'FirstName'">
-                                    {{storeoutlet.name}}
-                                </td>
+                            <table class="table">
+                                <tr ng-repeat="storeoutlet in cityOutlet.storeoutlet">
+                                    <td data-title="'#'">
+                                        <input type="checkbox" name="city" ng-model="storeoutlet.selected" ng-click="storeoutlet.selected = !storeoutlet.selected" />
+                                    </td>
+                                    <td title="'FirstName'">
+                                        {{storeoutlet.name}}
+                                    </td>
 
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
         <div data-ng-show="error" class="text-danger">
@@ -64,9 +72,3 @@
     <button class="btn btn-primary" type="button" ng-click="create()">Create</button>
     <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div>
-<style type="text/css">
-    wysiwyg-edit.ad-title .tinyeditor .sizer, wysiwyg-edit.ad-content .tinyeditor .sizer {
-        min-height: 75px;
-        height: 75px;
-    }
-</style>

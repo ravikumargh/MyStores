@@ -59,6 +59,10 @@ var AdSchema = new Schema({
 		type: Boolean,
 		default: 0
 	},
+	isalloutlets: {
+	    type: Boolean,
+	    default: 0
+	},
 	created: {
 		type: Date,
 		default: Date.now
