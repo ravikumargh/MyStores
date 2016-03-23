@@ -14,7 +14,6 @@ module.exports = {
 		lib: {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
-				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/bootstrap-daterangepicker/daterangepicker.css',
 				'public/lib/angular-notify/dist/angular-notify.css',
 				'public/lib/ngWYSIWYG/dist/editor.min.css',				

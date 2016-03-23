@@ -84,7 +84,7 @@ angular.module('ads').controller('AdsController',
 		            getCityOutlets();
 		        });
 		    };
-            //bild the city-outlet hierarchy.
+		    //bild the city-outlet hierarchy.
 		    var getCityOutlets = function () {
 		        $scope.cities = _.uniqBy($scope.storeoutlets, function (u) {
 		            return u.city._id;
@@ -273,7 +273,11 @@ angular.module('adsModal').controller('AdsModalController',
 	    $scope.date = { startDate: null, endDate: null };
 	    $scope.cities = ParentScope.cities;
 	    $scope.cityOutlets = ParentScope.cityOutlets;
-	    console.log($scope.cityOutlets);
+	    $scope.isAllOutlet = true;
+	    if (Authentication.user.roles.indexOf("outletadmin") != -1) {
+	        $scope.isAllOutlet = false;
+	    }
+
 	    $scope.create = function () {
 	        var ad = new Ads({
 	            title: this.title,
@@ -288,7 +292,7 @@ angular.module('adsModal').controller('AdsModalController',
 	            if (!ad.cities) {
 	                ad.cities = [];
 	            };
-	            
+
 	            var cities = [];
 	            _.each($scope.cityOutlets[i].storeoutlet, function (co) {
 	                if (co.selected) {
