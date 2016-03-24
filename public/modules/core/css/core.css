@@ -49,7 +49,7 @@ textarea {
  font-weight:700;
  font-size:16px;
  color:#262626;
- border-color:#ffffff;
+ border-color:#ececec;
 }
 .panel .panel-heading a {
  font-weight:400;
@@ -73,9 +73,7 @@ h3,h4,h5 {
  border-bottom-width:1px;
  padding-bottom:10px;
 }
-.modal-dialog {
- width: 450px;
-}
+ 
 .modal-footer {
  border-width:0;
 }
@@ -104,8 +102,10 @@ h3,h4,h5 {
 }
 
 .no-border, .no-border h4 { 
- border:none; 
-  
+ border:none;   
+}
+.well1{
+
 }
 
 
@@ -194,6 +194,24 @@ h3,h4,h5 {
 */
 /* Ends : masonry item display */
 
+.row-masonry {
+ -moz-column-width: 20em;
+ -webkit-column-width: 20em;
+ -moz-column-gap: 1.8em;
+ -webkit-column-gap:1.8em; 
+}
+
+.item {
+ display: inline-block;
+ padding:  .25rem;
+ width:  100%; 
+}
+
+.item .panel {
+ position:relative;
+ display: block;
+}
+
 .dropdown-toggle .glyphicon-chevron-down{
 	top: 4px;
 	left: 4px;
@@ -204,3 +222,24 @@ h3,h4,h5 {
 .navbar-inverse .navbar-nav > li > a.btn-post-ad{
         color: #fff;
 }
+.ad-store-logo{
+	height: 50px;
+}
+
+      .btn-circle {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.428571429;
+        border-radius: 15px;
+      }
+      .btn-circle.btn-lg {
+        width: 50px;
+        height: 50px;
+        padding: 13px 13px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 25px;
+      }

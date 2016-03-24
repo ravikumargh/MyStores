@@ -7,6 +7,17 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
           <i class="glyphicon glyphicon-search"></i>
           </button>
+
+          <div class="navbar-toggle">
+            <div class="dropdown dropdown-append-to-body">
+                in <span class="dropdown-toggle" data-toggle="dropdown">
+                    {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+                <ul class="dropdown-menu" role="menu">
+                    <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
+                </ul>
+            </div>
+        </div>
       
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse1">
@@ -16,6 +27,16 @@
                 <div class="input-group-btn">
                   <button class="btn btn-default btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
+                 <div class="input-group-btn hidden-xs">
+		            <div class="dropdown dropdown-append-to-body">
+		                in <span class="dropdown-toggle" data-toggle="dropdown">
+		                    {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+		                </span>
+		                <ul class="dropdown-menu" role="menu">
+		                    <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
+		                </ul>
+		            </div>
+		        </div>
               </div>
           </form>
           <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
@@ -81,7 +102,7 @@
         </div>  
      </div> 
 </nav>
-<div class="navbar navbar-default" id="subnav">
+<!-- <div class="navbar navbar-default" id="subnav">
     <div class="col-md-12">
         <div class="navbar-header">
           
@@ -112,7 +133,15 @@
            </ul>
         </div>  
      </div> 
-</div>
+</div> -->
+
+
+
+
+
+
+
+
 
 
 

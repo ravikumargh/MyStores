@@ -21,6 +21,26 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		
 		$scope.getHtml = function(html){     
 		        return $sce.trustAsHtml(html);
-	    }
+		}
+		$scope.tellServerItsBroken = function (html) {
+		   
+		}
+		
 	}
 ]);
+
+angular.module('core')
+
+.directive('img', function () {
+    return {
+        restrict: 'E',
+        link: function (scope, el, attr) {
+            el.on('error', function (e) {
+                if (attr['ngError']) {
+                    scope.$eval(attr['ngError']);
+                    e.target.style.display = "none";
+                }
+            })
+        }
+    }
+})

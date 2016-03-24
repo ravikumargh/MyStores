@@ -283,7 +283,8 @@ angular.module('adsModal').controller('AdsModalController',
 	            title: this.title,
 	            content: this.content,
 	            fromdate: $scope.date.startDate,
-	            todate: $scope.date.endDate
+	            todate: $scope.date.endDate,
+	            store: Authentication.user.stores[0]
 	        });
 	        for (var i = 0; i < $scope.cityOutlets.length; i++) {
 	            if (!ad.outlets) {

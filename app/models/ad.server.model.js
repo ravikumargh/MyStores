@@ -55,6 +55,11 @@ var AdSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
+	//is used while displaying the ad, store logo
+	store: {
+			type: Schema.ObjectId,
+			ref: 'Store'	
+	},
 	ispublished: {
 		type: Boolean,
 		default: 0
