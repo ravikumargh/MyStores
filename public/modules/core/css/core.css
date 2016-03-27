@@ -20,8 +20,14 @@ body {
 .navbar-default .dropdown-menu {background-color:#ffffff;}
 .navbar-default .dropdown-menu li > a {padding-left:30px;}
 
-.header {background-color:#ffffff;border-width:0;}
-.header .navbar-collapse {background-color:#ffffff;}
+.navbar-inverse .navbar-brand {
+    color: #FFFFFF;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFFFFF;
+}
+.header {background-color:#db4437;border-width:0;}
+.header .navbar-collapse {background-color:#db4437;}
 .btn,.form-control,.panel,.list-group,.well {border-radius:1px;box-shadow:0 0 0;}
 .form-control {border-color:#d7d7d7;}
 .btn-primary {border-color:transparent;}
@@ -104,8 +110,8 @@ h3,h4,h5 {
 .no-border, .no-border h4 { 
  border:none;   
 }
-.well1{
-
+.well{
+	padding: 0;
 }
 
 
@@ -147,20 +153,23 @@ h3,h4,h5 {
     border: none;
 }
 
-/* Starts :; masonry item display */
-/*
-.thumbnail button.close{
+#view-ad .thumbnail{
+	margin-bottom:0;
+    position: relative;     
+}
+#view-ad .thumbnail button.close{
     position: absolute;     
     right: 20px;
     top: 1px;
 }
-.thumbnail:hover{
+#view-ad .thumbnail:hover{
 	border-color: #FF8E01; 
 }
-.thumbnail button.edit{
+#view-ad .thumbnail button.edit{
     right: 45px;
 }   
-
+/* Starts :; masonry item display */
+/*
 .row-masonry {
  -moz-column-width: 18em;
  -webkit-column-width: 18em;
@@ -236,10 +245,29 @@ h3,h4,h5 {
         border-radius: 15px;
       }
       .btn-circle.btn-lg {
-        width: 50px;
-        height: 50px;
-        padding: 13px 13px;
-        font-size: 18px;
-        line-height: 1.33;
-        border-radius: 25px;
+            width: 35px;
+		    height: 35px;
+		    padding: 8px 8px;
+		    font-size: 18px;
+		    line-height: 1.33;
+		    border-radius: 25px;
+		    background-color: #eee;
       }
+
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #F4F4F4;
+    background-color: #E06055;
+     
+    font-weight: bold;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #F4F4F4;
+    background-color: #E06055;
+    
+    font-weight: bold;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #F4F4F4;
+    background-color: #E06055;
+}
