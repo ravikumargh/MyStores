@@ -24,18 +24,20 @@
 						</select>
 					</div>
 				</div>
-				<!-- <div class="form-group">
-
+            <div class="form-group">
                 <input vs-google-autocomplete
-                       ng-model="development.location.address"
-                       vs-latitude="development.location.latitude"
-                       vs-longitude="development.location.longitude "
+                       ng-model="outlet.address"
+                       vs-latitude="outlet.latitude"
+                       vs-longitude="outlet.longitude "
                        name="address"
                        type="text"
                        class="form-control" />
 
                 <map zoom="15" center="{{center}}" on-click="placeMarker()"></map>
-            	</div> -->
+            </div>
+            <div class="form-group">
+                <input type="text" data-ng-model="outlet.landmark" id="txtLangmark" class="form-control" placeholder="Enter a landmark (E.g. Opposite to bigbazar)" required>
+            </div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>

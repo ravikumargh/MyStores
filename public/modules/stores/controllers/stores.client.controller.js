@@ -348,5 +348,67 @@ angular.module('outlets').controller('OutletsModalController',
 	    $scope.cancel = function () {
 	        $modalInstance.dismiss('cancel');
 	    };
+
+	    /*Map starts***********************************************************/
+	    var map;
+
+	    $scope.location = { H: 12.3474743, L: 76.6033769 }
+	    $scope.center = [$scope.location.H, $scope.location.L];
+
+	    $scope.$on('mapInitialized', function (evt, evtMap) {
+	        map = evtMap;
+
+	        $scope.position = map.center;
+
+	        map.addListener('click', function (event) {
+	            clearMarkers();
+	            $scope.position = event.latLng;
+	            //console.log($scope.position);
+	            addMarker(event.latLng);
+	        });
+	    });
+
+	    var markers = [];
+	    // Adds a marker to the map and push to the array.
+	    function addMarker(location) {
+	        var marker = new google.maps.Marker({
+	            position: location,
+	            map: map,
+	            draggable: true
+	        });
+	        markers.push(marker);
+	        marker.addListener('drag', function (position) {
+	            $scope.position = position.latLng;
+	            //$scope.development.location.address = $scope.searchAddress.address
+	            $scope.development.location.latitude = position.latLng.H;
+	            $scope.development.location.longitude = position.latLng.L;
+	            //console.log($scope.development.location);
+	        });
+	    }
+
+	    // Sets the map on all markers in the array.
+	    function setMapOnAll(map) {
+	        for (var i = 0; i < markers.length; i++) {
+	            markers[i].setMap(map);
+	        }
+	    }
+
+	    // Removes the markers from the map, but keeps them in the array.
+	    function clearMarkers() {
+	        setMapOnAll(null);
+	    }
+
+	    // Shows any markers currently in the array.
+	    function showMarkers() {
+	        setMapOnAll(map);
+	    }
+
+	    // Deletes all markers in the array by removing references to them.
+	    function deleteMarkers() {
+	        clearMarkers();
+	        markers = [];
+	    }
+
+	    /*Map ends*/
 	}
 ]);

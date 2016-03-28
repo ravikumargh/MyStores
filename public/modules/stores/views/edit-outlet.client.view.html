@@ -1,35 +1,49 @@
 <section data-ng-controller="OutletsController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1>Edit Outlet</h1>
-	</div>
-	<div class="col-md-12">
-		<form name="outletForm" class="form-horizontal" data-ng-submit="update(outletForm.$valid)" novalidate>
-			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && outletForm.name.$invalid}">
-					<label class="control-label" for="name">Name</label>
-					<div class="controls">
-						<input name="name" type="text" data-ng-model="outlet.name" id="name" class="form-control" placeholder="Name" required>
-					</div>
-					<div ng-show="submitted && outletForm.name.$invalid" class="help-block">
-						<p ng-show="outletForm.name.$error.required" class="text-danger">Name is required</p>
-					</div>
-				</div>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && outletForm.address.$invalid}">
-					<label class="control-label" for="address">Address</label>
-					<div class="controls">
-						<textarea name="address" data-ng-model="outlet.address" id="address" class="form-control" cols="30" rows="10" placeholder="Address" required></textarea>
-					</div>
-					<div ng-show="submitted && outletForm.address.$invalid" class="help-block">
-						<p ng-show="outletForm.address.$error.required" class="text-danger">Address is required</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<input type="submit" value="Update" class="btn btn-default">
-				</div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-			</fieldset>
-		</form>
-	</div>
+    <div class="page-header">
+        <h1>Edit Outlet</h1>
+    </div>
+    <div class="col-md-12">
+        <form name="outletForm" class="form-horizontal" data-ng-submit="update(outletForm.$valid)" novalidate>
+            <fieldset>
+                <div class="form-group" ng-class="{ 'has-error' : submitted && outletForm.name.$invalid}">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input name="name" type="text" data-ng-model="outlet.name" id="name" class="form-control" placeholder="Name" required>
+                    </div>
+                    <div ng-show="submitted && outletForm.name.$invalid" class="help-block">
+                        <p ng-show="outletForm.name.$error.required" class="text-danger">Name is required</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : submitted && outletForm.address.$invalid}">
+                    <label class="control-label" for="address">Address</label>
+                    <div class="controls">
+                        <textarea name="address" data-ng-model="outlet.address" id="address" class="form-control" cols="30" rows="4" placeholder="Address" required></textarea>
+                    </div>
+                    <div ng-show="submitted && outletForm.address.$invalid" class="help-block">
+                        <p ng-show="outletForm.address.$error.required" class="text-danger">Address is required</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input vs-google-autocomplete
+                           ng-model="outlet.address"
+                           vs-latitude="outlet.latitude"
+                           vs-longitude="outlet.longitude "
+                           name="address"
+                           type="text"
+                           class="form-control" />
+
+                    <map zoom="15" center="{{center}}" on-click="placeMarker()"></map>
+                </div>
+                <div class="form-group">
+                    <input type="text" data-ng-model="outlet.landmark" id="txtLangmark" class="form-control" placeholder="Enter a landmark (E.g. Opposite to bigbazar)" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-default">
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </section>

@@ -1,188 +1,74 @@
 <section data-ng-controller="StoresController" data-ng-init="find()">
-	<div class="page-header">
-		<h1>Stores</h1>
-	<!-- <a class="btn btn-primary" href="/#!/stores/create">
-			<i class="glyphicon glyphicon-plus"></i>Add Store
-	</a> -->
-	<a class="btn btn-primary" ng-click="openCreateModal()">
-			<i class="glyphicon glyphicon-plus"></i>Add Store
-	</a>
-	</div>
-	<div class="panel panel-default plain profile-panel">
-		 
-		<!-- 	<div  >
-				<img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{store._id}}"  />
-			</div>
-			<div  >
-				<small class="list-group-item-text">
-					Posted on
-					<span data-ng-bind="store.created | date:'mediumDate'"></span>
-					by
-					<span data-ng-bind="store.user.displayName"></span>
-				</small>
-				<h4 class="list-group-item-heading" data-ng-bind="store.name"></h4>
-				<p class="list-group-item-text" data-ng-bind="store.address"></p>
-			</div> -->
+    <div class="page-header">
+        <h1>Stores</h1>
+        <!-- <a class="btn btn-primary" href="/#!/stores/create">
+                <i class="glyphicon glyphicon-plus"></i>Add Store
+        </a> -->
+        <a class="btn btn-primary" ng-click="openCreateModal()">
+            <i class="glyphicon glyphicon-plus"></i>Add Store
+        </a>
+    </div>
 
-			<div class="panel-body" data-ng-repeat="store in stores">
+    <div class="row-masonry">
+        <div class=" item" data-ng-repeat="store in stores">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <img alt="logo" class="img-responsive text-center ad-store-logo" src="images/content/{{store._id}}" ng-error="tellServerItsBroken(store)" />
+                </div>
+                <div class="panel-body">
+                    <div class="clearfix"></div>
+                    <a data-ng-href="#!/stores/{{store._id}}"> {{store.name}}</a>
+                    <hr>
+                    <p>{{store.address}}</p>
+                    <form>
+                        <div data-toggle="buttons">
+                            <a href="#" title="Views">    <i class="glyphicon glyphicon-eye-open">  </i> <strong>2000</strong></a>
+                            <a href="#" title="Comments"> <i class="glyphicon glyphicon-comment">   </i> <strong>120</strong></a>
+                            <a href="#" title="Likes">    <i class="glyphicon glyphicon-thumbs-up"> </i> <strong>60</strong></a> <span class="label label-success">Active</span>
+                        </div>
+                        <div class="input-group">
+                            <a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                            <a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal(store);">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="panel panel-default plain profile-panel">
+
+       
+        <div class="panel-body" data-ng-repeat="store in stores">
             <div class="col-lg-2 col-md-2 col-sm-12">
                 <div class="profile-avatar">
                     <img class="img-responsive" src="http://localhost:3000/images/content/{{store._id}}" alt="profile picture">
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="user-name">
-                   <a   data-ng-href="#!/stores/{{store._id}}"> {{store.name}}</a>
-                </div>
-                <div class="user-information">
-                    <p>{{store.address}}</p>
-                </div>
+
                 <div class="profile-stats-info">
                     <a href="#" title="Views">    <i class="glyphicon glyphicon-eye-open">  </i> <strong>2000</strong></a>
                     <a href="#" title="Comments"> <i class="glyphicon glyphicon-comment">   </i> <strong>120</strong></a>
                     <a href="#" title="Likes">    <i class="glyphicon glyphicon-thumbs-up"> </i> <strong>60</strong></a> <span class="label label-success">Active</span>
                 </div>
-                
+
             </div>
             <div class="col-lg-2 col-md-2 col-sm-12">
-                	<a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
-						<i class="glyphicon glyphicon-edit"></i>
-					</a>
-					<a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal(store);">
-						<i class="glyphicon glyphicon-trash"></i>
-					</a>
+                <a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal(store);">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
             </div>
         </div>
- 
-	</div>
-	<div class="alert alert-warning text-center" data-ng-if="stores.$resolved && !stores.length">
-		No stores yet, why don't you <a href="/#!/stores/create">create one</a>?
-	</div>
+
+    </div>-->
+    <div class="alert alert-warning text-center" data-ng-if="stores.$resolved && !stores.length">
+        No stores yet, why don't you <a href="/#!/stores/create">create one</a>?
+    </div>
 </section>
-<style type="text/css">
-
-.profile-panel .profile-info {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-.panel-footer {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    color: #fff;
-}
-
-.panel-footer {
-    padding: 10px 15px;
-    background-color: #f3f5f6;
-    border-top: 1px solid #ddd;
-}
-
-.panel-default .panel-footer {
-    color: #768399;
-    background-color: #e4e9eb;
-    border: 1px solid #e4e9eb;
-    border-top: none;
-}
-
-.panel.plain .panel-footer {
-    border-top: none;
-}
-
-.panel-footer .white-content {
-    color: #768399;
-    background: #fff;
-    background-color: #fff;
-}
-
-.profile-panel .profile-stats-info a {
-    font-size: 24px;
-    margin-right: 10px;
-    margin-top: 10px;
-    color: #79859b;
-}
-
-.profile-panel .user-name {
-    margin-top: 10px;
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-/*.profile-panel .profile-avatar img {
-    border-radius: 50%;
-    border: 1px solid #e7e7e2;
-}*/
-
-.profile-panel .profile-avatar {
-    border-radius: 10%;
-    padding: 10px;
-    border: 1px solid #e7e7e2;
-    float: left;
-}
-
-.panel-default .panel-body {
-    border: 1px solid #e4e9eb;
-    border-top: none;
-}
-
-.panel-body {
-    padding: 15px;
-}
-
-.profile-panel .profile-image {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-}
-
-.panel {
-    position: relative;
-    margin-bottom: 25px;
-    border-radius: 4px;
-    border: 0;
-    box-shadow: none;
-} 
-
-.panel-default {
-    border-color: #e4e9eb;
-}
-
-.panel.plain .panel-default .panel-heading {
-    border: 1px solid #e4e9eb;
-    border-bottom: none;
-}
-.panel.plain .panel-heading {
-    border-bottom: none;
-}
-.panel.panel-default .panel-heading {
-    color: #768399;
-}
-
-.panel-heading .white-content {
-    color: #768399;
-    background: #fff;
-    background-color: #fff;
-}
-.panel-default .panel-heading {
-    color: #768399;
-    background-color: #e4e9eb;
-    border-color: #e4e9eb;
-}
-.white-content {
-    color: #768399;
-    background: #fff;
-    background-color: #fff;
-}
-.p-left {
-    padding-left: 0!important;
-}
-
-.p-right {
-    padding-right: 0!important;
-}
-.panel-heading {
-    padding: 0 15px;
-    min-height: 4px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-}
-</style>

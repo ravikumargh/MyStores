@@ -1,8 +1,5 @@
 <section data-ng-controller="AdsController" data-ng-init="findOne()" id="view-ad">
     <div class="pull-right" data-ng-show="authentication.user._id == ad.user._id || authentication.user.roles.indexOf('admin') !== -1">
-
-
-
         <a class="btn btn-primary" href="/#!/ads/{{ad._id}}/edit">
             <i class="glyphicon glyphicon-edit"></i>
         </a>
@@ -30,7 +27,7 @@
                 <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
             </b>
         </small>
-        <img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{ad._id}}" />
+        <img alt="MEAN.JS" class="img-responsive text-center" src="images/content/{{ad._id}}" ng-error="tellServerItsBroken(ad)" />
         <p ng-bind-html="getHtml(ad.title)"></p>
         <p class="lead" ng-bind-html="getHtml(ad.content)"></p>
     </div>
@@ -111,4 +108,4 @@
        </tbody>
      </table>
     </div> -->
-
+</section>
