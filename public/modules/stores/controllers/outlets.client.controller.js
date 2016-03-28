@@ -125,6 +125,7 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 			newUser.outlets= [$stateParams.outletId];
 			newUser.roles= ["outletadmin"];
 			newUser.username=  newUser.email;
+			newUser.stores = [Authentication.user.stores[0]];
 			
 			$http.post('/users/create', newUser).success(function(response) {
 				$scope.users.unshift(response);

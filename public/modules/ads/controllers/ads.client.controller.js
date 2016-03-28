@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ads').controller('AdsController',
-		['$scope', '$stateParams', '$location', '$modal', '$log', '$http', '$timeout', 'Authentication', 'Ads', 'AdOffers', 'Offers', 'File', 'notify', '$sce', 'Storeoutlets', 'Outlets',
-		function ($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify, $sce, Storeoutlets, Outlets) {
+		['$scope', '$stateParams', '$location', '$modal', '$log', '$http', '$timeout', 'Authentication', 'Ads', 'AdOffers', 'Offers', 'File', 'notify', '$sce', 'Storeoutlets', 'Outlets', 'StoreAds', 'OutletAds',
+		function ($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify, $sce, Storeoutlets, Outlets, StoreAds, OutletAds) {
 		    $scope.authentication = Authentication;
 		    $scope.date = { startDate: null, endDate: null };
 		    $scope.storeoutlets = [];
@@ -61,9 +61,24 @@ angular.module('ads').controller('AdsController',
 		    };
 		    $scope.cities = [];
 		    $scope.init = function () {
-		        $scope.ads = Ads.query();
 		        var storesId = Authentication.user.stores[0];
+		        var outletId = Authentication.user.outlets[0];
+		        if ($scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.OutletAdmin) !== -1) {
+		            $scope.ads = OutletAds.query({ outletId: outletId });
+		        } else if ($scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.StoreAdmin) === -1) {
+		            $scope.ads = StoreAds.query({ storeId: storesId });
+		        } else if ($scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.Admin) === -1) {
+		            $scope.ads = Ads.query();
+		        };
 
+		        getStoreOutlets();
+		        getOutlets();
+		    };
+		    var getStoreOutlets = function () {
+		        var storesId = Authentication.user.stores[0];
+		        if ($scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.OutletAdmin) !== -1) {
+		            return;
+		        }
 		        Storeoutlets.getStoreOutlets(storesId).success(function (response) {
 		            for (var i = response.length - 1; i >= 0; i--) {
 		                response[i].selected = false;
@@ -72,10 +87,11 @@ angular.module('ads').controller('AdsController',
 		            getCityOutlets();
 		            console.log($scope.cityOutlets)
 		        })
-	            .error(function (errorResponse) {
-	                //$scope.error = errorResponse.data.message;
-	            });
-
+               .error(function (errorResponse) {
+                   //$scope.error = errorResponse.data.message;
+               });
+		    }
+		    var getOutlets = function () {
 		        Outlets.get({
 		            outletId: Authentication.user.outlets[0]
 		        }).$promise.then(function (res) {
@@ -83,7 +99,7 @@ angular.module('ads').controller('AdsController',
 		            $scope.storeoutlets.push(res);
 		            getCityOutlets();
 		        });
-		    };
+		    }
 		    //bild the city-outlet hierarchy.
 		    var getCityOutlets = function () {
 		        $scope.cities = _.uniqBy($scope.storeoutlets, function (u) {
@@ -276,6 +292,12 @@ angular.module('adsModal').controller('AdsModalController',
 	    $scope.isAllOutlet = true;
 	    if (Authentication.user.roles.indexOf("outletadmin") != -1) {
 	        $scope.isAllOutlet = false;
+            //TODO: Need some refractor
+	        angular.forEach(ParentScope.cityOutlets, function (cityOutlet) {
+	            angular.forEach(cityOutlet.storeoutlet, function (item) {
+	                item.selected = true;
+	            });
+	        });
 	    }
 
 	    $scope.create = function () {

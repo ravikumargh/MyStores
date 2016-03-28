@@ -30,8 +30,20 @@
                 <input type="file" ngf-select="" ng-model="file" name="file" ngf-accept="'image/*'" />
             </div>
         </div>
-
-        <div class="panel panel-default plain profile-panel">{{co}}
+        <!--TODO: need some refractor-->
+        <div class="form-group" ng-hide="isAllOutlet">
+            <label class=" control-label" for="name">
+            Outlet</label>
+            <div class="controls" ng-repeat="cityOutlet in cityOutlets">
+                {{cityOutlet.name}}
+                <div ng-repeat="storeoutlet in cityOutlet.storeoutlet">
+                    {{storeoutlet.name}}
+                </div>
+            </div>
+        </div>
+        <!--TODO: need some refractor-->
+        <div class="panel panel-default plain profile-panel" ng-show="isAllOutlet">
+            {{co}}
             <div class="wrap">
                 <input id="allouts" type="radio" name="isAllOutlet" ng-model="isAllOutlet" value="allouts">
                 <label for="allouts">All outlet</label>

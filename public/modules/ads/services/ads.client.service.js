@@ -12,7 +12,20 @@ angular.module('ads').factory('Ads', ['$resource',
 		});
 	}
 ]);
-
+angular.module('ads').factory('StoreAds', ['$resource',
+	function ($resource) {
+	    return $resource('ads/store/:storeId', {
+	        storeId: '@store'
+	    });
+	}
+]);
+angular.module('ads').factory('OutletAds', ['$resource',
+	function ($resource) {
+	    return $resource('ads/outlet/:outletId', {
+	        outletId: '@outlets'
+	    });
+	}
+]);
 angular.module('ads').factory('AdOffers', ['$resource',
 	function($resource) {
 		return $resource('ads/:adId/offers', {

@@ -1,248 +1,249 @@
-<div  data-ng-controller="HeaderController" data-ng-init="init()">
+<div data-ng-controller="HeaderController" data-ng-init="init()">
 
-<nav class="navbar navbar-fixed-top header">
-    <div class="col-md-12">
-        <div class="navbar-header">
-          <a href="/#!/" class="navbar-brand">Bootstrap</a>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
-          <i class="glyphicon glyphicon-search"></i>
-          </button>
+    <nav class="navbar navbar-fixed-top header">
+        <div class="col-md-12">
+            <div class="navbar-header">
+                <a href="/#!/" class="navbar-brand">Bootstrap</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
 
-          <div class="navbar-toggle">
-            <div class="dropdown dropdown-append-to-body">
-                in <span class="dropdown-toggle" data-toggle="dropdown">
-                    {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
-                </span>
-                <ul class="dropdown-menu" role="menu">
-                    <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
-                </ul>
-            </div>
-        </div>
-      
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse1">
-          <form class="navbar-form pull-left">
-              <div class="input-group" style="max-width:470px;">
-                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                <div class="input-group-btn">
-                  <button class="btn btn-default btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <div class="navbar-toggle">
+                    <div class="dropdown dropdown-append-to-body">
+                        in <span class="dropdown-toggle" data-toggle="dropdown">
+                            {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+                        </span>
+                        <ul class="dropdown-menu" role="menu">
+                            <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
+                        </ul>
+                    </div>
                 </div>
-                 <div class="input-group-btn hidden-xs">
-		            <div class="dropdown dropdown-append-to-body">
-		                in <span class="dropdown-toggle" data-toggle="dropdown">
-		                    {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
-		                </span>
-		                <ul class="dropdown-menu" role="menu">
-		                    <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
-		                </ul>
-		            </div>
-		        </div>
-              </div>
-          </form>
-          <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
-            <li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
-                <a ng-switch-when="dropdown" class="dropdown-toggle">
-                    <span data-ng-bind="item.title"></span>
-                    <b class="caret"></b>
-                </a>
-                <ul ng-switch-when="dropdown" class="dropdown-menu">
-                    <li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
-                        <a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse1">
+                <form class="navbar-form pull-left">
+                    <div class="input-group" style="max-width:470px;">
+                        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                        <div class="input-group-btn hidden-xs">
+                            <div class="dropdown dropdown-append-to-body">
+                                in <span class="dropdown-toggle" data-toggle="dropdown">
+                                    {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+                                </span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
+                    <li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
+                        <a ng-switch-when="dropdown" class="dropdown-toggle">
+                            <span data-ng-bind="item.title"></span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul ng-switch-when="dropdown" class="dropdown-menu">
+                            <li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+                                <a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
+                            </li>
+                        </ul>
+                        <a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
                     </li>
                 </ul>
-                <a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
-            </li>
-        </ul>
-          <ul class="nav navbar-nav navbar-right">
-             <li data-ng-show="authentication.user"><a href="/#!/ads" >+Post Ad</a></li>
-             <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#"><span class="badge pull-right">40</span>Link</a></li>
-                  <li><a href="#"><span class="badge pull-right">2</span>Link</a></li>
-                  <li><a href="#"><span class="badge pull-right">0</span>Link</a></li>
-                  <li><a href="#"><span class="label label-info pull-right">1</span>Link</a></li>
-                  <li><a href="#"><span class="badge pull-right">13</span>Link</a></li>
-                </ul>
-             </li>
-             <li><a href="#" id="btnToggle"><i class="glyphicon glyphicon-th-large"></i></a></li>
-             <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>
-           </ul>
-           <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-            <li ui-route="/signup" ng-class="{active: $uiRoute}">
-                <a href="/#!/signup">Sign Up</a>
-            </li>
-            <li class="divider-vertical"></li>
-            <li ui-route="/signin" ng-class="{active: $uiRoute}">
-                <a href="/#!/signin">Sign In</a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="/#!/settings/profile">Edit Profile</a>
+                <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+                    <li ui-route="/signup" ng-class="{active: $uiRoute}">
+                        <a href="/#!/signup">Sign Up</a>
                     </li>
-                    <li>
-                        <a href="/#!/settings/accounts">Manage Social Accounts</a>
-                    </li>
-                    <li data-ng-show="authentication.user.provider === 'local'">
-                        <a href="/#!/settings/password">Change Password</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="/auth/signout">Signout</a>
+                    <li class="divider-vertical"></li>
+                    <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                        <a href="/#!/signin">Sign In</a>
                     </li>
                 </ul>
-            </li>
-        </ul>
-        </div>  
-     </div> 
-</nav>
-<div class="navbar navbar-default" id="subnav">
-    <div class="col-md-12">
+                <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/#!/settings/profile">Edit Profile</a>
+                            </li>
+                            <li>
+                                <a href="/#!/settings/accounts">Manage Social Accounts</a>
+                            </li>
+                            <li data-ng-show="authentication.user.provider === 'local'">
+                                <a href="/#!/settings/password">Change Password</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/auth/signout">Signout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li data-ng-show="authentication.user"><a href="/#!/ads">+Post Ad</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="badge pull-right">40</span>Link</a></li>
+                            <li><a href="#"><span class="badge pull-right">2</span>Link</a></li>
+                            <li><a href="#"><span class="badge pull-right">0</span>Link</a></li>
+                            <li><a href="#"><span class="label label-info pull-right">1</span>Link</a></li>
+                            <li><a href="#"><span class="badge pull-right">13</span>Link</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" id="btnToggle"><i class="glyphicon glyphicon-th-large"></i></a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!--<div class="navbar navbar-default" id="subnav">
+        <div class="col-md-12">
+            <div class="navbar-header">
+
+                <a href="#" style="margin-left:15px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-home" style="color:#dd1111;"></i> Home <small><i class="glyphicon glyphicon-chevron-down"></i></small></a>
+                <ul class="nav dropdown-menu">
+                    <li><a href="#"><i class="glyphicon glyphicon-user" style="color:#1111dd;"></i> Profile</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-dashboard" style="color:#0000aa;"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-inbox" style="color:#11dd11;"></i> Pages</a></li>
+                    <li class="nav-divider"></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-cog" style="color:#dd1111;"></i> Settings</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-plus"></i> More..</a></li>
+                </ul>
+
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Posts</a></li>
+                    <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
+                    <li><a href="#aboutModal" role="button" data-toggle="modal">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
         <div class="navbar-header">
-          
-          <a href="#" style="margin-left:15px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-home" style="color:#dd1111;"></i> Home <small><i class="glyphicon glyphicon-chevron-down"></i></small></a>
-          <ul class="nav dropdown-menu">
-              <li><a href="#"><i class="glyphicon glyphicon-user" style="color:#1111dd;"></i> Profile</a></li>
-              <li><a href="#"><i class="glyphicon glyphicon-dashboard" style="color:#0000aa;"></i> Dashboard</a></li>
-              <li><a href="#"><i class="glyphicon glyphicon-inbox" style="color:#11dd11;"></i> Pages</a></li>
-              <li class="nav-divider"></li>
-              <li><a href="#"><i class="glyphicon glyphicon-cog" style="color:#dd1111;"></i> Settings</a></li>
-              <li><a href="#"><i class="glyphicon glyphicon-plus"></i> More..</a></li>
-          </ul>
-          
-          
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse2">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
-      
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse2">
-          <ul class="nav navbar-nav navbar-right">
-             <li class="active"><a href="#">Posts</a></li>
-             <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
-             <li><a href="#aboutModal" role="button" data-toggle="modal">About</a></li>
-           </ul>
-        </div>  
-     </div> 
-</div>
+            <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/#!/" class="navbar-brand">MyStore</a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-    <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a href="/#!/" class="navbar-brand">MyStore</a>
-
-        <div class="navbar-toggle">
-            <div class="dropdown dropdown-append-to-body">
-                in <span class="dropdown-toggle" data-toggle="dropdown">
-                    {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
-                </span>
-                <ul class="dropdown-menu" role="menu">
-                    <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
-                </ul>
+            <div class="navbar-toggle">
+                <div class="dropdown dropdown-append-to-body">
+                    in <span class="dropdown-toggle" data-toggle="dropdown">
+                        {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+                    </span>
+                    <ul class="dropdown-menu" role="menu">
+                        <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
+                    </ul>
+                </div>
             </div>
+
         </div>
-
-    </div>
-    <div class="navbar-form navbar-left" role="search">
+        <div class="navbar-form navbar-left" role="search">
 
 
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-            </span>
-        </div>
-        <div class="input-group hidden-xs">
-            <div class="dropdown dropdown-append-to-body">
-                in <span class="dropdown-toggle" data-toggle="dropdown">
-                    {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
                 </span>
-                <ul class="dropdown-menu" role="menu">
-                    <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
-                </ul>
             </div>
+            <div class="input-group hidden-xs">
+                <div class="dropdown dropdown-append-to-body">
+                    in <span class="dropdown-toggle" data-toggle="dropdown">
+                        {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+                    </span>
+                    <ul class="dropdown-menu" role="menu">
+                        <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
+        <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+            <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
+                <li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
+                    <a ng-switch-when="dropdown" class="dropdown-toggle">
+                        <span data-ng-bind="item.title"></span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul ng-switch-when="dropdown" class="dropdown-menu">
+                        <li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+                            <a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
+                        </li>
+                    </ul>
+                    <a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+                <li ui-route="/signup" ng-class="{active: $uiRoute}">
+                    <a href="/#!/signup">Sign Up</a>
+                </li>
+                <li class="divider-vertical"></li>
+                <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                    <a href="/#!/signin">Sign In</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/#!/settings/profile">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="/#!/settings/accounts">Manage Social Accounts</a>
+                        </li>
+                        <li data-ng-show="authentication.user.provider === 'local'">
+                            <a href="/#!/settings/password">Change Password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/auth/signout">Signout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+                <li>
+                    <a href="/#!/ads" class="btn btn-success btn-post-ad">+ Post Ad</a>
+                </li>
 
-    </div>
-    <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-        <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
-            <li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
-                <a ng-switch-when="dropdown" class="dropdown-toggle">
-                    <span data-ng-bind="item.title"></span>
-                    <b class="caret"></b>
-                </a>
-                <ul ng-switch-when="dropdown" class="dropdown-menu">
-                    <li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
-                        <a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
-                    </li>
-                </ul>
-                <a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-            <li ui-route="/signup" ng-class="{active: $uiRoute}">
-                <a href="/#!/signup">Sign Up</a>
-            </li>
-            <li class="divider-vertical"></li>
-            <li ui-route="/signin" ng-class="{active: $uiRoute}">
-                <a href="/#!/signin">Sign In</a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="/#!/settings/profile">Edit Profile</a>
-                    </li>
-                    <li>
-                        <a href="/#!/settings/accounts">Manage Social Accounts</a>
-                    </li>
-                    <li data-ng-show="authentication.user.provider === 'local'">
-                        <a href="/#!/settings/password">Change Password</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="/auth/signout">Signout</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-            <li>
-                <a href="/#!/ads" class="btn btn-success btn-post-ad">+ Post Ad</a>
-            </li>
-
-        </ul>
-    </nav> -->
+            </ul>
+        </nav> -->
 </div>
 
 
