@@ -1,11 +1,12 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
     <div class="page-header row">
         <div class="col-md-1">
-            <img alt="logo" class="img-responsive text-center" src="images/content/{{store._id}}"  />
+            <img alt="logo" class="img-responsive text-center" src="images/content/{{store._id}}" />
         </div>
         <div class="col-md-11">
             <h1 data-ng-bind="store.name"></h1>
         </div>
+        <p class="lead" data-ng-bind="store.address.name"></p>
         <small>
             <em class="text-muted">
                 Created on
@@ -14,37 +15,36 @@
                 <span data-ng-bind="store.user.displayName"></span>
             </em>
         </small>
-        <p class="lead" data-ng-bind="store.address"></p>
 
         <div>
             <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
                     accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
                 Update Logo
             </button>
-
-
             <div style="font:smaller">
                 {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
                 <span class="progress" ng-show="f.progress >= 0">
-                    <div style="width:{{f.progress}}%"
-                         ng-bind="f.progress + '%'"></div>
+                    <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
                 </span>
             </div>
             {{errorMsg}}
         </div>
     </div>
-    <a class="btn btn-primary" ng-click="openOutletCreateModal()">
+    <!--TODO : Need to refractor openOutletCreateModal()-->
+    <!--<a class="btn btn-primary" ng-click="openOutletCreateModal()">
+        <i class="glyphicon glyphicon-plus"></i>Add Outlet
+    </a>-->
+    <a class="btn btn-primary" href="#!/stores/{{store._id}}/outlets/create">
         <i class="glyphicon glyphicon-plus"></i>Add Outlet
     </a>
-
     <div class="pull-right" data-ng-show="authentication.user._id == store.user._id">
-        <a class="btn btn-primary" href="/#!/stores/{{store._id}}/outlets">
+        <!--<a class="btn btn-primary" href="/#!/stores/{{store._id}}/outlets">
             Outlets
-        </a>
+        </a>-->
         <a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
             <i class="glyphicon glyphicon-edit"></i>
         </a>
-        <a class="btn btn-primary" data-ng-click="remove();">
+        <a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal();">
             <i class="glyphicon glyphicon-trash"></i>
         </a>
     </div>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="clearfix"></div>
-                    <p>{{outlet.address}}</p>
+                    <p>{{outlet.address.name}}</p>
                     <hr>
                     <form>
                         <div data-toggle="buttons">
@@ -78,7 +78,9 @@
             </div>
         </div>
     </div>
-
+    <div class="alert alert-warning text-center" data-ng-if=" !outlets.length">
+        No outlets yet, why don't you <a href="#!/stores/{{store._id}}/outlets/create">create one</a>?
+    </div>
     <!--<div class="panel panel-default plain profile-panel">
         <div class="panel-body" data-ng-repeat="outlet in outlets">
             <div class="col-lg-10 col-md-10 col-sm-12">
@@ -112,9 +114,6 @@
         <i class="glyphicon glyphicon-plus"></i>Add Store Admin
     </a>
     <div class="panel panel-default plain profile-panel">
-
-
-
         <table ng-table="vm.tableParams" class="table">
             <tr ng-repeat="user in users">
                 <td data-title="'#'">
@@ -129,7 +128,15 @@
                 <td title="'Email'">
                     {{user.email}}
                 </td>
+                <td>
+                    <a class="btn btn-primary" data-ng-click="deleteOutletAdminConfirmationModal(user);">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </td>
             </tr>
         </table>
+        <div class="alert alert-warning text-center" data-ng-if=" !users.length">
+            No outlet admins yet, why don't you <a data-ng-click="openCreateStoreAdminModal();">create one</a>?
+        </div>
     </div>
 </section>

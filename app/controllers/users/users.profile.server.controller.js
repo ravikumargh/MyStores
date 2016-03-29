@@ -72,6 +72,22 @@ exports.outletusers = function(req, res) {
 	});
 };
 
+exports.delete = function(req, res) {
+	var user = req.user;
+ User.find({ '_id': req.params.userId }).remove(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			return res.status(200).send({
+				message: "OK"
+			});
+		}
+	});
+ 
+};
+
 /**
  * Store User
  */

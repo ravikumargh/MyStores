@@ -1,51 +1,57 @@
 <section data-ng-controller="OutletsController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="outlet.name"></h1>
-		<!-- <small>
-			<em class="text-muted">
-				Created on
-				<span data-ng-bind="outlet.created | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="outlet.user.displayName"></span>
-			</em>
-		</small> -->
-		<p class="lead" data-ng-bind="outlet.address"></p>
-	</div>
-	<!-- <div class="pull-right" data-ng-show="authentication.user._id == outlet.user._id"> -->
+    <div class="page-header">
+        <h1 data-ng-bind="outlet.name"></h1>
+        <!-- <small>
+            <em class="text-muted">
+                Created on
+                <span data-ng-bind="outlet.created | date:'mediumDate'"></span>
+                by
+                <span data-ng-bind="outlet.user.displayName"></span>
+            </em>
+        </small> -->
+        <p class="lead" data-ng-bind="outlet.address.name"></p>
+    </div>
+    <!-- <div class="pull-right" data-ng-show="authentication.user._id == outlet.user._id"> -->
 
-	<div    >
-		<a class="btn btn-primary" data-ng-click="openCreateAdminModal();">
-			<i class="glyphicon glyphicon-plus"></i>Add admin
-		</a>
+    <div>
+        <a class="btn btn-primary" data-ng-click="openCreateAdminModal();">
+            <i class="glyphicon glyphicon-plus"></i>Add admin
+        </a>
 
-		<!-- <a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/createuser">
-			<i class="glyphicon glyphicon-plus"></i>Add admin
-		</a> -->
-		<a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
- 
+        <!-- <a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/createuser">
+            <i class="glyphicon glyphicon-plus"></i>Add admin
+        </a> -->
+        <a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn btn-primary" data-ng-click="deleteOutletConfirmationModal();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
 
-	<div class="panel panel-default plain profile-panel">
-         
-	
 
-		<table   class="table" >
-		    <tr ng-repeat="user in users">
-		    	<td data-title="'#'">
-	            	{{$index+1}}
-	          	</td>
-		        <td title="'FirstName'"   >
-		            {{user.firstName}}</td>
-		            <td title="'LastName'"  >
-		            {{user.lastName}}</td>
-		        <td title="'Email'"  >
-		            {{user.email}}</td>
-		    </tr>
-		</table>
-	 </div>
+    <div class="panel panel-default plain profile-panel">
+
+        <table class="table">
+            <tr ng-repeat="user in users">
+                <td data-title="'#'">
+                    {{$index+1}}
+                </td>
+                <td title="'FirstName'">
+                    {{user.firstName}}
+                </td>
+                <td title="'LastName'">
+                    {{user.lastName}}
+                </td>
+                <td title="'Email'">
+                    {{user.email}}
+                </td>
+                <td>
+                    <a class="btn btn-primary" data-ng-click="deleteOutletAdminConfirmationModal(user);">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
 </section>

@@ -3,6 +3,8 @@
     <nav class="navbar navbar-fixed-top header">
         <div class="col-md-12">
             <div class="navbar-header">
+                <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+
                 <a href="/#!/" class="navbar-brand">Bootstrap</a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
                     <i class="glyphicon glyphicon-search"></i>
@@ -135,19 +137,6 @@
             </div>
         </div>
     </div>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!--
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
@@ -247,16 +236,97 @@
 </div>
 
 
+<script>
+    $(document).ready(function () {
+        var sideslider = $('[data-toggle=collapse-side]');
+        var sel = sideslider.attr('data-target');
+        var sel2 = sideslider.attr('data-target-2');
+        sideslider.click(function (event) {
+            $(sel).toggleClass('in');
+            $(sel2).toggleClass('out');
+        });
+    });
 
-$(document).ready(function(){/* jQuery toggle layout */
-$('#btnToggle').click(function(){
-  if ($(this).hasClass('on')) {
-    $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
-    $(this).removeClass('on');
-  }
-  else {
-    $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
-    $(this).addClass('on');
-  }
-});
-});
+    //$(document).ready(function () {/* jQuery toggle layout */
+    //    $('#btnToggle').click(function () {
+    //        if ($(this).hasClass('on')) {
+    //            $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
+    //            $(this).removeClass('on');
+    //        }
+    //        else {
+    //            $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
+    //            $(this).addClass('on');
+    //        }
+    //    });
+    //});
+</script>
+<style>
+    .navbar-inverse {
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+        .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+            border-color: transparent;
+        }
+
+    .side-collapse {
+        top: 145px;
+        bottom: 0;
+        left: 0;
+        width: 260px;
+        
+        overflow: hidden;
+        transition: width .4s;
+    }
+
+    @media screen and (max-width: 768px) {
+        .profile-usermenu {
+            margin-top: 65px;
+        }
+
+        .side-collapse {
+            top: 50px;
+            bottom: 0;
+            left: 0;
+            width: 225px;
+            position: fixed;
+            overflow: hidden;
+            transition: width .4s;
+        }
+
+        .navbar-inverse {
+            background-color: #fff;
+            border-color: #fff;
+        }
+
+            .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+                border-color: #fff;
+            }
+
+        .side-collapse-container {
+            width: 100%;
+            position: relative;
+            left: 0;
+            transition: left .4s;
+        }
+
+            .side-collapse-container.out {
+                left: 200px;
+            }
+
+        .side-collapse {
+            top: 50px;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            position: fixed;
+            overflow: hidden;
+            transition: width .4s;
+        }
+
+            .side-collapse.in {
+                width: 0;
+            }
+    }
+</style>

@@ -1,35 +1,71 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1>Edit Store</h1>
+        <h1 ng-show="store._id">Edit Store</h1>
+        <h1 ng-hide="store._id">New Store</h1>
 	</div>
 	<div class="col-md-12">
-		<form name="storeForm" class="form-horizontal" data-ng-submit="update(storeForm.$valid)" novalidate>
-			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && storeForm.name.$invalid}">
-					<label class="control-label" for="name">Name</label>
-					<div class="controls">
-						<input name="name" type="text" data-ng-model="store.name" id="name" class="form-control" placeholder="Name" required>
-					</div>
-					<div ng-show="submitted && storeForm.name.$invalid" class="help-block">
-						<p ng-show="storeForm.name.$error.required" class="text-danger">Name is required</p>
-					</div>
-				</div>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && storeForm.address.$invalid}">
-					<label class="control-label" for="address">Address</label>
-					<div class="controls">
-						<textarea name="address" data-ng-model="store.address" id="address" class="form-control" cols="30" rows="10" placeholder="Address" required></textarea>
-					</div>
-					<div ng-show="submitted && storeForm.address.$invalid" class="help-block">
-						<p ng-show="storeForm.address.$error.required" class="text-danger">Address is required</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<input type="submit" value="Update" class="btn btn-default">
-				</div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-			</fieldset>
-		</form>
+        <form name="storeForm" class="form-horizontal" data-ng-submit="createOrUpdateStore(storeForm.$valid)" novalidate>
+            <fieldset>
+                <div class="form-group" ng-class="{ 'has-error' : submitted && storeForm.name.$invalid}">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input name="name" type="text" data-ng-model="store.name" id="name" class="form-control" placeholder="Name" required>
+                    </div>
+                    <div ng-show="submitted && storeForm.name.$invalid" class="help-block">
+                        <p ng-show="storeForm.name.$error.required" class="text-danger">Name is required</p>
+                    </div>
+                </div>
+                <!--<div class="form-group" ng-class="{ 'has-error' : submitted && storeForm.address.$invalid}">
+                <label class="control-label" for="address">Address</label>
+                <div class="controls">
+                    <textarea name="address" data-ng-model="store.address" id="address" class="form-control" cols="30" rows="10" placeholder="Address" required></textarea>
+                </div>
+                <div ng-show="submitted && storeForm.address.$invalid" class="help-block">
+                    <p ng-show="storeForm.address.$error.required" class="text-danger">Address is required</p>
+                </div>
+            </div>-->
+                <div class="form-group">
+                    <label class="control-label" for="Address">Address</label>
+                    <input vs-google-autocomplete
+                           ng-model="store.address.name"
+                           vs-place="store.address.place"
+                           vs-place-id="store.address.components.placeId"
+                           vs-street-number="store.address.components.streetNumber"
+                           vs-street="store.address.components.street"
+                           vs-city="store.address.components.city"
+                           vs-state="store.address.components.state"
+                           vs-country-short="store.address.components.countryCode"
+                           vs-country="store.address.components.country"
+                           vs-post-code="store.address.components.postCode"
+                           vs-district="store.address.components.district"
+                           vs-latitude="store.address.components.location.lat"
+                           vs-longitude="store.address.components.location.long"
+                           type="text"
+                           name="store.address"
+                           id="store.address"
+                           class="form-control"
+                           placeholder="Enter store.address">
+                    <map zoom="15" center="{{center}}" on-click="placeMarker()"></map>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="landmark">Landmark</label>
+                    <input type="text" data-ng-model="store.landmark" id="txtLangmark" class="form-control" placeholder="Enter a landmark (E.g. Opposite to bigbazar)" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">Logo</label>
+                    <div class="controls">
+                        <input type="file" ngf-select="" ng-model="file" name="file" ngf-accept="'image/*'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" ng-hide="store._id">
+                    <input type="submit" value="Update" class="btn btn-primary" ng-show="store._id">
+                    <a href="#!/stores" class="btn btn-warning">Cancel</a>
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
 	</div>
 </section>

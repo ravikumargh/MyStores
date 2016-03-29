@@ -28,6 +28,9 @@ app.route('/ads/todays/:cityId')
 		.put(users.requiresLogin, ads.hasAuthorization, ads.update)
 		.delete(users.requiresLogin, ads.hasAuthorization, ads.delete);
 
+	app.route('/ads/publish')
+		.put(users.requiresLogin, ads.hasAuthorization, ads.publish);
+
 	// Finish by binding the ad middleware
 	app.param('adId', ads.adByID);
 	app.param('cityId', cities.cityByID);	 

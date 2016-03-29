@@ -104,7 +104,7 @@ exports.outletByID = function (req, res, next, id) {
  * Outlet authorization middleware
  */
 exports.hasAuthorization = function (req, res, next) {
-    if (req.user.roles.indexOf("admin") === 0 || req.user.roles.indexOf("storeadmin") === 0) {
+    if (req.user.roles.indexOf("admin") === 0 || req.user.roles.indexOf("storeadmin") === 0 || req.user.roles.indexOf("outletadmin") === 0) {
         next();
     }
     else {

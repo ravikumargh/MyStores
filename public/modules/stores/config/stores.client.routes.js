@@ -11,7 +11,7 @@ angular.module('stores').config(['$stateProvider',
 		}).
 		state('createStore', {
 			url: '/stores/create',
-			templateUrl: 'modules/stores/views/create-store.client.view.html'
+			templateUrl: 'modules/stores/views/edit-store.client.view.html'
 		}).
 		state('viewStore', {
 			url: '/stores/:storeId',

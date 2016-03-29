@@ -4,7 +4,10 @@
         <!-- <a class="btn btn-primary" href="/#!/stores/create">
                 <i class="glyphicon glyphicon-plus"></i>Add Store
         </a> -->
-        <a class="btn btn-primary" ng-click="openCreateModal()">
+        <!--<a class="btn btn-primary" ng-click="openCreateModal()">
+            <i class="glyphicon glyphicon-plus"></i>Add Store
+        </a>-->
+        <a class="btn btn-primary" href="#!/stores/create">
             <i class="glyphicon glyphicon-plus"></i>Add Store
         </a>
     </div>
@@ -19,7 +22,7 @@
                     <div class="clearfix"></div>
                     <a data-ng-href="#!/stores/{{store._id}}"> {{store.name}}</a>
                     <hr>
-                    <p>{{store.address}}</p>
+                    <p>{{store.address.name}}</p>
                     <form>
                         <div data-toggle="buttons">
                             <a href="#" title="Views">    <i class="glyphicon glyphicon-eye-open">  </i> <strong>2000</strong></a>

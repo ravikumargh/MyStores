@@ -11,7 +11,7 @@ angular.module('outlets').config(['$stateProvider',
 		}).
 		state('createOutlet', {
 			url: '/stores/:storeId/outlets/create',
-			templateUrl: 'modules/stores/views/create-outlet.client.view.html'
+			templateUrl: 'modules/stores/views/edit-outlet.client.view.html'
 		}).
 		state('viewOutlet', {
 			url: '/outlets/:outletId',

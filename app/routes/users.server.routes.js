@@ -29,6 +29,10 @@ module.exports = function(app) {
 	app.route('/users/outlet/:outletId').get(users.outletusers);
 	app.route('/users/store/:storeId').get(users.storeusers);
 
+	app.route('/users/:userId')
+		.delete( users.delete);
+
+
 	// Setting the facebook oauth routes
 	app.route('/auth/facebook').get(passport.authenticate('facebook', {
 		scope: ['email']

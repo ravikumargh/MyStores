@@ -53,6 +53,32 @@ exports.update = function(req, res) {
 };
 
 /**
+ * publish a ad
+ */
+exports.publish = function(req, res) {
+	var ad = req.ad;
+
+	ad = _.extend(ad, req.body);
+
+	ad.update(
+	   { _id: ad._id },
+	   { $set:
+	      {
+	        ispublished: ad.ispublished
+	      }
+	   },function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.json(ad);
+		}
+	}
+	);	 
+};
+
+/**
  * Delete an ad
  */
 exports.delete = function(req, res) {

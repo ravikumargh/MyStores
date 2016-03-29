@@ -12,3 +12,17 @@ angular.module('outlets').factory('Outlets', ['$resource',
 		});
 	}
 ]);
+angular.module('outlets').factory('OutletUsers', ['$resource',
+	function ($resource) {
+	    return $resource('users/outlet/:outletId', {
+	        outletId: '@outletId'
+	    } );
+	}
+]);
+angular.module('outlets').factory('Users', ['$resource',
+	function ($resource) {
+	    return $resource('users/:userId', {
+	        userId: '@userId'
+	    });
+	}
+]);
