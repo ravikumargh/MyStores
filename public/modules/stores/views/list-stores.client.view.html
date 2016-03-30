@@ -1,42 +1,41 @@
 <section data-ng-controller="StoresController" data-ng-init="find()">
-    <div class="page-header">
-        <h1>Stores</h1>
-        <!-- <a class="btn btn-primary" href="/#!/stores/create">
+    <div class="page-header row">
+        <div class="col-md-10">
+            <h3>Stores</h3>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary pull-right" href="#!/stores/create">
                 <i class="glyphicon glyphicon-plus"></i>Add Store
-        </a> -->
-        <!--<a class="btn btn-primary" ng-click="openCreateModal()">
-            <i class="glyphicon glyphicon-plus"></i>Add Store
-        </a>-->
-        <a class="btn btn-primary" href="#!/stores/create">
-            <i class="glyphicon glyphicon-plus"></i>Add Store
-        </a>
+            </a>
+        </div>
     </div>
-
     <div class="row-masonry">
         <div class=" item" data-ng-repeat="store in stores">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <img alt="logo" class="img-responsive text-center ad-store-logo" src="images/content/{{store._id}}" ng-error="tellServerItsBroken(store)" />
+                    <a data-ng-href="#!/stores/{{store._id}}">
+                        <img alt="logo" class="img-responsive text-center ad-store-logo" src="images/content/{{store._id}}" ng-error="tellServerItsBroken(store)" />
+                    </a>
                 </div>
                 <div class="panel-body">
                     <div class="clearfix"></div>
-                    <a data-ng-href="#!/stores/{{store._id}}"> {{store.name}}</a>
-                    <hr>
+                    <h3> <a data-ng-href="#!/stores/{{store._id}}"> {{store.name}}</a></h3>
                     <p>{{store.address.name}}</p>
+                    <hr>
                     <form>
                         <div data-toggle="buttons">
                             <a href="#" title="Views">    <i class="glyphicon glyphicon-eye-open">  </i> <strong>2000</strong></a>
                             <a href="#" title="Comments"> <i class="glyphicon glyphicon-comment">   </i> <strong>120</strong></a>
                             <a href="#" title="Likes">    <i class="glyphicon glyphicon-thumbs-up"> </i> <strong>60</strong></a> <span class="label label-success">Active</span>
-                        </div>
-                        <div class="input-group">
-                            <a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </a>
-                            <a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal(store);">
+
+                            <a class="btn btn-primary pull-right btn-rl-mgn-3" data-ng-click=" opendeleteconfirmationmodal(store);">
                                 <i class="glyphicon glyphicon-trash"></i>
                             </a>
+                            <a class="btn btn-primary pull-right btn-rl-mgn-3" href="/#!/stores/{{store._id}}/edit">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -44,7 +43,7 @@
     </div>
     <!--<div class="panel panel-default plain profile-panel">
 
-       
+
         <div class="panel-body" data-ng-repeat="store in stores">
             <div class="col-lg-2 col-md-2 col-sm-12">
                 <div class="profile-avatar">

@@ -1,75 +1,83 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
-    <div class="page-header row">
-        <div class="col-md-1">
-            <img alt="logo" class="img-responsive text-center" src="images/content/{{store._id}}" />
-        </div>
-        <div class="col-md-11">
-            <h1 data-ng-bind="store.name"></h1>
-        </div>
-        <p class="lead" data-ng-bind="store.address.name"></p>
-        <small>
-            <em class="text-muted">
-                Created on
-                <span data-ng-bind="store.created | date:'mediumDate'"></span>
-                by
-                <span data-ng-bind="store.user.displayName"></span>
-            </em>
-        </small>
 
-        <div>
-            <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
-                    accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
-                Update Logo
-            </button>
-            <div style="font:smaller">
-                {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
-                <span class="progress" ng-show="f.progress >= 0">
-                    <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
-                </span>
-            </div>
-            {{errorMsg}}
+    <div class="page-header row">
+        <div class="col-md-10">
+            <img alt="logo" class="img-responsive text-center" src="images/content/{{store._id}}" />
+         
+            <h1 data-ng-bind="store.name"></h1>
+
+            <p class="lead" data-ng-bind="store.address.name"></p>
+            <small>
+                <em class="text-muted">
+                    Created on
+                    <span data-ng-bind="store.created | date:'mediumDate'"></span>
+                    by
+                    <span data-ng-bind="store.user.displayName"></span>
+                </em>
+            </small>
         </div>
-    </div>
+        <div class="col-md-2">
+            <div class="pull-right" data-ng-show="authentication.user._id == store.user._id">
+                
+                <a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal();">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+            <div class="pull-right">
+                <br />
+                <button type="file" class="btn btn-primary" ngf-select="uploadFiles($file, $invalidFiles)"
+                        accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                    Update Logo
+                </button>
+            </div>
+        </div>
+
+            <div>
+               
+                <div style="font:smaller">
+                    {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                    <span class="progress" ng-show="f.progress >= 0">
+                        <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
+                    </span>
+                </div>
+                {{errorMsg}}
+            </div>
+        </div>
     <!--TODO : Need to refractor openOutletCreateModal()-->
     <!--<a class="btn btn-primary" ng-click="openOutletCreateModal()">
         <i class="glyphicon glyphicon-plus"></i>Add Outlet
     </a>-->
-    <a class="btn btn-primary" href="#!/stores/{{store._id}}/outlets/create">
-        <i class="glyphicon glyphicon-plus"></i>Add Outlet
-    </a>
-    <div class="pull-right" data-ng-show="authentication.user._id == store.user._id">
-        <!--<a class="btn btn-primary" href="/#!/stores/{{store._id}}/outlets">
-            Outlets
-        </a>-->
-        <a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
-            <i class="glyphicon glyphicon-edit"></i>
-        </a>
-        <a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal();">
-            <i class="glyphicon glyphicon-trash"></i>
-        </a>
+    <div class="table-header row">
+        <div class="col-md-10">
+            <h3>Outlets</h3>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary pull-right" href="#!/stores/{{store._id}}/outlets/create">
+                <i class="glyphicon glyphicon-plus"></i>Add Outlet
+            </a>
+        </div>
     </div>
+   
     <div class="row-masonry">
         <div class=" item" data-ng-repeat="outlet in outlets">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a data-ng-href="#!/outlets/{{outlet._id}}"> {{outlet.name}}</a>
+                    <a data-ng-href="#!/outlets/{{outlet._id}}"><h3> {{outlet.name}}</h3></a>
+                    <p>{{outlet.address.name}}</p>
                 </div>
                 <div class="panel-body">
-                    <div class="clearfix"></div>
-                    <p>{{outlet.address.name}}</p>
-                    <hr>
                     <form>
                         <div data-toggle="buttons">
                             <a href="#" title="Views">    <i class="glyphicon glyphicon-eye-open">  </i> <strong>2000</strong></a>
                             <a href="#" title="Comments"> <i class="glyphicon glyphicon-comment">   </i> <strong>120</strong></a>
                             <a href="#" title="Likes">    <i class="glyphicon glyphicon-thumbs-up"> </i> <strong>60</strong></a> <span class="label label-success">Active</span>
-                        </div>
-                        <hr>
-                        <div class="input-group">
-                            <a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/edit">
+                            <a class="btn btn-primary pull-right btn-rl-mgn-3" href="/#!/outlets/{{outlet._id}}/edit">
                                 <i class="glyphicon glyphicon-edit"></i>
                             </a>
-                            <a class="btn btn-primary" data-ng-click="openOuletDeleteConfirmationModal(outlet);">
+                            <a class="btn btn-primary  pull-right btn-rl-mgn-3" data-ng-click="openOuletDeleteConfirmationModal(outlet);">
                                 <i class="glyphicon glyphicon-trash"></i>
                             </a>
                         </div>
@@ -109,10 +117,17 @@
             </div>
         </div>
     </div>-->
+    <div class="table-header row">
+        <div class="col-md-10">
+            <h3>Store Admins</h3>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary pull-right" data-ng-click="openCreateStoreAdminModal();">
+                <i class="glyphicon glyphicon-plus"></i>Add Store Admin
+            </a>
+        </div>
+    </div>
 
-    <a class="btn btn-primary" data-ng-click="openCreateStoreAdminModal();">
-        <i class="glyphicon glyphicon-plus"></i>Add Store Admin
-    </a>
     <div class="panel panel-default plain profile-panel">
         <table ng-table="vm.tableParams" class="table">
             <tr ng-repeat="user in users">

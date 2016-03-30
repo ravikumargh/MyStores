@@ -12,6 +12,20 @@ angular.module('ads').factory('Ads', ['$resource',
 		});
 	}
 ]);
+angular.module('ads').factory('AdPublish', ['$http',
+	function ($http) {
+	    var urlBase = '/ads';
+	    var dataFactory = {};
+	     
+	    dataFactory.update = function (ad) {
+	        return $http.put('ads/'+ad._id+'/publish', {
+	            'ispublished': ad.ispublished
+	        });
+	    };
+	   
+	    return dataFactory;
+	}
+]);
 angular.module('ads').factory('StoreAds', ['$resource',
 	function ($resource) {
 	    return $resource('ads/store/:storeId', {

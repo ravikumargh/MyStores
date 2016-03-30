@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ads').controller('AdsController',
-		['$scope', '$stateParams', '$location', '$modal', '$log', '$http', '$timeout', 'Authentication', 'Ads', 'AdOffers', 'Offers', 'File', 'notify', '$sce', 'Storeoutlets', 'Outlets', 'StoreAds', 'OutletAds',
-		function ($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify, $sce, Storeoutlets, Outlets, StoreAds, OutletAds) {
+		['$scope', '$stateParams', '$location', '$modal', '$log', '$http', '$timeout', 'Authentication', 'Ads', 'AdOffers', 'Offers', 'File', 'notify', '$sce', 'Storeoutlets', 'Outlets', 'StoreAds', 'OutletAds', 'AdPublish',
+		function ($scope, $stateParams, $location, $modal, $log, $http, $timeout, Authentication, Ads, AdOffers, Offers, File, notify, $sce, Storeoutlets, Outlets, StoreAds, OutletAds, AdPublish) {
 		    $scope.authentication = Authentication;
 		    $scope.date = { startDate: null, endDate: null };
 		    $scope.storeoutlets = [];
@@ -225,7 +225,22 @@ angular.module('ads').controller('AdsController',
 		    $scope.toggleAnimation = function () {
 		        $scope.animationsEnabled = !$scope.animationsEnabled;
 		    };
-
+		    $scope.publish = function (ad) {
+		        ad.ispublished = !ad.ispublished;
+		        AdPublish.update(ad).then(function (resp) {
+		            if (resp.status === 200) {
+		                var strPublish = "Un Published";
+		                if (resp.data.ispublished) {
+		                    strPublish = "Published";
+		                }
+		                notify({
+		                    message: 'Ad ' + strPublish + ' successfully.',
+		                    classes: 'alert-success',
+		                    duration: 2000
+		                });
+		            }
+		        });
+		    }
 		    //Offer ******************************************************************
 		    $scope.openOfferDeleteModal = function (item) {
 		        $scope.message = "Are you sure want to delete this item?";
@@ -292,7 +307,7 @@ angular.module('adsModal').controller('AdsModalController',
 	    $scope.isAllOutlet = true;
 	    if (Authentication.user.roles.indexOf("outletadmin") != -1) {
 	        $scope.isAllOutlet = false;
-            //TODO: Need some refractor
+	        //TODO: Need some refractor
 	        angular.forEach(ParentScope.cityOutlets, function (cityOutlet) {
 	            angular.forEach(cityOutlet.storeoutlet, function (item) {
 	                item.selected = true;

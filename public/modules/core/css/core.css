@@ -47,7 +47,7 @@ body {
     color: #FFFFFF;
 }
 
-.header {
+header .header {
     background-color: #db4437;
     border-width: 0;
 }
@@ -154,11 +154,11 @@ textarea {
     border-radius: 0;
 }
 
-h3, h4, h5 {
+/*h3, h4, h5 {
     border: 0 solid #efefef;
     border-bottom-width: 1px;
     padding-bottom: 10px;
-}
+}*/
 
 .modal-footer {
     border-width: 0;
@@ -415,3 +415,10 @@ h3, h4, h5 {
                 margin-left: -2px;
             }
 /* Profile sidebar */
+.btn-rl-mgn-3{
+    margin: 0px 3px;
+}
+.table-header{
+    margin: 10px 0 10px;
+    border-bottom: 1px solid #eee;
+}

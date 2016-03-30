@@ -1,35 +1,41 @@
 
 <section data-ng-controller="CitiesController" data-ng-init="find()">
-	<div class="page-header">
-		<h1>Cities</h1>
-		<button type="button" class="btn btn-primary" ng-click="openCityModal()">
-			<i class="glyphicon glyphicon-plus"></i>New City
-		</button>
-	</div>
-	 
-
-	<div data-ng-repeat="city in cities">             
-            <div class="col-lg-10 col-md-10 col-sm-12">
-                <div class="user-name">
-                     {{city.name}} 
-                </div>
-                <div class="user-information">
-                    <p>{{city.state}}</p>
-                </div>               
-                
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-12">
-            	<a class="btn btn-primary" href="/#!/cities/{{city._id}}/edit">
-					<i class="glyphicon glyphicon-edit"></i>
-				</a>
-				<a class="btn btn-primary" data-ng-click="openCityDeleteModal(city);">
-					<i class="glyphicon glyphicon-trash"></i>
-				</a>
-            </div>
+    <div class="page-header row">
+        <div class="col-md-10">
+            <h3>Cities</h3>
         </div>
-
-
-	<div class="alert alert-warning text-center" data-ng-if="cities.$resolved && !cities.length">
-		No cities yet, why don't you <a href="/#!/cities/create">create one</a>?
-	</div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary pull-right" ng-click="openCityModal()">
+                <i class="glyphicon glyphicon-plus"></i>New City
+            </button>
+        </div>
+    </div>
+    <div class="panel panel-default plain profile-panel">
+        <table ng-table="vm.tableParams" class="table">
+            <tr data-ng-repeat="city in cities">
+                <td data-title="'#'">
+                    {{$index+1}}
+                </td>
+                <td title="'Name'">
+                    {{city.name}}
+                </td>
+                <td title="'State'">
+                    {{city.state}}
+                </td>
+                <td>
+                    <a class="btn btn-primary pull-right" href="/#!/cities/{{city._id}}/edit">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-primary pull-left" data-ng-click="openCityDeleteModal(city);">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <div class="alert alert-warning text-center" data-ng-if="cities.$resolved && !cities.length">
+            No cities yet, why don't you <a href="/#!/cities/create">create one</a>?
+        </div>
+    </div>
 </section>

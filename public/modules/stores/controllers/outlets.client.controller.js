@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$stateParams', '$location', '$modal', 'Authentication', 'Outlets', 'Storeoutlets', 'OutletUsers', 'Users', 'notify', 'Cities',
-	function ($scope, $http, $stateParams, $location, $modal, Authentication, Outlets, Storeoutlets, OutletUsers, Users, notify, Cities) {
+angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$stateParams', '$location', '$modal', '$sce', 'Authentication', 'Outlets', 'Storeoutlets', 'OutletUsers', 'Users', 'notify', 'Cities', 'Ads', 'OutletAds', 'StoreAds',
+	function ($scope, $http, $stateParams, $location, $modal, $sce, Authentication, Outlets, Storeoutlets, OutletUsers, Users, notify, Cities, Ads, OutletAds, StoreAds) {
 	    $scope.authentication = Authentication;
 	    var authorised = false;
 	    if ($scope.authentication.user && ($scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.Admin) === -1 ||
@@ -12,7 +12,10 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 	    if (!authorised) {
 	        $location.path('/');
 	    };
-	     
+
+	    $scope.getHtml = function (html) {
+	        return $sce.trustAsHtml(html);
+	    }
 	    $scope.storeId = $stateParams.storeId;
 	    $scope.outletId = $stateParams.outletId;
 	    $scope.create = function () {
@@ -23,7 +26,7 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 	            city: $scope.selectedCity
 	        });
 	        outlet.$save(function (response) {
-	            $location.path('outlets/' + response._id);                 
+	            $location.path('outlets/' + response._id);
 	        }, function (errorResponse) {
 	            $scope.error = errorResponse.data.message;
 	        });
@@ -76,7 +79,7 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 	        //}).error(function (response) {
 	        //    $scope.error = response.message;
 	        //});
-	        
+
 	        $scope.users = OutletUsers.query({
 	            outletId: $stateParams.outletId
 	        });
@@ -99,22 +102,22 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 	    };
 	    $scope.removeUser = function (user) {
 	        if (user) {
-	        $http.delete('/users/' + user._id).success(function (response) {
-	            for (var i in $scope.users) {
-	                if ($scope.users[i] === user) {
-	                    $scope.users.splice(i, 1);
+	            $http.delete('/users/' + user._id).success(function (response) {
+	                for (var i in $scope.users) {
+	                    if ($scope.users[i] === user) {
+	                        $scope.users.splice(i, 1);
+	                    }
 	                }
-	            }
-	            notify({
-	                message: 'user deleted successfully.',
-	                classes: 'alert-success',
-	                duration: 2000
+	                notify({
+	                    message: 'user deleted successfully.',
+	                    classes: 'alert-success',
+	                    duration: 2000
+	                });
+	            }).error(function (response) {
+	                $scope.error = response.message;
 	            });
-	        }).error(function (response) {
-	            $scope.error = response.message;
-	        });
 
-	        }  
+	        }
 	    };
 	    $scope.createOrUpdate = function () {
 	        var outlet = $scope.outlet;
@@ -123,7 +126,7 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 	        } else {
 	            $scope.createOutlet(outlet);
 	        }
-	        
+
 	    };
 	    $scope.createOutlet = function (outlet) {
 	        outlet.store = $stateParams.storeId;
@@ -159,6 +162,7 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 	            outletId: $stateParams.outletId
 	        });
 	        $scope.cities = Cities.query();
+	        $scope.ads = OutletAds.query({ outletId: $scope.outletId });
 	    };
 	    $scope.createUser = function (newUser) {
 

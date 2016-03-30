@@ -1,35 +1,79 @@
 <section data-ng-controller="OutletsController" data-ng-init="findOne()">
-    <div class="page-header">
-        <h1 data-ng-bind="outlet.name"></h1>
-        <!-- <small>
-            <em class="text-muted">
-                Created on
-                <span data-ng-bind="outlet.created | date:'mediumDate'"></span>
-                by
-                <span data-ng-bind="outlet.user.displayName"></span>
-            </em>
-        </small> -->
-        <p class="lead" data-ng-bind="outlet.address.name"></p>
+    <div class="page-header row">
+        <div class="col-md-10">
+            <h2 data-ng-bind="outlet.name"></h2>
+            <p class="lead" data-ng-bind="outlet.address.name"></p>
+            <small>
+                <em class="text-muted">
+                    Created on
+                    <span data-ng-bind="outlet.created | date:'mediumDate'"></span>
+                    by
+                    <span data-ng-bind="outlet.user.displayName"></span>
+                </em>
+            </small>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary  pull-right btn-rl-mgn-3" href="/#!/outlets/{{outlet._id}}/edit">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-primary pull-right btn-rl-mgn-3" data-ng-click="deleteOutletConfirmationModal();">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </div>
     </div>
+
     <!-- <div class="pull-right" data-ng-show="authentication.user._id == outlet.user._id"> -->
+    <div class="table-header row">
+        <div class="col-md-10">
+            <h3>Ads</h3>
+        </div>
+    </div>
+    <div class="row-masonry">
+        <div class=" item" data-ng-repeat="ad in ads">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a data-ng-href="#!/ads/{{ad._id}}" class="pull-right">View all</a>
+                    <img alt="logo" class="img-responsive text-center ad-store-logo" src="images/content/{{ad.store}}" ng-error="tellServerItsBroken(ad)" />
+                </div>
+                <div class="panel-thumbnail"><img src="images/content/{{ad._id}}" class="img-responsive" ng-error="tellServerItsBroken(ad)"></div>
+                <div class="panel-body">
+                    <div class="clearfix"></div>
+                    <h4 class="no-border" ng-bind-html="getHtml(ad.title)"> </h4>
+                    <p class="no-border" ng-bind-html="getHtml(ad.content)"></p>
+                    <hr>
+                    <form>
+                        <div data-toggle="buttons">
+                            <label class="btn btn-default btn-circle btn-lg active"><input type="checkbox" name="q1" value="0"><i class="glyphicon glyphicon-thumbs-up" checked></i></label>
+                            <button class="btn btn-default btn-circle btn-lg active" ng-click="ad.showComment = !ad.showComment"><input type="checkbox" name="q1" value="0"><i class="glyphicon glyphicon-comment" checked></i></button>
+                            <button class="btn   btn-success" ng-click="publish(ad)" ng-show="!!ad.ispublished" title="This as is published and visible to public."><i class="glyphicon glyphicon-signal"></i> Un Publish</button>
+                            <button class="btn   btn-default" ng-click="publish(ad)" ng-show="!ad.ispublished" title="This as not published and will not be visible to public.">  Publish</button>
+                        </div>
+                </div>
+                <div class="input-group" ng-show="ad.showComment">
+                    <div class="input-group-btn">
+                        <img src="http://api.randomuser.me/portraits/med/men/20.jpg" width="28px" height="28px">
+                    </div>
+                    <input type="text" class="form-control" placeholder="Add a comment..">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default">Post</button>
+                    </div>
+                </div>
+                </form>
+            </div>
 
-    <div>
-        <a class="btn btn-primary" data-ng-click="openCreateAdminModal();">
-            <i class="glyphicon glyphicon-plus"></i>Add admin
-        </a>
-
-        <!-- <a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/createuser">
-            <i class="glyphicon glyphicon-plus"></i>Add admin
-        </a> -->
-        <a class="btn btn-primary" href="/#!/outlets/{{outlet._id}}/edit">
-            <i class="glyphicon glyphicon-edit"></i>
-        </a>
-        <a class="btn btn-primary" data-ng-click="deleteOutletConfirmationModal();">
-            <i class="glyphicon glyphicon-trash"></i>
-        </a>
+        </div>
     </div>
 
-
+    <div class="table-header row">
+        <div class="col-md-10">
+            <h3>Outlet Admins</h3>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary pull-right" data-ng-click="openCreateAdminModal();">
+                <i class="glyphicon glyphicon-plus"></i>Add admin
+            </a>
+        </div>
+    </div>
     <div class="panel panel-default plain profile-panel">
 
         <table class="table">
