@@ -1,5 +1,21 @@
 <section data-ng-controller="StoresController" data-ng-init="find()">
-    <div class="page-header row">
+    <div class="navbar navbar-default navbar-page-header" id="subnav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-sm-6">
+                    <div class="navbar-header">
+                        <h3>Stores</h3>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <a class="btn btn-primary pull-right" href="#!/stores/create">
+                        <i class="glyphicon glyphicon-plus"></i>Add Store
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="page-header row">
         <div class="col-md-10">
             <h3>Stores</h3>
         </div>
@@ -8,7 +24,7 @@
                 <i class="glyphicon glyphicon-plus"></i>Add Store
             </a>
         </div>
-    </div>
+    </div> -->
     <div class="row-masonry">
         <div class=" item" data-ng-repeat="store in stores">
             <div class="panel panel-default">

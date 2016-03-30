@@ -217,7 +217,7 @@ textarea {
 
 
 .content {
-    margin-top: 20px;
+    margin-top: 110px;
 }
 
 .undecorated-link:hover {
@@ -421,4 +421,11 @@ textarea {
 .table-header{
     margin: 10px 0 10px;
     border-bottom: 1px solid #eee;
+}
+
+/*Page header*/
+.navbar-page-header{
+    position: absolute;
+    left: 0;
+    top: 0;
 }

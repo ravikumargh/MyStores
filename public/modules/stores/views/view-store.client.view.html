@@ -1,38 +1,49 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
-
+     <div class="navbar navbar-default navbar-page-header" id="subnav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-6">
+                    <div class="navbar-header">
+                        <h1 data-ng-bind="store.name"></h1>
+                        <small>
+                            <em class="text-muted">
+                                Created on
+                                <span data-ng-bind="store.created | date:'mediumDate'"></span>
+                                by
+                                <span data-ng-bind="store.user.displayName"></span>
+                            </em>
+                        </small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="pull-right"  >
+                        <a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                        <a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal();">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                     
+                        <button type="file" class="btn btn-primary" ngf-select="uploadFiles($file, $invalidFiles)"
+                                accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                            Update Logo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="page-header row">
-        <div class="col-md-10">
+        <div class="col-md-3">
             <img alt="logo" class="img-responsive text-center" src="images/content/{{store._id}}" />
          
-            <h1 data-ng-bind="store.name"></h1>
+             
 
-            <p class="lead" data-ng-bind="store.address.name"></p>
-            <small>
-                <em class="text-muted">
-                    Created on
-                    <span data-ng-bind="store.created | date:'mediumDate'"></span>
-                    by
-                    <span data-ng-bind="store.user.displayName"></span>
-                </em>
-            </small>
+            
         </div>
-        <div class="col-md-2">
-            <div class="pull-right" data-ng-show="authentication.user._id == store.user._id">
-                
-                <a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
-                    <i class="glyphicon glyphicon-edit"></i>
-                </a>
-                <a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal();">
-                    <i class="glyphicon glyphicon-trash"></i>
-                </a>
-            </div>
-            <div class="pull-right">
-                <br />
-                <button type="file" class="btn btn-primary" ngf-select="uploadFiles($file, $invalidFiles)"
-                        accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
-                    Update Logo
-                </button>
-            </div>
+        <div class="col-md-9">
+            <p class="lead" data-ng-bind="store.address.name"></p>
+            
         </div>
 
             <div>
