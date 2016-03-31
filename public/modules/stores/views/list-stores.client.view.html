@@ -4,11 +4,11 @@
             <div class="row">
                 <div class="col-md-10 col-sm-6">
                     <div class="navbar-header">
-                        <h3>Stores</h3>
+                        <h3 class="margin-top-10 margin-bottom-5">Stores</h3>
                     </div>
                 </div>
-                <div class="col-md-2 col-sm-6">
-                    <a class="btn btn-primary pull-right" href="#!/stores/create">
+                <div class="col-md-2 col-sm-6 margin-top-10">
+                    <a class="btn btn-success pull-right" href="#!/stores/create">
                         <i class="glyphicon glyphicon-plus"></i>Add Store
                     </a>
                 </div>
@@ -25,7 +25,40 @@
             </a>
         </div>
     </div> -->
-    <div class="row-masonry">
+    <div class="row">
+        <div class="col-md-4 col-sm-6" data-ng-repeat="store in stores">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a data-ng-href="#!/stores/{{store._id}}">
+                        <img alt="logo" class="img-responsive text-center ad-store-logo" src="images/content/{{store._id}}" ng-error="tellServerItsBroken(store)" />
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <div class="clearfix"></div>
+                    <h3> <a data-ng-href="#!/stores/{{store._id}}"> {{store.name}}</a></h3>
+                    <p>{{store.address.name}}</p>
+                    <hr>
+                    <form>
+                        <div data-toggle="buttons">
+                            <a href="#" title="Views">    <i class="glyphicon glyphicon-eye-open">  </i> <strong>2000</strong></a>
+                            <a href="#" title="Comments"> <i class="glyphicon glyphicon-comment">   </i> <strong>120</strong></a>
+                            <a href="#" title="Likes">    <i class="glyphicon glyphicon-thumbs-up"> </i> <strong>60</strong></a> <span class="label label-success">Active</span>
+
+                            <a class="btn btn-primary pull-right btn-rl-mgn-3" data-ng-click=" opendeleteconfirmationmodal(store);">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                            <a class="btn btn-warning pull-right btn-rl-mgn-3" href="/#!/stores/{{store._id}}/edit">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="row-masonry">
         <div class=" item" data-ng-repeat="store in stores">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -47,7 +80,7 @@
                             <a class="btn btn-primary pull-right btn-rl-mgn-3" data-ng-click=" opendeleteconfirmationmodal(store);">
                                 <i class="glyphicon glyphicon-trash"></i>
                             </a>
-                            <a class="btn btn-primary pull-right btn-rl-mgn-3" href="/#!/stores/{{store._id}}/edit">
+                            <a class="btn btn-warning pull-right btn-rl-mgn-3" href="/#!/stores/{{store._id}}/edit">
                                 <i class="glyphicon glyphicon-edit"></i>
                             </a>
                         </div>
@@ -56,7 +89,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!--<div class="panel panel-default plain profile-panel">
 
 

@@ -1,9 +1,17 @@
 <section data-ng-controller="OutletsController" data-ng-init="findOne()">
-    <div class="page-header">
-        <h1 ng-show="outlet._id">Edit Outlet</h1>
-        <h1 ng-hide="outlet._id">New Outlet</h1>
-
+    <div class="navbar navbar-default navbar-page-header" id="subnav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-6">
+                    <div class="navbar-header">
+                        <h3 class="margin-top-10 margin-bottom-5" ng-show="outlet._id">Edit Outlet</h3>
+                        <h3 class="margin-top-10 margin-bottom-5" ng-hide="outlet._id">New Outlet</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
     <div class="col-md-12">
         <form name="outletForm" class="form-horizontal" data-ng-submit="createOrUpdate(outletForm.$valid)" novalidate>
             <fieldset>

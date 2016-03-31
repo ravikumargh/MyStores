@@ -1,7 +1,31 @@
 <section data-ng-controller="OutletsController" data-ng-init="findOne()">
-    <div class="page-header row">
-        <div class="col-md-10">
-            <h2 data-ng-bind="outlet.name"></h2>
+    <div class="navbar navbar-default navbar-page-header" id="subnav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-6">
+                    <div class="navbar-header">
+                        <h3 class="margin-top-10 margin-bottom-5" data-ng-bind="outlet.name"></h3>
+                        <small>
+                            <em class="text-muted">{{outlet.address.name}}</em>
+                        </small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="pull-right margin-top-10">
+                        <a class="btn btn-primary pull-right btn-rl-mgn-3" data-ng-click="deleteOutletConfirmationModal();">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                        <a class="btn btn-warning  pull-right btn-rl-mgn-3" href="/#!/outlets/{{outlet._id}}/edit">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="page-header row">
+        <div class="col-md-12">
             <p class="lead" data-ng-bind="outlet.address.name"></p>
             <small>
                 <em class="text-muted">
@@ -12,16 +36,7 @@
                 </em>
             </small>
         </div>
-        <div class="col-md-2">
-            <a class="btn btn-primary  pull-right btn-rl-mgn-3" href="/#!/outlets/{{outlet._id}}/edit">
-                <i class="glyphicon glyphicon-edit"></i>
-            </a>
-            <a class="btn btn-primary pull-right btn-rl-mgn-3" data-ng-click="deleteOutletConfirmationModal();">
-                <i class="glyphicon glyphicon-trash"></i>
-            </a>
-        </div>
-    </div>
-
+    </div>-->
     <!-- <div class="pull-right" data-ng-show="authentication.user._id == outlet.user._id"> -->
     <div class="table-header row">
         <div class="col-md-10">
@@ -63,13 +78,15 @@
 
         </div>
     </div>
-
+    <div class="alert alert-warning text-center" data-ng-if=" !ads.length">
+        No Ads yet.
+    </div>
     <div class="table-header row">
         <div class="col-md-10">
             <h3>Outlet Admins</h3>
         </div>
         <div class="col-md-2">
-            <a class="btn btn-primary pull-right" data-ng-click="openCreateAdminModal();">
+            <a class="btn btn-success pull-right" data-ng-click="openCreateAdminModal();">
                 <i class="glyphicon glyphicon-plus"></i>Add admin
             </a>
         </div>
@@ -91,11 +108,17 @@
                     {{user.email}}
                 </td>
                 <td>
+                    <a class="btn btn-warning" data-ng-click="">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
                     <a class="btn btn-primary" data-ng-click="deleteOutletAdminConfirmationModal(user);">
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>
                 </td>
             </tr>
         </table>
+        <div class="alert alert-warning text-center" data-ng-if=" !users.length">
+            No users yet, why don't you <a data-ng-click="openCreateAdminModal();">create one</a>?
+        </div>
     </div>
 </section>

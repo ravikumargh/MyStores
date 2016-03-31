@@ -1,86 +1,164 @@
 <section data-ng-controller="AdsController" data-ng-init="findOne()" id="view-ad">
-    <div class="pull-right" data-ng-show="authentication.user._id == ad.user._id || authentication.user.roles.indexOf('admin') !== -1">
-        <a class="btn btn-primary" href="/#!/ads/{{ad._id}}/edit">
-            <i class="glyphicon glyphicon-edit"></i>
-        </a>
-        <a class="btn btn-primary" data-ng-click="openAdDeleteModal(ad);">
-            <i class="glyphicon glyphicon-trash"></i>
-        </a>
-    </div>
-    <div class="page-header">
-        <small>
-            <em class="text-muted">
-                Posted on
-                <span data-ng-bind="ad.created | date:'mediumDate'"></span>
-                by
-                <span data-ng-bind="ad.user.displayName"></span>
-            </em>
-        </small>
+    <div class="navbar navbar-default navbar-page-header" id="subnav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-6">
+                    <div class="navbar-header">
+                        <img alt="logo" class="img-responsive text-center ad-store-logo" src="images/content/{{ad.store}}" ng-error="tellServerItsBroken(ad)" />
+                        <div>
+                            <small>
+                                <em class="text-muted">
+                                    Posted on
+                                    <span data-ng-bind="ad.created | date:'mediumDate'"></span>
+                                    by
+                                    <span data-ng-bind="ad.user.displayName"></span>
+                                </em>
+                            </small>
 
-        <small class="list-group-item-text">
-            Offer valid from
-            <b>
-                <span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
-            </b>
-            to
-            <b>
-                <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
-            </b>
-        </small>
-        <img alt="MEAN.JS" class="img-responsive text-center" src="images/content/{{ad._id}}" ng-error="tellServerItsBroken(ad)" />
-        <p ng-bind-html="getHtml(ad.title)"></p>
-        <p class="lead" ng-bind-html="getHtml(ad.content)"></p>
-    </div>
-    <div class="pull-right" data-ng-show="authentication.user._id == ad.user._id">
-        <button type="button" class="btn btn-primary" ng-click="openOfferModal()">
-            <i class="glyphicon glyphicon-plus"></i>Add offers
-        </button>
-    </div>
-    <h1>Offers</h1>
-    <!-- <div class="row">
+                            <span class="list-group-item-text">
+                                Offer valid from
+                                <span class="label label-danger">
 
-        <div class="col-xs-18 col-sm-6 col-md-3" ng-repeat="item in offers">
-          <div class="thumbnail">
-            <img  ng-src="http://localhost:3000/images/content/{{item._id}} " hide-until-good  alt="">
-              <div class="caption">
-                <h4>{{item.title}}</h4>
-                <p>{{item.content}}</p>
-                  <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                 </button>
-                 <button type="button" class="close edit" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                 </button>
-            </div>
-          </div>
-        </div>
+                                    <span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
 
-    </div>   -->
+                                    to
 
+                                    <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
 
+                                </span>
+                            </span>
+                        </div>
+                        <!--<h3>Ads</h3>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="pull-right margin-top-10" data-ng-show="authentication.user._id == ad.user._id || authentication.user.roles.indexOf('admin') !== -1">
 
-    <div class="row-masonry">
-        <div class="item " ng-repeat="item in offers">
-            <div class="well">
-                <div class="thumbnail">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Delete" ng-click="openOfferDeleteModal(item)">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="close edit" data-dismiss="modal" aria-label="Edit">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    </button>
-                    <img ng-src="http://localhost:3000/images/content/{{item._id}} " hide-until-good alt="">
-                    <div class="caption">
-                        <h4>{{item.title}}</h4>
-                        <p>{{item.content}}</p>
-                        <!-- <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p> -->
+                        <a class="btn btn-warning" href="/#!/ads/{{ad._id}}/edit">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                        <a class="btn btn-primary" data-ng-click="openAdDeleteModal(ad);">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                        <button type="button" class="btn btn-success" ng-click="openOfferModal()">
+                            <i class="glyphicon glyphicon-plus"></i>Add offers
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+    <div class="row profile">
+        <div class="col-md-3">
+            <div class="navbar-inverse side-collapse in">
+                <nav role="navigation" class="navbar-collapse">
+
+                    <div class="profile-sidebar navbar-collapse">
+
+                        <!-- SIDEBAR MENU -->
+                        <div class="profile-usermenu">
+
+                            <ul class="nav">
+                                <!--<li class="active" data-ng-repeat="category in categories">-->
+                                <li data-ng-repeat="category in categories">
+                                    <a href="#">
+                                        <i class="{{category.cssclass}}"></i>
+                                        {{category.name}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END MENU -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-9  side-collapse-container">
+            <div>                
+                <img alt="MEAN.JS" class="img-responsive text-center" src="images/content/{{ad._id}}" ng-error="tellServerItsBroken(ad)" />
+                <p ng-bind-html="getHtml(ad.title)"></p>
+                <p class="lead" ng-bind-html="getHtml(ad.content)"></p>
+            </div>
+
+            <!--<div class="page-header">
+                <small>
+                    <em class="text-muted">
+                        Posted on
+                        <span data-ng-bind="ad.created | date:'mediumDate'"></span>
+                        by
+                        <span data-ng-bind="ad.user.displayName"></span>
+                    </em>
+                </small>
+
+                <small class="list-group-item-text">
+                    Offer valid from
+                    <b>
+                        <span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
+                    </b>
+                    to
+                    <b>
+                        <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
+                    </b>
+                </small>
+                <img alt="MEAN.JS" class="img-responsive text-center" src="images/content/{{ad._id}}" ng-error="tellServerItsBroken(ad)" />
+                <p ng-bind-html="getHtml(ad.title)"></p>
+                <p class="lead" ng-bind-html="getHtml(ad.content)"></p>
+            </div>-->
+            <!--<div class="pull-right" data-ng-show="authentication.user._id == ad.user._id">
+                <button type="button" class="btn btn-success" ng-click="openOfferModal()">
+                    <i class="glyphicon glyphicon-plus"></i>Add offers
+                </button>
+            </div>
+            <h1>Offers</h1>-->
+            <!--Old-->
+            <!-- <div class="row">
+
+                <div class="col-xs-18 col-sm-6 col-md-3" ng-repeat="item in offers">
+                  <div class="thumbnail">
+                    <img  ng-src="http://localhost:3000/images/content/{{item._id}} " hide-until-good  alt="">
+                      <div class="caption">
+                        <h4>{{item.title}}</h4>
+                        <p>{{item.content}}</p>
+                          <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                         </button>
+                         <button type="button" class="close edit" data-dismiss="modal" aria-label="Close">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                         </button>
+                    </div>
+                  </div>
+                </div>
+
+            </div>   -->
+
+
+
+            <div class="row-masonry">
+                <div class="item " ng-repeat="item in offers">
+                    <div class="well">
+                        <div class="thumbnail">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Delete" ng-click="openOfferDeleteModal(item)">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="close edit" data-dismiss="modal" aria-label="Edit">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>
+                            <img ng-src="http://localhost:3000/images/content/{{item._id}} " hide-until-good alt="">
+                            <div class="caption">
+                                <h4>{{item.title}}</h4>
+                                <p>{{item.content}}</p>
+                                <!-- <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
     <!-- <div class="col-md-12 card " >
       <table class="table table-responsive">
         <thead class="card action poll-card">

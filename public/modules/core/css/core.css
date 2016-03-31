@@ -12,7 +12,9 @@ author: bootply.com
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
 
 body {
-    background-color: #e0e0e0;
+    
+    /*background-color: #e0e0e0;*/
+    background-color: #E6E6E6;
     -webkit-font-smoothing: antialiased;
     font: normal 14px Roboto,arial,sans-serif;
 }
@@ -183,10 +185,7 @@ textarea {
         padding-top: 6px;
     }
 }
-
-#main {
-    padding-top: 120px;
-}
+ 
 
 .no-border, .no-border h4 {
     border: none;
@@ -418,6 +417,13 @@ textarea {
 .btn-rl-mgn-3{
     margin: 0px 3px;
 }
+/*margin*/
+.margin-top-10{
+        margin-top: 10px;
+}
+.margin-bottom-5{
+    margin-bottom: 5px;
+}
 .table-header{
     margin: 10px 0 10px;
     border-bottom: 1px solid #eee;
@@ -429,3 +435,10 @@ textarea {
     left: 0;
     top: 0;
 }
+/*store*/
+.store-address{
+    height: 50px;
+    font-size: 14px;
+    overflow: hidden;
+}
+

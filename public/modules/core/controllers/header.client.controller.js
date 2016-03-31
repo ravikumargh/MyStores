@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus', 'Cities',
-	function($scope, Authentication, Menus, Cities) {
+angular.module('core').controller('HeaderController', ['$scope', '$rootScope', 'Authentication', 'Menus', 'Cities',
+	function ($scope, $rootScope, Authentication, Menus, Cities) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
@@ -26,7 +26,8 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		};
 		$scope.updateLocation = function(city) {
 			$scope.selectedCity=city;
-			localStorage.setItem("MyCity",JSON.stringify($scope.selectedCity));	
+			localStorage.setItem("MyCity", JSON.stringify($scope.selectedCity));
+			$rootScope.$broadcast('onChangeCity', { city: city });
 		};
 	}
 ]);

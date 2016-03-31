@@ -1,14 +1,23 @@
 <section data-ng-controller="AdsController" data-ng-init="init()">
-    <div class="page-header row">
-        <div class="col-md-10">
-            <h3>Ads</h3>
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary pull-right" ng-click="openAdModal()">
-                <i class="glyphicon glyphicon-plus"></i>New ad
-            </button>
+    <div class="navbar navbar-default navbar-page-header" id="subnav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-6">
+                    <div class="navbar-header">
+                        <h3>Ads</h3>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="pull-right margin-top-10">
+                        <button type="button" class="btn btn-success pull-right" ng-click="openAdModal()">
+                            <i class="glyphicon glyphicon-plus"></i>New ad
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
     <div class="row-masonry">
         <div class=" item" data-ng-repeat="ad in ads">
 
@@ -30,51 +39,51 @@
 
                             <button class="btn btn-default btn-circle btn-lg active" ng-click="ad.showComment = !ad.showComment"><input type="checkbox" name="q1" value="0"><i class="glyphicon glyphicon-comment" checked></i></button>
                             <button class="btn   btn-success" ng-click="publish(ad)" ng-show="!!ad.ispublished" title="This as is published and visible to public."><i class="glyphicon glyphicon-signal"></i> Un Publish</button>
-                            <button class="btn   btn-default" ng-click="publish(ad)" ng-show="!ad.ispublished" title="This as not published and will not be visible to public.">  Publish</button>
+                            <button class="btn btn-info " ng-click="publish(ad)" ng-show="!ad.ispublished" title="This as not published and will not be visible to public.">  Publish</button>
                         </div>
-                </div>
-                <div class="input-group" ng-show="ad.showComment">
-                    <div class="input-group-btn">
-                        <img src="http://api.randomuser.me/portraits/med/men/20.jpg" width="28px" height="28px">
-                    </div>
-                    <input type="text" class="form-control" placeholder="Add a comment..">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default">Post</button>
-                    </div>
+
+                        <div class="input-group" ng-show="ad.showComment">
+                            <div class="input-group-btn">
+                                <img src="http://api.randomuser.me/portraits/med/men/20.jpg" width="28px" height="28px">
+                            </div>
+                            <input type="text" class="form-control" placeholder="Add a comment..">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default">Post</button>
+                            </div>
+                        </div>
+
+                        <!-- <div class="input-group">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i>+1</button>
+                                <button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i>+1</button><button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Add a comment..">
+                        </div> -->
+                    </form>
                 </div>
 
-                <!-- <div class="input-group">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i>+1</button>
-                        <button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i>+1</button><button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Add a comment..">
-                </div> -->
-                </form>
             </div>
-
         </div>
-    </div>
 
-    <!--<div class="list-group">
-        <a data-ng-repeat="ad in ads" data-ng-href="#!/ads/{{ad._id}}" class="list-group-item">
-            <h4 class="list-group-item-heading" ng-bind-html="getHtml(ad.title)"></h4>
-            <p class="list-group-item-text" ng-bind-html="getHtml(ad.content)"></p>
-            <small class="list-group-item-text">
-                Offer valid from
-                <b>
-                    <span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
-                </b>
-                to
-                <b>
-                    <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
-                </b>
-                by
-                <span data-ng-bind="ad.user.displayName"></span>
-            </small>
-        </a>
-    </div>-->
-    <div class="alert alert-warning text-center" data-ng-if="ads.$resolved && !ads.length">
-        No ads yet, why don't you <a href="/#!/ads/create">create one</a>?
-    </div>
+        <!--<div class="list-group">
+            <a data-ng-repeat="ad in ads" data-ng-href="#!/ads/{{ad._id}}" class="list-group-item">
+                <h4 class="list-group-item-heading" ng-bind-html="getHtml(ad.title)"></h4>
+                <p class="list-group-item-text" ng-bind-html="getHtml(ad.content)"></p>
+                <small class="list-group-item-text">
+                    Offer valid from
+                    <b>
+                        <span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
+                    </b>
+                    to
+                    <b>
+                        <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
+                    </b>
+                    by
+                    <span data-ng-bind="ad.user.displayName"></span>
+                </small>
+            </a>
+        </div>-->
+        <div class="alert alert-warning text-center" data-ng-if="ads.$resolved && !ads.length">
+            No ads yet, why don't you <a href="/#!/ads/create">create one</a>?
+        </div>
 </section>

@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication', 'Ads', 'Categories', '$sce',
-	function($scope, $http, Authentication, Ads, Categories , $sce) {
+angular.module('core').controller('HomeController', ['$scope', '$rootScope', '$http', 'Authentication', 'Ads', 'Categories', '$sce',
+	function ($scope, $rootScope, $http, Authentication, Ads, Categories, $sce) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
@@ -25,6 +25,10 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		$scope.tellServerItsBroken = function (html) {
 		   
 		}
+
+		$rootScope.$on('onChangeCity', function (event, args) {
+		    $scope.getTodaysAds();
+		});
 		
 	}
 ]);

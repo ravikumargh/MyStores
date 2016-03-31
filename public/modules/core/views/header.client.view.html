@@ -41,6 +41,16 @@
                         </div>
                     </div>
                 </form>
+                <div class="nav navbar-nav">
+                    <div class="dropdown dropdown-append-to-body navbar-brand">
+                        in <span class="dropdown-toggle" data-toggle="dropdown">
+                            {{selectedCity.name}}<span class="glyphicon glyphicon-chevron-down"></span>
+                        </span>
+                        <ul class="dropdown-menu" role="menu">
+                            <li data-ng-repeat="city in cities"><a ng-click="updateLocation(city)">{{city.name}}</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
                     <li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
                         <a ng-switch-when="dropdown" class="dropdown-toggle">
@@ -64,32 +74,11 @@
                         <a href="/#!/signin">Sign In</a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="/#!/settings/profile">Edit Profile</a>
-                            </li>
-                            <li>
-                                <a href="/#!/settings/accounts">Manage Social Accounts</a>
-                            </li>
-                            <li data-ng-show="authentication.user.provider === 'local'">
-                                <a href="/#!/settings/password">Change Password</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="/auth/signout">Signout</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li data-ng-show="authentication.user"><a href="/#!/ads">+Post Ad</a></li>
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>
+                        <a href="#!/" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><span class="badge pull-right">40</span>Link</a></li>
                             <li><a href="#"><span class="badge pull-right">2</span>Link</a></li>
@@ -98,8 +87,36 @@
                             <li><a href="#"><span class="badge pull-right">13</span>Link</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" id="btnToggle"><i class="glyphicon glyphicon-th-large"></i></a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>
+                    <li><a href="#!/" id="btnToggle"><i class="glyphicon glyphicon-th-large"></i></a></li>
+                    <li>
+                        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+                            <li class="dropdown">
+                                <a href="#!/" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a><b>{{authentication.user.displayName}}</b></a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="/#!/settings/profile">Edit Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#!/settings/accounts">Manage Social Accounts</a>
+                                    </li>
+                                    <li data-ng-show="authentication.user.provider === 'local'">
+                                        <a href="/#!/settings/password">Change Password</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="/auth/signout">Signout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
 
             </div>

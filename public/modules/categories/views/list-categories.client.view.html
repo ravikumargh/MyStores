@@ -1,18 +1,23 @@
-
 <section data-ng-controller="CategoriesController" data-ng-init="find()">
-    <div class="page-header row">
-        <div class="col-md-10">
-            <h3>Categories</h3>
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary pull-right" ng-click="openCategoryCreateModal()">
-                <i class="glyphicon glyphicon-plus"></i>New Category
-            </button>
+    <div class="navbar navbar-default navbar-page-header" id="subnav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-6">
+                    <div class="navbar-header">
+                        <h3 class="margin-top-10 margin-bottom-5">Categories</h3>                        
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="pull-right margin-top-10">
+                        <button type="button" class="btn btn-success pull-right" ng-click="openCategoryCreateModal()">
+                            <i class="glyphicon glyphicon-plus"></i>New Category
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-   
-   
     <div class="panel panel-default plain profile-panel">
         <table ng-table="vm.tableParams" class="table">
             <tr data-ng-repeat="category in categories">
@@ -29,7 +34,7 @@
                     <i class="{{category.cssclass}}"></i> : {{category.cssclass}}
                 </td>
                 <td>
-                    <a class="btn btn-primary" href="/#!/categories/{{category._id}}/edit">
+                    <a class="btn btn-warning" href="/#!/categories/{{category._id}}/edit">
                         <i class="glyphicon glyphicon-edit"></i>
                     </a>
                     <a class="btn btn-primary" data-ng-click="openCategoryDeleteModal(category);">

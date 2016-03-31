@@ -1,33 +1,24 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
-     <div class="navbar navbar-default navbar-page-header" id="subnav">
+    <div class="navbar navbar-default navbar-page-header" id="subnav">
         <div class="container">
             <div class="row">
                 <div class="col-md-9 col-sm-6">
                     <div class="navbar-header">
-                        <h1 data-ng-bind="store.name"></h1>
-                        <small>
-                            <em class="text-muted">
-                                Created on
-                                <span data-ng-bind="store.created | date:'mediumDate'"></span>
-                                by
-                                <span data-ng-bind="store.user.displayName"></span>
-                            </em>
-                        </small>
+                        <h3 class="margin-top-10 margin-bottom-5" data-ng-bind="store.name"></h3>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="pull-right"  >
-                        <a class="btn btn-primary" href="/#!/stores/{{store._id}}/edit">
+                    <div class="pull-right margin-top-10">
+                        <button type="file" class="btn btn-success" ngf-select="uploadFiles($file, $invalidFiles)"
+                                accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                            Update Logo
+                        </button>
+                        <a class="btn btn-warning" href="/#!/stores/{{store._id}}/edit">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
                         <a class="btn btn-primary" data-ng-click="openDeleteConfirmationModal();">
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
-                     
-                        <button type="file" class="btn btn-primary" ngf-select="uploadFiles($file, $invalidFiles)"
-                                accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
-                            Update Logo
-                        </button>
                     </div>
                 </div>
             </div>
@@ -36,27 +27,29 @@
     <div class="page-header row">
         <div class="col-md-3">
             <img alt="logo" class="img-responsive text-center" src="images/content/{{store._id}}" />
-         
-             
-
-            
         </div>
         <div class="col-md-9">
             <p class="lead" data-ng-bind="store.address.name"></p>
-            
+            <small>
+                <em class="text-muted">
+                    Created on
+                    <span data-ng-bind="store.created | date:'mediumDate'"></span>
+                    by
+                    <span data-ng-bind="store.user.displayName"></span>
+                </em>
+            </small>
         </div>
+        <div>
 
-            <div>
-               
-                <div style="font:smaller">
-                    {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
-                    <span class="progress" ng-show="f.progress >= 0">
-                        <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
-                    </span>
-                </div>
-                {{errorMsg}}
+            <div style="font:smaller">
+                {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                <span class="progress" ng-show="f.progress >= 0">
+                    <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
+                </span>
             </div>
+            {{errorMsg}}
         </div>
+    </div>
     <!--TODO : Need to refractor openOutletCreateModal()-->
     <!--<a class="btn btn-primary" ng-click="openOutletCreateModal()">
         <i class="glyphicon glyphicon-plus"></i>Add Outlet
@@ -66,13 +59,40 @@
             <h3>Outlets</h3>
         </div>
         <div class="col-md-2">
-            <a class="btn btn-primary pull-right" href="#!/stores/{{store._id}}/outlets/create">
+            <a class="btn btn-success pull-right" href="#!/stores/{{store._id}}/outlets/create">
                 <i class="glyphicon glyphicon-plus"></i>Add Outlet
             </a>
         </div>
     </div>
-   
-    <div class="row-masonry">
+    <div class="row">
+        <div class="col-md-4 col-sm-6" data-ng-repeat="outlet in outlets">
+            <div class="panel panel-default">
+                <div class="panel-heading ">
+                    <a data-ng-href="#!/outlets/{{outlet._id}}"><h3> {{outlet.name}}</h3></a>
+                    <div class="store-address">
+                        {{outlet.address.name}}
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div data-toggle="buttons">
+                            <a href="#" title="Views">    <i class="glyphicon glyphicon-eye-open">  </i> <strong>2000</strong></a>
+                            <a href="#" title="Comments"> <i class="glyphicon glyphicon-comment">   </i> <strong>120</strong></a>
+                            <a href="#" title="Likes">    <i class="glyphicon glyphicon-thumbs-up"> </i> <strong>60</strong></a> <span class="label label-success">Active</span>
+                            <a class="btn btn-primary  pull-right btn-rl-mgn-3" data-ng-click="openOuletDeleteConfirmationModal(outlet);">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                            <a class="btn btn-warning pull-right btn-rl-mgn-3" href="/#!/outlets/{{outlet._id}}/edit">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="row-masonry">
         <div class=" item" data-ng-repeat="outlet in outlets">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -85,7 +105,7 @@
                             <a href="#" title="Views">    <i class="glyphicon glyphicon-eye-open">  </i> <strong>2000</strong></a>
                             <a href="#" title="Comments"> <i class="glyphicon glyphicon-comment">   </i> <strong>120</strong></a>
                             <a href="#" title="Likes">    <i class="glyphicon glyphicon-thumbs-up"> </i> <strong>60</strong></a> <span class="label label-success">Active</span>
-                            <a class="btn btn-primary pull-right btn-rl-mgn-3" href="/#!/outlets/{{outlet._id}}/edit">
+                            <a class="btn btn-warning pull-right btn-rl-mgn-3" href="/#!/outlets/{{outlet._id}}/edit">
                                 <i class="glyphicon glyphicon-edit"></i>
                             </a>
                             <a class="btn btn-primary  pull-right btn-rl-mgn-3" data-ng-click="openOuletDeleteConfirmationModal(outlet);">
@@ -96,7 +116,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="alert alert-warning text-center" data-ng-if=" !outlets.length">
         No outlets yet, why don't you <a href="#!/stores/{{store._id}}/outlets/create">create one</a>?
     </div>
@@ -133,7 +153,7 @@
             <h3>Store Admins</h3>
         </div>
         <div class="col-md-2">
-            <a class="btn btn-primary pull-right" data-ng-click="openCreateStoreAdminModal();">
+            <a class="btn btn-success pull-right" data-ng-click="openCreateStoreAdminModal();">
                 <i class="glyphicon glyphicon-plus"></i>Add Store Admin
             </a>
         </div>
@@ -155,6 +175,9 @@
                     {{user.email}}
                 </td>
                 <td>
+                    <a class="btn btn-warning" data-ng-click="">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
                     <a class="btn btn-primary" data-ng-click="deleteOutletAdminConfirmationModal(user);">
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>

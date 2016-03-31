@@ -165,12 +165,15 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 	        $scope.ads = OutletAds.query({ outletId: $scope.outletId });
 	    };
 	    $scope.createUser = function (newUser) {
+	        var storeid = Authentication.user.stores[0];
+	        if ($scope.authentication.user && ($scope.authentication.user.roles.indexOf(ApplicationEnums.Roles.Admin) !== -1)) {
+	            storeid = $scope.outlet.store;
+	        };
 
 	        newUser.outlets = [$stateParams.outletId];
 	        newUser.roles = ["outletadmin"];
 	        newUser.username = newUser.email;
-	        newUser.stores = [Authentication.user.stores[0]];
-
+	        newUser.stores = [storeid];
 	        $http.post('/users/create', newUser).success(function (response) {
 	            $scope.users.unshift(response);
 	            notify({
@@ -179,6 +182,11 @@ angular.module('outlets').controller('OutletsController', ['$scope', '$http', '$
 	                duration: 2000
 	            });
 	        }).error(function (response) {
+	            notify({
+	                message: response.message,
+	                classes: 'alert-danger',
+	                duration: 2000
+	            });
 	            $scope.error = response.message;
 	        });
 	    };

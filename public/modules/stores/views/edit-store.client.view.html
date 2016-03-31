@@ -1,8 +1,18 @@
 <section data-ng-controller="StoresController" data-ng-init="findOne()">
-	<div class="page-header">
-        <h1 ng-show="store._id">Edit Store</h1>
-        <h1 ng-hide="store._id">New Store</h1>
-	</div>
+    <div class="navbar navbar-default navbar-page-header" id="subnav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-6">
+                    <div class="navbar-header">
+                        <h3 class="margin-top-10 margin-bottom-5" ng-show="store._id">Edit Store</h3>
+                        <h3 class="margin-top-10 margin-bottom-5" ng-hide="store._id">New Store</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	 
 	<div class="col-md-12">
         <form name="storeForm" class="form-horizontal" data-ng-submit="createOrUpdateStore(storeForm.$valid)" novalidate>
             <fieldset>

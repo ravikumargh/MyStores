@@ -3,3 +3,10 @@ wysiwyg-edit.ad-title .tinyeditor .sizer, wysiwyg-edit.ad-content .tinyeditor .s
 	height: 75px;
 }
     
+.ads-view-all{
+    color: #4285f4;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+}
