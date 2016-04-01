@@ -3,7 +3,9 @@
 angular.module('offers').controller('OffersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Offers',
 	function($scope, $stateParams, $location, Authentication, Offers) {
 		$scope.authentication = Authentication;
-
+		$scope.getHtml = function (html) {
+		    return $sce.trustAsHtml(html);
+		}
 		$scope.create = function() {
 			var offer = new Offers({
 				title: this.title,

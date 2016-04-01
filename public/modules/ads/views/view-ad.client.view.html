@@ -5,34 +5,11 @@
                 <div class="col-md-9 col-sm-6">
                     <div class="navbar-header">
                         <img alt="logo" class="img-responsive text-center ad-store-logo" src="images/content/{{ad.store}}" ng-error="tellServerItsBroken(ad)" />
-                        <div>
-                            <small>
-                                <em class="text-muted">
-                                    Posted on
-                                    <span data-ng-bind="ad.created | date:'mediumDate'"></span>
-                                    by
-                                    <span data-ng-bind="ad.user.displayName"></span>
-                                </em>
-                            </small>
-
-                            <span class="list-group-item-text">
-                                Offer valid from
-                                <span class="label label-danger">
-
-                                    <span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
-
-                                    to
-
-                                    <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
-
-                                </span>
-                            </span>
-                        </div>
-                        <!--<h3>Ads</h3>-->
+                        
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="pull-right margin-top-10" data-ng-show="authentication.user._id == ad.user._id || authentication.user.roles.indexOf('admin') !== -1">
+                <div class="col-md-3" data-ng-show="authentication.user">
+                    <div class=" pull-right margin-top-10" data-ng-show="authentication.user._id == ad.user._id || authentication.user.roles.indexOf('admin') !== -1">
 
                         <a class="btn btn-warning" href="/#!/ads/{{ad._id}}/edit">
                             <i class="glyphicon glyphicon-edit"></i>
@@ -74,7 +51,30 @@
             </div>
         </div>
         <div class="col-md-9  side-collapse-container">
-            <div>                
+            <div>
+                <small>
+                    <em class="text-muted">
+                        Posted on
+                        <span data-ng-bind="ad.created | date:'mediumDate'"></span>
+                        by
+                        <span data-ng-bind="ad.user.displayName"></span>
+                    </em>
+                </small>
+
+                <span class="list-group-item-text">
+                    Offer valid from
+                    <span class="label label-danger">
+
+                        <span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
+
+                        to
+
+                        <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
+
+                    </span>
+                </span>
+            </div>
+            <div>
                 <img alt="MEAN.JS" class="img-responsive text-center" src="images/content/{{ad._id}}" ng-error="tellServerItsBroken(ad)" />
                 <p ng-bind-html="getHtml(ad.title)"></p>
                 <p class="lead" ng-bind-html="getHtml(ad.content)"></p>
@@ -138,17 +138,18 @@
                 <div class="item " ng-repeat="item in offers">
                     <div class="well">
                         <div class="thumbnail">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Delete" ng-click="openOfferDeleteModal(item)">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="close edit" data-dismiss="modal" aria-label="Edit">
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                            </button>
+                            <div data-ng-show="authentication.user">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Delete" ng-click="openOfferDeleteModal(item)">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </button>
+                                <button type="button" class="close edit" data-dismiss="modal" aria-label="Edit">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                </button>
+                            </div>
                             <img ng-src="http://localhost:3000/images/content/{{item._id}} " hide-until-good alt="">
                             <div class="caption">
-                                <h4>{{item.title}}</h4>
-                                <p>{{item.content}}</p>
-                                <!-- <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p> -->
+                                <p ng-bind-html="getHtml(item.title)"></p>
+                                <p ng-bind-html="getHtml(item.content)"></p>
                             </div>
                         </div>
                     </div>

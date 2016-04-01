@@ -235,7 +235,7 @@ angular.module('ads').controller('AdsController',
 		                }
 		                notify({
 		                    message: 'Ad ' + strPublish + ' successfully.',
-		                    classes: 'alert-success',
+		                    classes: 'alert-success col-md-12',
 		                    duration: 2000
 		                });
 		            }
