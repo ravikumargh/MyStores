@@ -139,7 +139,13 @@ exports.listByOutletId = function (req, res) {
  * List of today's Ads
  */
 exports.todayslist = function (req, res) {
-    Ad.find({ "cities": { $in: [req.params.cityId] }, "ispublished": true, 'todate': { $gte: Date(new Date()) } }).sort('-created').populate('user', 'displayName').exec(function (err, ads) {
+    var perPage = 2,
+        page = Math.max(0, req.param('page'));
+
+    Ad.find({ "cities": { $in: [req.params.cityId] }, "ispublished": true, 'todate': { $gte: Date(new Date()) } })
+        .limit(perPage)
+        .skip(perPage * page)
+        .sort('-created').populate('user', 'displayName').exec(function (err, ads) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)

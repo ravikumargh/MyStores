@@ -20,7 +20,7 @@ module.exports = function (app) {
     app.route('/ads')
 		.get(ads.list)
 		.post(users.requiresLogin, ads.create);
-    app.route('/ads/todays/:cityId')
+    app.route('/ads/todays/:cityId/:page')
             .get(ads.todayslist)
 
     app.route('/ads/:adId')

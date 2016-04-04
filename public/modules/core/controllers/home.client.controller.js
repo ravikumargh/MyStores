@@ -9,7 +9,7 @@ angular.module('core').controller('HomeController', ['$scope', '$rootScope', '$h
 
 		$scope.getTodaysAds = function() {
 				var selectedCity=JSON.parse(localStorage.MyCity);			
-				$http.get('/ads/todays/'+selectedCity._id).success(function(response) {
+				$http.get('/ads/todays/'+selectedCity._id+'/0').success(function(response) {
 					$scope.ads = response;
 				}).error(function(response) {
 					$scope.error = response.message;
