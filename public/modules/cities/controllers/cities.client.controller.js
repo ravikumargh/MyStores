@@ -5,6 +5,22 @@ angular.module('cities').controller('CitiesController', ['$scope', '$stateParams
 	function($scope, $stateParams, $location, $log, $modal, $timeout, Authentication, Cities, notify) {
 		$scope.authentication = Authentication;
 
+		$scope.options = {
+		    types: ['(cities)'],
+		    componentRestrictions: { country: 'IN' }
+		  };
+ 
+		 $scope.cityDetails = new Cities({
+		    name: '',
+		    place_id: '',
+	        formatted_address: '',
+		    location: {
+		        lat: '',
+		        long: ''
+		      }
+		    });
+		  
+
 		$scope.create = function(city) {
 			 
 			city.$save(function(response) {
@@ -20,6 +36,11 @@ angular.module('cities').controller('CitiesController', ['$scope', '$stateParams
 				$scope.error = errorResponse.data.message;
 			});
 		};
+
+		$scope.AddCity = function() {			 
+			$scope.create($scope.cityDetails)
+		};
+
 
 		$scope.remove = function(city) {
 			if (city) {
@@ -131,5 +152,6 @@ angular.module('cities').controller('CitiesModalController',
 		$scope.cancel = function () {
 			$modalInstance.dismiss('cancel');
 		};
+		
 	}
 ]);

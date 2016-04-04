@@ -19,6 +19,30 @@
     </div>
 
     <div class="panel panel-default plain profile-panel">
+        <div class="form-group">
+            <div style="float: left;">
+                 <input vs-google-autocomplete="options"
+                     ng-model="cityDetails.formatted_address"                      
+                     vs-place-id="cityDetails.place_id"
+                     vs-latitude="cityDetails.location.lat"
+                     vs-longitude="cityDetails.location.lng"
+                     vs-city="cityDetails.name"
+                     ng-model="cityIN" 
+                     type="text" 
+                     name="cityIN"
+                     id="cityIN"
+                     class="form-control" 
+                     placeholder="Enter city name of India">
+              <span class="help-block">{{cityDetails.formatted_address}}</span> 
+            </div>
+            <div>             
+              <button class="btn btn-primary" type="button" ng-click="AddCity()">Create</button>
+            </div>
+              <br />
+        </div>
+    </div>
+    <div class="panel panel-default plain profile-panel">
+         
         <table ng-table="vm.tableParams" class="table">
             <tr data-ng-repeat="city in cities">
                 <td data-title="'#'">
