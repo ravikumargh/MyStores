@@ -1,0 +1,16 @@
+{ 
+    "_id" : ObjectId("56d000fca5292438213748a0"), 
+    "user" : ObjectId("56cff5ac054e071c3a84369f"), 
+    "content" : "article 1", 
+    "title" : "article 1", 
+    "created" : ISODate("2016-02-26T07:38:36.613+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56d97f145f3d1574290531ed"), 
+    "user" : ObjectId("56d425c2f7fea57422794f54"), 
+    "content" : "If find() includes a projection argument, the matching documents contain only the projection fields and the _id field. You can optionally exclude the _id field. The <boolean> value can be any of the following:\n\n1 or true to include the field. The find() method always includes the _id field even if the field is not explicitly stated to return in the projection parameter.\n0 or false to exclude the field.\nA projection cannot contain both include and exclude specifications, except for the exclusion of the _id field. In projections that explicitly include fields, the _id field is the only field that you can explicitly exclude.", 
+    "title" : "Mongoose: How to query for a referenced object property?", 
+    "created" : ISODate("2016-03-04T12:27:00.685+0000"), 
+    "__v" : NumberInt(0)
+}

@@ -139,7 +139,7 @@ exports.listByOutletId = function (req, res) {
  * List of today's Ads
  */
 exports.todayslist = function (req, res) {
-    var perPage = 2,
+    var perPage = 10,
         page = Math.max(0, req.param('page'));
 
     Ad.find({ "cities": { $in: [req.params.cityId] }, "ispublished": true, 'todate': { $gte: Date(new Date()) } })

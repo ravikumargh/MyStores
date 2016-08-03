@@ -1,0 +1,117 @@
+{ 
+    "_id" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "user" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "landmark" : "asdf f faf", 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-29T12:56:15.460+0000"), 
+    "created" : ISODate("2016-03-29T12:56:15.460+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJY8UqQBBwrzsRUA60iKH1ciU", 
+            "city" : "Mysuru", 
+            "state" : "KA", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "12.303889", 
+                "long" : "76.65444400000001"
+            }
+        }, 
+        "name" : "Mysore Palace, Agrahara, Chamrajpura, Mysuru, Karnataka 570004"
+    }, 
+    "name" : "Store 1", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fbd9c6149ee3942621192c"), 
+    "user" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-30T13:51:02.455+0000"), 
+    "created" : ISODate("2016-03-30T13:51:02.455+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJ21UmdmzO5zsRhHKAyLz3tRI", 
+            "city" : "Mumbai", 
+            "state" : "MH", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "18.9678619", 
+                "long" : "72.82387210000002"
+            }
+        }, 
+        "name" : "Orchid Enclave, Jehangir Boman Behram Road, Mumbai Central, Mumbai, Maharashtra 400008, India"
+    }, 
+    "name" : "Big bazar", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fcb8d1d6a9b7a4358de12d"), 
+    "user" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T05:42:41.249+0000"), 
+    "created" : ISODate("2016-03-31T05:42:41.249+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJ_____zqx5zsRB8Wmz6738ns", 
+            "city" : "Mumbai", 
+            "state" : "MH", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "19.2239423", 
+                "long" : "72.85384840000006"
+            }
+        }, 
+        "name" : "Shri Vallabh Shopping Center, Sardar Vallabahi Patel Road, Opp, Gokul Shopping Centre, Borivali West, Mumbai, Maharashtra 400092, India"
+    }, 
+    "name" : "Pantaloons", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fcb8e5d6a9b7a4358de131"), 
+    "user" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T05:43:01.868+0000"), 
+    "created" : ISODate("2016-03-31T05:43:01.868+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJe7yXN7UTrjsR2LO0JARBVEA", 
+            "city" : "Bengaluru", 
+            "state" : "KA", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "12.9480362", 
+                "long" : "77.69878599999993"
+            }
+        }, 
+        "name" : "Site no. 88, Opposite to VIMS Hospital,, Outer Ring Road,, Marathahalli village, Marathahalli, Bengaluru, Karnataka 560037, India"
+    }, 
+    "name" : "More megamart", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fcccc9d6a9b7a4358de13a"), 
+    "user" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T07:07:53.544+0000"), 
+    "created" : ISODate("2016-03-31T07:07:53.544+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJv34qvgpwrzsRD5C9IbExmxo", 
+            "street" : "Hunsur Road", 
+            "city" : "Mysuru", 
+            "state" : "KA", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "12.3116944", 
+                "long" : "76.6425223"
+            }
+        }, 
+        "name" : "SDM Mall No. 2254, Next to Hotel Regalia, Vinod Road, Vinobha Road, Hunsur Rd, Devaraja Mohalla, Yadavagiri, Mysuru, Karnataka 570001, India"
+    }, 
+    "name" : "Reliance Trends", 
+    "__v" : NumberInt(0)
+}

@@ -1,0 +1,83 @@
+{ 
+    "_id" : ObjectId("56cff8c9a52924382137489d"), 
+    "state" : "Karnataka", 
+    "name" : "Mysore", 
+    "created" : ISODate("2016-02-26T07:03:37.053+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56cff9aea52924382137489e"), 
+    "state" : "Karnataka", 
+    "name" : "Bangalore", 
+    "created" : ISODate("2016-02-26T07:07:26.757+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56cffa0ca52924382137489f"), 
+    "state" : "Karnataka", 
+    "name" : "Hubli", 
+    "created" : ISODate("2016-02-26T07:09:00.695+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56e258b9343770b027c6c57e"), 
+    "state" : "Maharastra", 
+    "name" : "Mumbai", 
+    "created" : ISODate("2016-03-11T05:33:45.178+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56e25905343770b027c6c57f"), 
+    "state" : "DH", 
+    "name" : "Dehli", 
+    "created" : ISODate("2016-03-11T05:35:01.004+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("570271b4a86475a8185b89b3"), 
+    "place_id" : "ChIJbU60yXAWrjsR4E9-UejD3_g", 
+    "formatted_address" : "Bengaluru, Karnataka 560001, India", 
+    "created" : ISODate("2016-04-04T13:52:52.853+0000"), 
+    "location" : {
+        "lat" : "12.9715987", 
+        "lng" : "77.59456269999998"
+    }, 
+    "name" : "Bengaluru", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("57027c2da86475a8185b89b4"), 
+    "place_id" : "ChIJ-S5XHThwrzsRbTn4wOjsiSs", 
+    "formatted_address" : "Mysuru, Karnataka 570001, India", 
+    "created" : ISODate("2016-04-04T14:37:33.763+0000"), 
+    "location" : {
+        "lat" : "12.2958104", 
+        "lng" : "76.63938050000002"
+    }, 
+    "name" : "Mysuru", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("57027cbaa86475a8185b89b5"), 
+    "place_id" : "ChIJLbZ-NFv9DDkRzk0gTkm3wlI", 
+    "formatted_address" : "New Delhi, Delhi 110001, India", 
+    "created" : ISODate("2016-04-04T14:39:54.855+0000"), 
+    "location" : {
+        "lat" : "28.6139391", 
+        "lng" : "77.20902120000005"
+    }, 
+    "name" : "New Delhi", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("57027e49a86475a8185b89b6"), 
+    "place_id" : "ChIJf1g1bt6grzsRjJXGv8D5S_A", 
+    "formatted_address" : "Mandya, Karnataka 571401, India", 
+    "created" : ISODate("2016-04-04T14:46:33.615+0000"), 
+    "location" : {
+        "lat" : "12.5221567", 
+        "lng" : "76.90091910000001"
+    }, 
+    "name" : "Mandya", 
+    "__v" : NumberInt(0)
+}

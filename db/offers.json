@@ -1,0 +1,143 @@
+{ 
+    "_id" : ObjectId("56fa91d19f6b79cc1feb9b0f"), 
+    "user" : ObjectId("56fa916f9f6b79cc1feb9b0d"), 
+    "ad" : ObjectId("56fa91a29f6b79cc1feb9b0e"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-29T14:31:45.126+0000"), 
+    "created" : ISODate("2016-03-29T14:31:45.126+0000"), 
+    "todate" : ISODate("2016-03-29T14:31:45.126+0000"), 
+    "fromdate" : ISODate("2016-03-29T14:31:45.126+0000"), 
+    "content" : "", 
+    "title" : "store1.outlet3.admin@ms.com Offer", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fa91e59f6b79cc1feb9b13"), 
+    "user" : ObjectId("56fa916f9f6b79cc1feb9b0d"), 
+    "ad" : ObjectId("56fa91a29f6b79cc1feb9b0e"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-29T14:32:05.741+0000"), 
+    "created" : ISODate("2016-03-29T14:32:05.741+0000"), 
+    "todate" : ISODate("2016-03-29T14:32:05.741+0000"), 
+    "fromdate" : ISODate("2016-03-29T14:32:05.741+0000"), 
+    "content" : "store1.outlet3.admin@ms.com store1.outlet3.admin@ms.com store1.outlet3.admin@ms.com store1.outlet3.admin@ms.com", 
+    "title" : "store1.outlet3.admin@ms.com Offer", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0d67d6a9b7a4358de164"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "ad" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T11:43:35.187+0000"), 
+    "created" : ISODate("2016-03-31T11:43:35.187+0000"), 
+    "todate" : ISODate("2016-03-31T11:43:35.187+0000"), 
+    "fromdate" : ISODate("2016-03-31T11:43:35.187+0000"), 
+    "content" : "bigbazar.mysore.o1.u1@ms.com Offer", 
+    "title" : "Odder 1", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0d71d6a9b7a4358de168"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "ad" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T11:43:45.219+0000"), 
+    "created" : ISODate("2016-03-31T11:43:45.219+0000"), 
+    "todate" : ISODate("2016-03-31T11:43:45.219+0000"), 
+    "fromdate" : ISODate("2016-03-31T11:43:45.219+0000"), 
+    "content" : "bigbazar.mysore.o1.u1@ms.com bigbazar.mysore.o1.u1@ms.com", 
+    "title" : "Offer 2", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0d80d6a9b7a4358de169"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "ad" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T11:44:00.706+0000"), 
+    "created" : ISODate("2016-03-31T11:44:00.706+0000"), 
+    "todate" : ISODate("2016-03-31T11:44:00.706+0000"), 
+    "fromdate" : ISODate("2016-03-31T11:44:00.706+0000"), 
+    "content" : "bigbazar.mysore.o1.u1@ms.com", 
+    "title" : "bigbazar.mysore.o1.u1@ms.com", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0d86d6a9b7a4358de16a"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "ad" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T11:44:06.964+0000"), 
+    "created" : ISODate("2016-03-31T11:44:06.964+0000"), 
+    "todate" : ISODate("2016-03-31T11:44:06.964+0000"), 
+    "fromdate" : ISODate("2016-03-31T11:44:06.964+0000"), 
+    "content" : "", 
+    "title" : "bigbazar.mysore.o1.u1@ms.com", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd29c5d6a9b7a4358de16b"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "ad" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T13:44:37.569+0000"), 
+    "created" : ISODate("2016-03-31T13:44:37.569+0000"), 
+    "todate" : ISODate("2016-03-31T13:44:37.569+0000"), 
+    "fromdate" : ISODate("2016-03-31T13:44:37.569+0000"), 
+    "content" : "aaaaaaaaaaaa ssssssssssssss", 
+    "title" : "Aaaaaaaa", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fe42242f352c90309dbfa6"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "ad" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-04-01T09:40:52.306+0000"), 
+    "created" : ISODate("2016-04-01T09:40:52.306+0000"), 
+    "todate" : ISODate("2016-04-01T09:40:52.306+0000"), 
+    "fromdate" : ISODate("2016-04-01T09:40:52.306+0000"), 
+    "content" : "sssssssssssssss", 
+    "title" : "<div>aaaaaaaaaaaaaaa</div>", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fe2556d6a9b7a4358de16c"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "ad" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-04-01T07:37:58.834+0000"), 
+    "created" : ISODate("2016-04-01T07:37:58.834+0000"), 
+    "todate" : ISODate("2016-04-01T07:37:58.834+0000"), 
+    "fromdate" : ISODate("2016-04-01T07:37:58.834+0000"), 
+    "content" : "Permutation & Combination Permutation & Combination", 
+    "title" : "Permutation & Combination", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fe41622f352c90309dbfa4"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "ad" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-04-01T09:37:38.560+0000"), 
+    "created" : ISODate("2016-04-01T09:37:38.560+0000"), 
+    "todate" : ISODate("2016-04-01T09:37:38.560+0000"), 
+    "fromdate" : ISODate("2016-04-01T09:37:38.560+0000"), 
+    "content" : "<span style=\"font-size: xx-large; color: rgb(0, 128, 0);\">ddddddddddddd</span>", 
+    "title" : "<span style=\"color: rgb(255, 102, 0);\">aaaaaaaaaaa</span>", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fe42162f352c90309dbfa5"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "ad" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-04-01T09:40:38.806+0000"), 
+    "created" : ISODate("2016-04-01T09:40:38.806+0000"), 
+    "todate" : ISODate("2016-04-01T09:40:38.806+0000"), 
+    "fromdate" : ISODate("2016-04-01T09:40:38.806+0000"), 
+    "content" : "<span style=\"font-weight: bold; color: rgb(255, 102, 0); font-size: xx-large;\">20% OFF</span>", 
+    "title" : "<span style=\"font-size: x-large; font-weight: bold;\">Apple</span>", 
+    "__v" : NumberInt(0)
+}

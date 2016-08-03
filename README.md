@@ -146,3 +146,15 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+##APIs
+```bash
+todays ads
+Params: city id and page number
+http://localhost:3000/ads/todays/56cff8c9a52924382137489d/0
+
+Image
+if send add id will get add image, if we send store id will get store image
+http://localhost:3000/images/content/56fbc017149ee39426211928
+
+```

@@ -1,0 +1,55 @@
+{ 
+    "_id" : ObjectId("56d527ac45cf6aa818f161a3"), 
+    "roles" : [
+        "admin"
+    ], 
+    "cssclass" : "glyphicon glyphicon-facetime-video", 
+    "sequence" : NumberInt(2), 
+    "name" : "Electronics&Mobiles", 
+    "created" : ISODate("2016-03-01T05:25:00.847+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56e26fcf0b35955c234371ca"), 
+    "roles" : [
+        "admin"
+    ], 
+    "cssclass" : "glyphicon glyphicon-cutlery", 
+    "sequence" : NumberInt(5), 
+    "name" : "Restaurants", 
+    "created" : ISODate("2016-03-11T07:12:15.884+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56d526ae653c47501dc5d8e8"), 
+    "roles" : [
+        "admin"
+    ], 
+    "name" : "Supermarkets", 
+    "sequence" : NumberInt(1), 
+    "cssclass" : "glyphicon glyphicon-shopping-cart", 
+    "created" : ISODate("2016-03-01T05:20:46.553+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56d526ca653c47501dc5d8e9"), 
+    "roles" : [
+        "admin"
+    ], 
+    "name" : "Home&Kitchen", 
+    "cssclass" : "glyphicon glyphicon-home", 
+    "sequence" : NumberInt(4), 
+    "created" : ISODate("2016-03-01T05:21:14.602+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56d5273145cf6aa818f161a2"), 
+    "roles" : [
+        "admin"
+    ], 
+    "sequence" : NumberInt(3), 
+    "cssclass" : "glyphicon glyphicon-tree-conifer", 
+    "name" : "Fashion", 
+    "created" : ISODate("2016-03-01T05:22:57.953+0000"), 
+    "__v" : NumberInt(0)
+}

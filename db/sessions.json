@@ -1,0 +1,10 @@
+{ 
+    "_id" : "l1BJ8RTwUMEnyaiYbqufZ4x-nest3Go9", 
+    "session" : "{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"passport\":{\"user\":\"56fa916f9f6b79cc1feb9b0d\"}}", 
+    "expires" : ISODate("2016-08-16T10:46:14.344+0000")
+}
+{ 
+    "_id" : "psp6dbu-EyGDpeWoQy5VijoKiQCJraB6", 
+    "session" : "{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"passport\":{}}", 
+    "expires" : ISODate("2016-08-17T07:10:17.710+0000")
+}

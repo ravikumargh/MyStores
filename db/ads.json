@@ -1,0 +1,336 @@
+{ 
+    "_id" : ObjectId("56fbc017149ee39426211928"), 
+    "user" : ObjectId("56fa916f9f6b79cc1feb9b0d"), 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-30T12:01:27.679+0000"), 
+    "created" : ISODate("2016-09-30T12:01:27.679+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fa91499f6b79cc1feb9b0c")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-25T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-29T18:30:00.000+0000"), 
+    "content" : "<h4 class=\"no-border ng-binding\" ng-bind-html=\"getHtml(ad.title)\" style=\"box-sizing: border-box; font-family: Roboto, arial, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(51, 51, 51); margin-top: 10px; margin-bottom: 10px; font-size: 18px; border: none; background-color: rgb(255, 255, 255);\">store1.outlet3.admin@ms.com Ad 2</h4>", 
+    "title" : "<h4 class=\"no-border ng-binding\" ng-bind-html=\"getHtml(ad.title)\" style=\"box-sizing: border-box; font-family: Roboto, arial, sans-serif; font-weight: 500; line-height: 1.1; margin-top: 10px; margin-bottom: 10px; border: none; font-size: 18px; background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(255, 102, 0);\">store1.outlet3.admin@ms.com Ad2</span></h4>", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("57a1969d56afa94c36e1394d"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "store" : ObjectId("56fbd9c6149ee3942621192c"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-08-03T07:00:45.688+0000"), 
+    "created" : ISODate("2016-08-03T07:00:45.688+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fd0ce8d6a9b7a4358de15e")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-08-17T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-08-02T18:30:00.000+0000"), 
+    "content" : "ssssssssssssssssssss sssssssssssssssssssssssss", 
+    "title" : "aaaaaaaaaaaaaaaaaaaaaaaaaa", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fa818c9f6b79cc1feb9b08"), 
+    "user" : ObjectId("56fa81689f6b79cc1feb9b07"), 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-29T13:22:20.255+0000"), 
+    "created" : ISODate("2016-03-29T13:22:20.255+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fa813c9f6b79cc1feb9b06")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-27T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-28T18:30:00.000+0000"), 
+    "content" : "store1.outlet2.admin@ms.com ad&nbsp;store1.outlet2.admin@ms.com&nbsp;store1.outlet2.admin@ms.com&nbsp;store1.outlet2.admin@ms.com", 
+    "title" : "store1.outlet2.admin@ms.com ad", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fa91a29f6b79cc1feb9b0e"), 
+    "user" : ObjectId("56fa916f9f6b79cc1feb9b0d"), 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-29T14:30:58.279+0000"), 
+    "created" : ISODate("2016-03-29T14:30:58.279+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fa91499f6b79cc1feb9b0c")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-02T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-28T18:30:00.000+0000"), 
+    "content" : "store1.outlet3.admin@ms.com Ad&nbsp;store1.outlet3.admin@ms.com &nbsp;store1.outlet3.admin@ms.com&nbsp;store1.outlet3.admin@ms.com &nbsp;store1.outlet3.admin@ms.com&nbsp;store1.outlet3.admin@ms.com&nbsp;store1.outlet3.admin@ms.com", 
+    "title" : "store1.outlet3.admin@ms.com Ad", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fcd459d6a9b7a4358de13e"), 
+    "user" : ObjectId("56fa81689f6b79cc1feb9b07"), 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T07:40:09.805+0000"), 
+    "created" : ISODate("2016-03-31T07:40:09.805+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fa813c9f6b79cc1feb9b06")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-10T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-30T18:30:00.000+0000"), 
+    "content" : "store1.outlet2.admin@ms.com&nbsp;store1.outlet2.admin@ms.com", 
+    "title" : "store1.outlet2.admin@ms.com Ad", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fcd48fd6a9b7a4358de13f"), 
+    "user" : ObjectId("56fa81689f6b79cc1feb9b07"), 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T07:41:03.737+0000"), 
+    "created" : ISODate("2016-03-31T07:41:03.737+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fa813c9f6b79cc1feb9b06")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-10T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-30T18:30:00.000+0000"), 
+    "content" : "store1.outlet2.admin@ms.com&nbsp;store1.outlet2.admin@ms.com&nbsp;store1.outlet2.admin@ms.com", 
+    "title" : "store1.outlet2.admin@ms.com", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd08c9d6a9b7a4358de14a"), 
+    "user" : ObjectId("56fd070cd6a9b7a4358de144"), 
+    "store" : null, 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T11:23:53.080+0000"), 
+    "created" : ISODate("2016-03-31T11:23:53.080+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : false, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fd06ded6a9b7a4358de143")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-24T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-30T18:30:00.000+0000"), 
+    "content" : "pantaloons.mysore.outlet1@ms.com", 
+    "title" : "pantaloons.mysore.outlet1@ms.com", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0b17d6a9b7a4358de14e"), 
+    "user" : ObjectId("56fd0ae6d6a9b7a4358de14d"), 
+    "store" : null, 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T11:33:43.995+0000"), 
+    "created" : ISODate("2016-03-31T11:33:43.995+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : false, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fd06ded6a9b7a4358de143")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-24T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-30T18:30:00.000+0000"), 
+    "content" : "pantaloons.mysore.o1.u2@ms.com Ad&nbsp;pantaloons.mysore.o1.u2@ms.com", 
+    "title" : "pantaloons.mysore.o1.u2@ms.com Ad", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0bb1d6a9b7a4358de153"), 
+    "user" : ObjectId("56fd0b66d6a9b7a4358de152"), 
+    "store" : null, 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T11:36:17.522+0000"), 
+    "created" : ISODate("2016-03-31T11:36:17.522+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : false, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fd06ded6a9b7a4358de143")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-24T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-30T18:30:00.000+0000"), 
+    "content" : "<span style=\"color: rgb(51, 51, 51); font-family: Roboto, arial, sans-serif; font-size: 14px; line-height: 20px; background-color: rgb(255, 255, 255);\">pantaloons.mysore.o1.u1@ms.com Ad1&nbsp;</span><span style=\"color: rgb(51, 51, 51); font-family: Roboto, arial, sans-serif; font-size: 14px; line-height: 20px; background-color: rgb(255, 255, 255);\">pantaloons.mysore.o1.u1@ms.com</span>", 
+    "title" : "<span style=\"color: rgb(51, 51, 51); font-family: Roboto, arial, sans-serif; font-size: 14px; line-height: 20px; background-color: rgb(255, 255, 255);\">pantaloons.mysore.o1.u1@ms.com Ad1</span>", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0c90d6a9b7a4358de15a"), 
+    "user" : ObjectId("56fd0c4dd6a9b7a4358de158"), 
+    "store" : ObjectId("56fcb8d1d6a9b7a4358de12d"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T11:40:00.758+0000"), 
+    "created" : ISODate("2016-03-31T11:40:00.758+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fd06ded6a9b7a4358de143")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-24T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-30T18:30:00.000+0000"), 
+    "content" : "pantaloons.mysore.o1.u2@ms.com Ad3&nbsp;pantaloons.mysore.o1.u2@ms.com", 
+    "title" : "pantaloons.mysore.o1.u2@ms.com Ad3", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0d3fd6a9b7a4358de160"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "store" : ObjectId("56fbd9c6149ee3942621192c"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-03-31T11:42:55.515+0000"), 
+    "created" : ISODate("2016-03-31T11:42:55.515+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fd0ce8d6a9b7a4358de15e")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-24T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-03-30T18:30:00.000+0000"), 
+    "content" : "bigbazar.mysore.o1.u1@ms.com Ad1&nbsp;bigbazar.mysore.o1.u1@ms.com&nbsp;bigbazar.mysore.o1.u1@ms.com", 
+    "title" : "mysore bigbazar.mysore.o1.u1@ms.com Ad1", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("57a079e39352ca9c348e2f75"), 
+    "user" : ObjectId("56fa916f9f6b79cc1feb9b0d"), 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-08-02T10:45:55.627+0000"), 
+    "created" : ISODate("2016-08-02T10:45:55.627+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : false, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fa91499f6b79cc1feb9b0c")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-08-06T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-08-01T18:30:00.000+0000"), 
+    "content" : "asasas", 
+    "title" : "aasasas", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("57a195cd56afa94c36e13944"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "store" : ObjectId("56fbd9c6149ee3942621192c"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-08-03T06:57:17.293+0000"), 
+    "created" : ISODate("2016-08-03T06:57:17.293+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fd0ce8d6a9b7a4358de15e")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-09-30T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-08-02T18:30:00.000+0000"), 
+    "content" : "bigbazar.mysore.o1.u1@ms.com Ad2 content&nbsp;bigbazar.mysore.o1.u1@ms.com &nbsp;bigbazar.mysore.o1.u1@ms.com", 
+    "title" : "bigbazar.mysore.o1.u1@ms.com Ad2", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("57a1961756afa94c36e13948"), 
+    "user" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "store" : ObjectId("56fbd9c6149ee3942621192c"), 
+    "isdeleted" : false, 
+    "updated" : ISODate("2016-08-03T06:58:31.384+0000"), 
+    "created" : ISODate("2016-08-03T06:58:31.384+0000"), 
+    "isalloutlets" : false, 
+    "ispublished" : true, 
+    "cities" : [
+        ObjectId("56cff8c9a52924382137489d")
+    ], 
+    "outlets" : [
+        ObjectId("56fd0ce8d6a9b7a4358de15e")
+    ], 
+    "stores" : [
+
+    ], 
+    "todate" : ISODate("2016-08-06T18:29:59.999+0000"), 
+    "fromdate" : ISODate("2016-08-02T18:30:00.000+0000"), 
+    "content" : "bigbazar.mysore.o1.u1@ms.com Ad3 Content asdasdad", 
+    "title" : "bigbazar.mysore.o1.u1@ms.com Ad3", 
+    "__v" : NumberInt(0)
+}

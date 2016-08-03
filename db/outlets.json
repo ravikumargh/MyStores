@@ -1,0 +1,164 @@
+{ 
+    "_id" : ObjectId("56fa7e669f6b79cc1feb9b01"), 
+    "user" : ObjectId("56fa7d059f6b79cc1feb9b00"), 
+    "landmark" : "Adasd", 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "updated" : ISODate("2016-03-29T13:08:54.919+0000"), 
+    "created" : ISODate("2016-03-29T13:08:54.919+0000"), 
+    "address" : {
+        "name" : "Mysore asd"
+    }, 
+    "name" : "store1.outlet2", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fa813c9f6b79cc1feb9b06"), 
+    "user" : ObjectId("56fa7eb19f6b79cc1feb9b02"), 
+    "landmark" : "asdsad", 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "city" : ObjectId("56cff8c9a52924382137489d"), 
+    "updated" : ISODate("2016-03-29T13:21:00.117+0000"), 
+    "created" : ISODate("2016-03-29T13:21:00.117+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJ-S5XHThwrzsRbTn4wOjsiSs", 
+            "city" : "Mysuru", 
+            "state" : "KA", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "12.2958104", 
+                "long" : "76.63938050000002"
+            }
+        }, 
+        "name" : "Mysuru, Karnataka 570001, India"
+    }, 
+    "name" : "store1.outlet1", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fa91499f6b79cc1feb9b0c"), 
+    "user" : ObjectId("56fa7c899f6b79cc1feb9aff"), 
+    "landmark" : "ads", 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "city" : ObjectId("56cff8c9a52924382137489d"), 
+    "updated" : ISODate("2016-03-29T14:29:29.914+0000"), 
+    "created" : ISODate("2016-03-29T14:29:29.914+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJ-S5XHThwrzsRbTn4wOjsiSs", 
+            "city" : "Mysuru", 
+            "state" : "KA", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "12.2958104", 
+                "long" : "76.63938050000002"
+            }
+        }, 
+        "name" : "Mysuru, Karnataka 570001, India"
+    }, 
+    "name" : "Store1 - Outlet 3", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fcc58dd6a9b7a4358de137"), 
+    "user" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "city" : ObjectId("56e258b9343770b027c6c57e"), 
+    "updated" : ISODate("2016-03-31T06:37:01.128+0000"), 
+    "created" : ISODate("2016-03-31T06:37:01.128+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJv34qvgpwrzsRD5C9IbExmxo", 
+            "street" : "Hunsur Road", 
+            "city" : "Mysuru", 
+            "state" : "KA", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "12.3116944", 
+                "long" : "76.6425223"
+            }
+        }, 
+        "name" : "SDM Mall No. 2254, Next to Hotel Regalia, Vinod Road, Vinobha Road, Hunsur Rd, Devaraja Mohalla, Yadavagiri, Mysuru, Karnataka 570001, India"
+    }, 
+    "name" : "Store1 - Outlet 4", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fcc7a0d6a9b7a4358de138"), 
+    "user" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "store" : ObjectId("56fa7b6f9f6b79cc1feb9afa"), 
+    "city" : ObjectId("56cff8c9a52924382137489d"), 
+    "updated" : ISODate("2016-03-31T06:45:52.254+0000"), 
+    "created" : ISODate("2016-03-31T06:45:52.254+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJ-5m16wdwrzsRnroEPHUj4XQ", 
+            "streetNumber" : "446", 
+            "street" : "Jhansi Rani Lakshmi Bai Road", 
+            "city" : "Mysuru", 
+            "state" : "KA", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "12.3007094", 
+                "long" : "76.64245540000002"
+            }
+        }, 
+        "name" : "446, JLB Road, Chamarajapura, Chamarajapuram Mohalla, Lakshmipuram, Mysuru, Karnataka 570004, India"
+    }, 
+    "name" : "Store1 - Outlet 5", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd06ded6a9b7a4358de143"), 
+    "user" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "store" : ObjectId("56fcb8d1d6a9b7a4358de12d"), 
+    "city" : ObjectId("56cff8c9a52924382137489d"), 
+    "updated" : ISODate("2016-03-31T11:15:42.411+0000"), 
+    "created" : ISODate("2016-03-31T11:15:42.411+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJ209nEBJwrzsRf18JLLiRAVg", 
+            "city" : "Mysuru", 
+            "state" : "KA", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "12.3091117", 
+                "long" : "76.65390239999999"
+            }
+        }, 
+        "name" : "Garuda Mall, No. 121 and 143, Makkaji Chowk Area, Near KR Circle, Mysuru, Karnataka 570001, India"
+    }, 
+    "name" : "pantaloons mysore", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0ce8d6a9b7a4358de15e"), 
+    "user" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "store" : ObjectId("56fbd9c6149ee3942621192c"), 
+    "city" : ObjectId("56cff8c9a52924382137489d"), 
+    "updated" : ISODate("2016-03-31T11:41:28.487+0000"), 
+    "created" : ISODate("2016-03-31T11:41:28.487+0000"), 
+    "address" : {
+        "components" : {
+            "placeId" : "ChIJ-5m16wdwrzsRnroEPHUj4XQ", 
+            "streetNumber" : "446", 
+            "street" : "Jhansi Rani Lakshmi Bai Road", 
+            "city" : "Mysuru", 
+            "state" : "KA", 
+            "countryCode" : "IN", 
+            "country" : "India", 
+            "location" : {
+                "lat" : "12.3007094", 
+                "long" : "76.64245540000002"
+            }
+        }, 
+        "name" : "446, JLB Road, Chamarajapura, Chamarajapuram Mohalla, Lakshmipuram, Mysuru, Karnataka 570004, India"
+    }, 
+    "name" : "Big bazar-Mysore", 
+    "__v" : NumberInt(0)
+}

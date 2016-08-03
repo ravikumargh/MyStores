@@ -1,0 +1,264 @@
+{ 
+    "_id" : ObjectId("56e90ee54dc5287c06594fab"), 
+    "salt" : "�\u0012\rp�ה���\t����T", 
+    "displayName" : "Store1 admin", 
+    "provider" : "local", 
+    "username" : "admin@ms.com", 
+    "created" : ISODate("2016-03-16T07:44:37.793+0000"), 
+    "outlets" : [
+        null
+    ], 
+    "stores" : [
+
+    ], 
+    "roles" : [
+        "admin"
+    ], 
+    "password" : "m8AkhpBaEk5pbvRm5fRJbzny1Kt1b/C89EF+StSclHyzBKp5RBIblZ2Rj8eDJnXAoJeHglCz0r8KEZhL8vu94Q==", 
+    "email" : "admin@ms.com", 
+    "lastName" : "admin", 
+    "firstName" : "Store1", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56ebd91cacb390b019850468"), 
+    "displayName" : "bb admin1", 
+    "provider" : "local", 
+    "username" : "bb.admin@ms.com", 
+    "created" : ISODate("2016-03-18T10:31:56.827+0000"), 
+    "outlets" : [
+
+    ], 
+    "stores" : [
+        ObjectId("56ebd8f0acb390b019850464")
+    ], 
+    "roles" : [
+        "storeadmin"
+    ], 
+    "salt" : "��[\b#GY��\u001a�\u00058Z\u0007�", 
+    "password" : "q53wlzE5/266p/0ItgPtbChDhWkGfH4jJEIQLViKJ4v+gCFtrQXfZyhsOmF8CtXI1Niy5BJqKjleuQ+VyHKD7g==", 
+    "email" : "bb.admin@ms.com", 
+    "lastName" : "admin1", 
+    "firstName" : "bb", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56ebd958acb390b01985046b"), 
+    "salt" : "�]��ۮ�Z\u001eR\u0000�mw�`", 
+    "displayName" : "bbOutlet1 admin", 
+    "provider" : "local", 
+    "username" : "bb.outlet1@ms.com", 
+    "created" : ISODate("2016-03-18T10:32:56.369+0000"), 
+    "outlets" : [
+        ObjectId("56ebd93facb390b01985046a")
+    ], 
+    "stores" : [
+
+    ], 
+    "roles" : [
+        "outletadmin"
+    ], 
+    "password" : "RFMBJrv7Wmoq9o6Ki7A282Ix1WcZsO1/cAbjEqPQJUn8Yeby41gW1WxUpZiOm+T/P+XuUxk7NiB9FNP5zdLBHw==", 
+    "email" : "bb.outlet1@ms.com", 
+    "lastName" : "admin", 
+    "firstName" : "bbOutlet1", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56ebdefe65dbca841aa6dce1"), 
+    "salt" : "ʉ���\u001ea��E�z����", 
+    "displayName" : "bb store outlet", 
+    "provider" : "local", 
+    "username" : "bb.outlet2@ms.com", 
+    "created" : ISODate("2016-03-18T10:57:02.489+0000"), 
+    "outlets" : [
+        ObjectId("56ebd93facb390b01985046a")
+    ], 
+    "stores" : [
+
+    ], 
+    "roles" : [
+        "outletadmin"
+    ], 
+    "password" : "5gh1x6Ng22Cp4vX0bBVx/nRnXNd7PKKmSBqUybEUjw/XfVNLnpv2zmhSKvK3VR6G1/NDBX34Vy02+pUkvrgqeg==", 
+    "email" : "bb.outlet2@ms.com", 
+    "lastName" : "outlet", 
+    "firstName" : "bb store", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56ebdf4965dbca841aa6dce4"), 
+    "salt" : "�%Xӿ�\n��S\u0006Z�x׿", 
+    "displayName" : "bbOutlet2 admin", 
+    "provider" : "local", 
+    "username" : "bbOutlet2.bangalore@ms.com", 
+    "created" : ISODate("2016-03-18T10:58:17.929+0000"), 
+    "outlets" : [
+        ObjectId("56ebdf2265dbca841aa6dce3")
+    ], 
+    "stores" : [
+
+    ], 
+    "roles" : [
+        "outletadmin"
+    ], 
+    "password" : "56pkE4LclfIdyyOuyh9r2RiRtGokWBz4pbdS2sMBrnz95nQd5GhPUd/WgKaKUo5yQFfGMSYIpKNsHyRDdA6fgg==", 
+    "email" : "bbOutlet2.bangalore@ms.com", 
+    "lastName" : "admin", 
+    "firstName" : "bbOutlet2", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fa7c899f6b79cc1feb9aff"), 
+    "salt" : "\nW\b*\n�^��nص\u007fW\u0016h", 
+    "displayName" : "store1 admin", 
+    "provider" : "local", 
+    "username" : "store1.admin@ms.com", 
+    "created" : ISODate("2016-03-29T13:00:57.781+0000"), 
+    "outlets" : [
+
+    ], 
+    "stores" : [
+        ObjectId("56fa7b6f9f6b79cc1feb9afa")
+    ], 
+    "roles" : [
+        "storeadmin"
+    ], 
+    "password" : "2SQBe8w8uW1uuKO+B4bCV9NGTlmdcgrAoR8EAdd8tdP1dUZbjPCailxQdLQpYJnIDbWGMsdDaJ3vYEkvH7fsQA==", 
+    "email" : "store1.admin@ms.com", 
+    "lastName" : "admin", 
+    "firstName" : "store1", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fa916f9f6b79cc1feb9b0d"), 
+    "salt" : "\u0002*\\^\\\u001fԋa\bPXc�#�", 
+    "displayName" : "store1.outlet3 admin@ms.com", 
+    "provider" : "local", 
+    "username" : "store1.outlet3.admin@ms.com", 
+    "created" : ISODate("2016-03-29T14:30:07.935+0000"), 
+    "outlets" : [
+        ObjectId("56fa91499f6b79cc1feb9b0c")
+    ], 
+    "stores" : [
+        ObjectId("56fa7b6f9f6b79cc1feb9afa")
+    ], 
+    "roles" : [
+        "outletadmin"
+    ], 
+    "password" : "hNy6LFrjdPVJED8TWeq3NiHNsO4aBAaklqXc22ukP2/JgurBx/HrRsmYroPlRXF4XtPUXPRARYVwtEZAG4fbnw==", 
+    "email" : "store1.outlet3.admin@ms.com", 
+    "lastName" : "admin@ms.com", 
+    "firstName" : "store1.outlet3", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd096dd6a9b7a4358de14b"), 
+    "salt" : "�R�qG4U2\\�|8��ܚ", 
+    "displayName" : "pantaloons.mysore o1.u1@ms.com", 
+    "provider" : "local", 
+    "username" : "pantaloons.mysore.o1.u1@ms.com", 
+    "created" : ISODate("2016-03-31T11:26:37.645+0000"), 
+    "outlets" : [
+        ObjectId("56fd06ded6a9b7a4358de143")
+    ], 
+    "stores" : [
+        null
+    ], 
+    "roles" : [
+        "outletadmin"
+    ], 
+    "password" : "fbzTPah0Nbfm4QDEhdwqfdJ+jYAst+8vG6m2c20SUr9OQOUim3cc8JgirznSLtALYbj4qe40pVFoMGPl2p3+vQ==", 
+    "email" : "pantaloons.mysore.o1.u1@ms.com", 
+    "lastName" : "o1.u1@ms.com", 
+    "firstName" : "pantaloons.mysore", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0c4dd6a9b7a4358de158"), 
+    "salt" : "=[���XN!\u0018u^\u0017z5\u000f�", 
+    "displayName" : "pantaloons.mysore.o1.u2@ms.com pantaloons.mysore.o1.u2@ms.com", 
+    "provider" : "local", 
+    "username" : "pantaloons.mysore.o1.u2@ms.com", 
+    "created" : ISODate("2016-03-31T11:38:53.105+0000"), 
+    "outlets" : [
+        ObjectId("56fd06ded6a9b7a4358de143")
+    ], 
+    "stores" : [
+        ObjectId("56fcb8d1d6a9b7a4358de12d")
+    ], 
+    "roles" : [
+        "outletadmin"
+    ], 
+    "password" : "PToJ6eQG4Ow8e/rKV0V45C5tSZHRWfR4eVeITld0ElTP7CizMS78BpbuyMSshZEweYDFkydmuUeyco9qXfkQcw==", 
+    "email" : "pantaloons.mysore.o1.u2@ms.com", 
+    "lastName" : "pantaloons.mysore.o1.u2@ms.com", 
+    "firstName" : "pantaloons.mysore.o1.u2@ms.com", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fd0d1cd6a9b7a4358de15f"), 
+    "salt" : "�\u00012\u0001�q7Ħ�ɬ}\"B'", 
+    "displayName" : "bigbazar mysore", 
+    "provider" : "local", 
+    "username" : "bigbazar.mysore.o1.u1@ms.com", 
+    "created" : ISODate("2016-03-31T11:42:20.210+0000"), 
+    "outlets" : [
+        ObjectId("56fd0ce8d6a9b7a4358de15e")
+    ], 
+    "stores" : [
+        ObjectId("56fbd9c6149ee3942621192c")
+    ], 
+    "roles" : [
+        "outletadmin"
+    ], 
+    "password" : "kG5EXhGVvJwJcfyaCtE8Z4R/M/3+HoZgquQHMA0DV825lXGYV+dKyETrMA6HG0N0dnC0ZRsRwgrOWXKWzdx4Mg==", 
+    "email" : "bigbazar.mysore.o1.u1@ms.com", 
+    "lastName" : "mysore", 
+    "firstName" : "bigbazar", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fa7eb19f6b79cc1feb9b02"), 
+    "salt" : "oG_�zGþ[zKnRf[\u0004", 
+    "displayName" : "store1 outlet1 admin", 
+    "provider" : "local", 
+    "username" : "store1.admin1.admin@ms.com", 
+    "created" : ISODate("2016-03-29T13:10:09.694+0000"), 
+    "outlets" : [
+        ObjectId("56fa7e669f6b79cc1feb9b01")
+    ], 
+    "stores" : [
+        ObjectId("56fa7b6f9f6b79cc1feb9afa")
+    ], 
+    "roles" : [
+        "outletadmin"
+    ], 
+    "password" : "HAvThJRBYGlrzQGWtoSNyTDwXW1TPxzIfYVy3Wu99IRyJPpw0o4Nh/PNd5IliH1kG6t/iSotXFk302QLtMcezw==", 
+    "email" : "store1.admin1.admin@ms.com", 
+    "lastName" : "admin", 
+    "firstName" : "store1 outlet2", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("56fa81689f6b79cc1feb9b07"), 
+    "salt" : "\u0002�\u001c�Hl��^�P\u0016�:�\u0014", 
+    "displayName" : "store1.outlet2 admin", 
+    "provider" : "local", 
+    "username" : "store1.outlet2.admin@ms.com", 
+    "created" : ISODate("2016-03-29T13:21:44.133+0000"), 
+    "outlets" : [
+        ObjectId("56fa813c9f6b79cc1feb9b06")
+    ], 
+    "stores" : [
+        ObjectId("56fa7b6f9f6b79cc1feb9afa")
+    ], 
+    "roles" : [
+        "outletadmin"
+    ], 
+    "password" : "ybYfNuSQDD2vAeHgKk7HNsfmF3IsB6MgEbGiXGgybBxn7Gl4rFIc60f4h8MNezCimwYc/JEANws7TXgRkaEY9Q==", 
+    "email" : "store1.outlet2.admin@ms.com", 
+    "lastName" : "admin", 
+    "firstName" : "store1.outlet1", 
+    "__v" : NumberInt(0)
+}

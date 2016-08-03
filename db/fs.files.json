@@ -1,0 +1,198 @@
+{ 
+    "_id" : ObjectId("56fa7b6f9f6b79cc1feb9afb"), 
+    "filename" : "unnamed (17).jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(20901), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-29T12:56:15.506+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "cf32e9b7f8b61494223da4bade27e0e1"
+}
+{ 
+    "_id" : ObjectId("56fa818c9f6b79cc1feb9b09"), 
+    "filename" : "unnamed (5).jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(36827), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-29T13:22:20.332+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "d1dd1d4b56b6d130281e89ce1210de43"
+}
+{ 
+    "_id" : ObjectId("56fa91d19f6b79cc1feb9b10"), 
+    "filename" : "unnamed (21).jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(23532), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-29T14:31:45.167+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "8b14e9de622275ad7990f9f9ca0d7cb0"
+}
+{ 
+    "_id" : ObjectId("56fa91e59f6b79cc1feb9b14"), 
+    "filename" : "unnamed (36).jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(4194), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-29T14:32:05.766+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "2dce3a13cfcacf77b9eebe103b7b6428"
+}
+{ 
+    "_id" : ObjectId("56fbc017149ee39426211929"), 
+    "filename" : "20151231_160653_730x300_image-730-300-14.jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(79408), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-30T12:01:28.133+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "46187613f3c9a721ef15993948c6b3b3"
+}
+{ 
+    "_id" : ObjectId("56fbd9c6149ee3942621192d"), 
+    "filename" : "download.png", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(9243), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-30T13:51:02.502+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "846f192c2408360069ad51ba5b50fcd7"
+}
+{ 
+    "_id" : ObjectId("56fcb8d1d6a9b7a4358de12e"), 
+    "filename" : "pantaloons.png", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(5251), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-31T05:42:41.348+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "7a43b9475a073ecfb81de90331bf8550"
+}
+{ 
+    "_id" : ObjectId("56fcb8e5d6a9b7a4358de132"), 
+    "filename" : "more.jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(3828), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-31T05:43:01.897+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "fd4c257165553a930ee2291353b24c8d"
+}
+{ 
+    "_id" : ObjectId("56fcccc9d6a9b7a4358de13b"), 
+    "filename" : "reliance trends.jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(35147), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-31T07:07:53.978+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "cef53494d3cb3fdd54b166bae48d582c"
+}
+{ 
+    "_id" : ObjectId("56fcd48fd6a9b7a4358de140"), 
+    "filename" : "unnamed (14).jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(21549), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-31T07:41:03.796+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "619ec421421628683a2086c4dbefa312"
+}
+{ 
+    "_id" : ObjectId("56fd0b18d6a9b7a4358de14f"), 
+    "filename" : "unnamed.jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(59498), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-31T11:33:44.032+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "5df57714e8038518b5fcc2e27d16a930"
+}
+{ 
+    "_id" : ObjectId("56fd0bb1d6a9b7a4358de154"), 
+    "filename" : "unnamed (40).jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(60287), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-31T11:36:17.816+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "b7fac1d484c695a06420b16218721677"
+}
+{ 
+    "_id" : ObjectId("56fd0c90d6a9b7a4358de15b"), 
+    "filename" : "unnamed.jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(59498), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-31T11:40:00.852+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "5df57714e8038518b5fcc2e27d16a930"
+}
+{ 
+    "_id" : ObjectId("56fd0d3fd6a9b7a4358de161"), 
+    "filename" : "unnamed (13).jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(67069), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-31T11:42:55.600+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "7777be67f8460b514af4957d1075baf4"
+}
+{ 
+    "_id" : ObjectId("56fd0d67d6a9b7a4358de165"), 
+    "filename" : "unnamed (36).jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(4194), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-03-31T11:43:35.245+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "2dce3a13cfcacf77b9eebe103b7b6428"
+}
+{ 
+    "_id" : ObjectId("57a195cd56afa94c36e13945"), 
+    "filename" : "unnamed.jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(59498), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-08-03T06:57:17.649+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "5df57714e8038518b5fcc2e27d16a930"
+}
+{ 
+    "_id" : ObjectId("57a1961756afa94c36e13949"), 
+    "filename" : "unnamed.gif", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(21503), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-08-03T06:58:31.470+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "2ca58862e9b4f85a59b262d6caf73706"
+}
+{ 
+    "_id" : ObjectId("57a1969d56afa94c36e1394e"), 
+    "filename" : "unnamed (7).jpg", 
+    "contentType" : "binary/octet-stream", 
+    "length" : NumberInt(42460), 
+    "chunkSize" : NumberInt(261120), 
+    "uploadDate" : ISODate("2016-08-03T07:00:45.796+0000"), 
+    "aliases" : null, 
+    "metadata" : null, 
+    "md5" : "cb7934558f4717c385d6d6dcd4f2c15d"
+}
