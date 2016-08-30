@@ -1,7 +1,8 @@
  
 
 	<div class="modal-header">
-		<h1>New Offer</h1>
+		<h1 ng-if="offer != null">Edit Offer</h1>
+		<h1 ng-if="offer == null">New Offer</h1>
 	</div>
 	<div class="modal-body">
 		 
@@ -10,14 +11,14 @@
 					<label class="control-label" for="title">Title</label>
 					<div class="controls">
 						<!--<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>-->
-                        <wysiwyg-edit class="ad-content" content="title" style="height:200px;" required></wysiwyg-edit>
+                        <wysiwyg-edit class="ad-content" content="offer.title" style="height:200px;" required></wysiwyg-edit>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="content">Content</label>
 					<div class="controls">
 						<!--<textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="4" placeholder="Content"></textarea>-->
-                        <wysiwyg-edit class="ad-content" content="content" style="height:200px;"></wysiwyg-edit>
+                        <wysiwyg-edit class="ad-content" content="offer.content" style="height:200px;"></wysiwyg-edit>
 					</div>
 				</div>
 				<div class="form-group">
@@ -37,7 +38,8 @@
 		 
 	</div>
 	 <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="create()">Create</button>
+            <button class="btn btn-primary" type="button"  ng-if="offer != null" ng-click="update()">Update</button>
+            <button class="btn btn-primary" type="button"  ng-if="offer == null" ng-click="create()">Create</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
  

@@ -42,8 +42,8 @@ angular.module('ads').factory('OutletAds', ['$resource',
 ]);
 angular.module('ads').factory('AdOffers', ['$resource',
 	function($resource) {
-		return $resource('ads/:adId/offers', {
-			adId: '@_id'
+		return $resource('ads/:adId/offers/:offerId', {
+			adId: '@ad',offerId:'@_id'
 		}, {
 			update: {
 				method: 'PUT'

@@ -14,6 +14,10 @@
                         <a class="btn btn-warning" href="/#!/ads/{{ad._id}}/edit">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
+                        <a class="btn btn-warning" data-ng-click="openAdModal()">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                        
                         <a class="btn btn-primary" data-ng-click="openAdDeleteModal(ad);">
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
@@ -80,60 +84,6 @@
                 <p class="lead" ng-bind-html="getHtml(ad.content)"></p>
             </div>
 
-            <!--<div class="page-header">
-                <small>
-                    <em class="text-muted">
-                        Posted on
-                        <span data-ng-bind="ad.created | date:'mediumDate'"></span>
-                        by
-                        <span data-ng-bind="ad.user.displayName"></span>
-                    </em>
-                </small>
-
-                <small class="list-group-item-text">
-                    Offer valid from
-                    <b>
-                        <span data-ng-bind="ad.fromdate | date:'mediumDate'"></span>
-                    </b>
-                    to
-                    <b>
-                        <span data-ng-bind="ad.todate | date:'mediumDate'"></span>
-                    </b>
-                </small>
-                <img alt="MEAN.JS" class="img-responsive text-center" src="images/content/{{ad._id}}" ng-error="tellServerItsBroken(ad)" />
-                <p ng-bind-html="getHtml(ad.title)"></p>
-                <p class="lead" ng-bind-html="getHtml(ad.content)"></p>
-            </div>-->
-            <!--<div class="pull-right" data-ng-show="authentication.user._id == ad.user._id">
-                <button type="button" class="btn btn-success" ng-click="openOfferModal()">
-                    <i class="glyphicon glyphicon-plus"></i>Add offers
-                </button>
-            </div>
-            <h1>Offers</h1>-->
-            <!--Old-->
-            <!-- <div class="row">
-
-                <div class="col-xs-18 col-sm-6 col-md-3" ng-repeat="item in offers">
-                  <div class="thumbnail">
-                    <img  ng-src="http://localhost:3000/images/content/{{item._id}} " hide-until-good  alt="">
-                      <div class="caption">
-                        <h4>{{item.title}}</h4>
-                        <p>{{item.content}}</p>
-                          <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p>
-                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                         </button>
-                         <button type="button" class="close edit" data-dismiss="modal" aria-label="Close">
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                         </button>
-                    </div>
-                  </div>
-                </div>
-
-            </div>   -->
-
-
-
             <div class="row-masonry">
                 <div class="item " ng-repeat="item in offers">
                     <div class="well">
@@ -142,8 +92,8 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Delete" ng-click="openOfferDeleteModal(item)">
                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                 </button>
-                                <button type="button" class="close edit" data-dismiss="modal" aria-label="Edit">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                <button type="button" class="close edit" data-dismiss="modal" aria-label="Edit"  ng-click="openOfferModal(item)">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </button>
                             </div>
                             <img ng-src="http://localhost:3000/images/content/{{item._id}} " hide-until-good alt="">
@@ -159,32 +109,5 @@
 
         </div>
     </div>
-
-    <!-- <div class="col-md-12 card " >
-      <table class="table table-responsive">
-        <thead class="card action poll-card">
-          <th class="c-td">Photo </th>
-          <th class="c-td">Title </th>
-          <th class="c-td">Content</th>
-        </thead>
-        <tbody>
-          <tr id="card action poll-card custom_tr" ng-repeat="item in offers">
-           <td class="c-td">
-            <img alt="MEAN.JS" class="img-responsive text-center" src="http://localhost:3000/images/content/{{item._id}}"  />
-            </td>
-           <td class="c-td">{{item.title}}</td>
-           <td class="c-td">{{item.content}}</td>
-           <td class="c-td">
-                <button type="button" class="btn btn-primary" ng-click="openOfferModal(item)">
-                    <i class="glyphicon glyphicon-edit"></i>
-                </button>
-                <button type="button" class="btn btn-primary" ng-click="deleteOffer()">
-                    <i class="glyphicon glyphicon-trash"></i>
-                </button>
-
-           </td>
-         </tr>
-       </tbody>
-     </table>
-    </div> -->
+ 
 </section>

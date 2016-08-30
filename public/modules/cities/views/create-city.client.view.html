@@ -15,6 +15,18 @@
 					<input name="state" type="text" data-ng-model="state" id="state" class="form-control" placeholder="State" required>
 				</div>
 			</div>
+			<!-- vs-google-autocomplete="options" -->
+	        <div class="form-group">
+	          <label for="cityIN">City of India</label>
+	          <input vs-google-autocomplete="options"
+	                 ng-model="cityIN" 
+	                 type="text" 
+	                 name="cityIN"
+	                 id="cityIN"
+	                 class="form-control" 
+	                 placeholder="Enter city name of India">
+	          <span class="help-block"><b>Model: </b>{{cityIN}}</span>{{cityIN.place.$valid}}
+	        </div>
 			<div data-ng-show="error" class="text-danger">
 				<strong data-ng-bind="error"></strong>
 			</div>

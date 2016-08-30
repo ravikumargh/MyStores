@@ -12,6 +12,10 @@ module.exports = function (app) {
     // Ad Routes
     app.route('/ads/:adId/offers')
 		.get(offers.listByAdId);
+
+    app.route('/ads/:adId/offers/:offerId')
+		.put(users.requiresLogin, ads.hasAuthorization, offers.update);
+    
     app.route('/ads/store/:storeId')
 		.get(ads.listByStoreId);
     app.route('/ads/outlet/:outletId')

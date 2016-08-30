@@ -400,11 +400,11 @@ angular.module('offersModal').controller('OffersModalController',
 			['$scope', '$stateParams', '$location', '$timeout', 'Authentication', 'Offers', 'File', '$modalInstance', 'ParentScope',
 	function ($scope, $stateParams, $location, $timeout, Authentication, Offers, File, $modalInstance, ParentScope) {
 	    $scope.authentication = Authentication;
-
+		$scope.offer = ParentScope.selectedOffer;
 	    $scope.create = function () {
 	        var offer = new Offers({
-	            title: this.title,
-	            content: this.content,
+	            title: this.offer.title,
+	            content: this.offer.content,
 	            ad: $stateParams.adId
 	        });
 	        offer.$save(function (response) {
@@ -413,8 +413,8 @@ angular.module('offersModal').controller('OffersModalController',
 	                ParentScope.offers.unshift(response);
 	            }, 1000);
 
-	            $scope.title = '';
-	            $scope.content = '';
+	            $scope.offer.title = '';
+	            $scope.offer.content = '';
 	            $modalInstance.dismiss('cancel');
 	        }, function (errorResponse) {
 	            $scope.error = errorResponse.data.message;
@@ -442,15 +442,16 @@ angular.module('offersModal').controller('OffersModalController',
 	        }
 	    };
 
-	    $scope.update = function () {
-	        var offer = $scope.offer;
+		$scope.update = function () {
+			var offer = $scope.offer;
 
-	        offer.$update(function () {
-	            $location.path('offers/' + offer._id);
-	        }, function (errorResponse) {
-	            $scope.error = errorResponse.data.message;
-	        });
-	    };
+			offer.$update(function (responce) {
+				ParentScope.selectedOffer = responce;
+				$modalInstance.dismiss('cancel');
+			}, function (errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
 
 	    $scope.find = function () {
 	        $scope.offers = Offers.query();
