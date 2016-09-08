@@ -7,20 +7,20 @@
             <label class="control-label" for="title">Title</label>
             <div class="controls">
                 <!-- <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required> -->
-                <wysiwyg-edit class="ad-title" content="title"></wysiwyg-edit>
+                <wysiwyg-edit class="ad-title" content="ad.title"></wysiwyg-edit>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label" for="content">Content</label>
             <div class="controls">
                 <!-- <textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="4" placeholder="Content"></textarea> -->
-                <wysiwyg-edit class="ad-content" content="content" style="height:200px;"></wysiwyg-edit>
+                <wysiwyg-edit class="ad-content" content="ad.content" style="height:200px;"></wysiwyg-edit>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label" for="content">Validity</label>
             <div class="controls">
-                <input date-range-picker class="form-control date-picker" type="text" ng-model="date" />
+                <input date-range-picker class="form-control date-picker" type="text" ng-model="ad.date" />
             </div>
         </div>
 

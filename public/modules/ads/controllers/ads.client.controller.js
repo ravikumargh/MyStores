@@ -314,36 +314,46 @@ angular.module('adsModal').controller('AdsModalController',
 	            });
 	        });
 	    }
-
+		if (ParentScope.ad) {
+			$scope.ad = ParentScope.ad;
+		} else {
+			$scope.ad = new Ads({
+				title: this.title,
+				content: this.content,
+				fromdate: $scope.date.startDate,
+				todate: $scope.date.endDate,
+				store: Authentication.user.stores[0]
+			});
+		}
 	    $scope.create = function () {
-	        var ad = new Ads({
-	            title: this.title,
-	            content: this.content,
-	            fromdate: $scope.date.startDate,
-	            todate: $scope.date.endDate,
-	            store: Authentication.user.stores[0]
-	        });
-	        for (var i = 0; i < $scope.cityOutlets.length; i++) {
-	            if (!ad.outlets) {
-	                ad.outlets = [];
-	            };
-	            if (!ad.cities) {
-	                ad.cities = [];
-	            };
+	        var ad=$scope.ad;
+			if ($scope.cityOutlets) {
+				for (var i = 0; i < $scope.cityOutlets.length; i++) {
+					if (!ad.outlets) {
+						ad.outlets = [];
+					};
+					if (!ad.cities) {
+						ad.cities = [];
+					};
 
-	            var cities = [];
-	            _.each($scope.cityOutlets[i].storeoutlet, function (co) {
-	                if (co.selected) {
-	                    ad.outlets.push(co._id);
-	                    cities.push(co.city._id);
-	                }
-	            });
-	            var uniqCities = _.uniq(cities);
-	            for (var j = 0; j < uniqCities.length; j++) {
-	                ad.cities.push(uniqCities[j]);
-	            }
-	        };
-	        ParentScope.create(ad, $scope.file);
+					var cities = [];
+					_.each($scope.cityOutlets[i].storeoutlet, function (co) {
+						if (co.selected) {
+							ad.outlets.push(co._id);
+							cities.push(co.city._id);
+						}
+					});
+					var uniqCities = _.uniq(cities);
+					for (var j = 0; j < uniqCities.length; j++) {
+						ad.cities.push(uniqCities[j]);
+					}
+				};
+			}
+			if (ParentScope.ad) {
+	        	ParentScope.update(ad, $scope.file);			
+			}else{
+	        	ParentScope.create(ad, $scope.file);
+			}
 	        $modalInstance.dismiss('cancel');
 	    };
 
